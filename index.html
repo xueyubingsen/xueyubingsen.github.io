@@ -12,30 +12,134 @@
 
     <script>
       // 3. Prepare data
-      const data = {
-        // node data
-        nodes: [
-          {
-            id: "node-1",
-            style: { x: 50, y: 100 },
-          },
-          {
-            id: "node-2",
-            style: { x: 150, y: 100 },
-          },
-        ],
-        // edge data
-        edges: [{ id: "edge-1", source: "node-1", target: "node-2" }],
-      };
+const data = {
+  nodes: [
+    { id: 'node-1' },
+    { id: 'node-2' },
+    { id: 'node-3' },
+    { id: 'node-4' },
+    { id: 'node-5' },
+    { id: 'node-6' },
+    { id: 'node-7' },
+    { id: 'node-8' },
+    { id: 'node-9' },
+    { id: 'node-10' },
+  ],
+  edges: [
+    { source: 'node-1', target: 'node-2' },
+    { source: 'node-1', target: 'node-3' },
+    { source: 'node-1', target: 'node-4' },
+    { source: 'node-2', target: 'node-5' },
+    { source: 'node-2', target: 'node-6' },
+    { source: 'node-3', target: 'node-7' },
+    { source: 'node-4', target: 'node-8' },
+    { source: 'node-5', target: 'node-9' },
+    { source: 'node-6', target: 'node-10' },
+    { source: 'node-7', target: 'node-10' },
+    { source: 'node-8', target: 'node-9' },
+  ],
+};
 
-      // 4. Create G6 instance
-      const graph = new G6.Graph({
-        container: "container",
-        data,
-      });
+// Calculate degrees for each node
+const degrees = {};
+data.nodes.forEach(node => {
+  degrees[node.id] = 0;
+});
 
-      // 5. Render graph
-      graph.render();
+data.edges.forEach(edge => {
+  degrees[edge.source]++;
+  degrees[edge.target]++;
+});
+
+const graph = new G6.Graph({
+  container: 'container',
+  width: 800,
+  height: 600,
+  autoFit: 'view',
+  data: data,
+  node: {
+    style: {
+      size: (d) => Math.max(20, degrees[d.id] * 5 + 10), // Size based on degree
+      fill: '#1890FF',
+      stroke: '#0077CC',
+      lineWidth: 1,
+    },
+    state: {
+      active: {
+        fill: '#FF6B35',
+        stroke: '#E55A2B',
+        lineWidth: 2,
+      },
+    },
+    palette: {
+      field: (d) => degrees[d.id],
+      color: ['#BAE7FF', '#1890FF', '#0050B3'],
+    },
+  },
+  edge: {
+    style: {
+      stroke: '#91D5FF',
+      lineWidth: 1,
+      endArrow: true,
+    },
+    state: {
+      active: {
+        stroke: '#FF6B35',
+        lineWidth: 2,
+      },
+    },
+  },
+  layout: {
+    type: 'd3-force',
+    preventOverlap: true,
+    nodeSize: (d) => Math.max(20, degrees[d.id] * 5 + 10),
+    link: {
+      distance: 100,
+      strength: 0.5,
+    },
+    collide: {
+      radius: (d) => Math.max(20, degrees[d.id] * 5 + 10) / 2 + 5,
+      strength: 0.8,
+    },
+    manyBody: {
+      strength: -200,
+    },
+  },
+  behaviors: [
+    'drag-canvas',
+    'zoom-canvas',
+    {
+      type: 'drag-element-force',
+      fixOnDragEnd: true,
+    },
+    'click-element',
+  ],
+});
+
+// Add interaction for highlighting connected nodes
+graph.on('node:click', (event) => {
+  const { itemId } = event;
+  
+  // Reset all states
+  graph.setElementState('node', [], 'active');
+  graph.setElementState('edge', [], 'active');
+  
+  // Highlight clicked node
+  graph.setElementState('node', [itemId], 'active');
+  
+  // Find and highlight connected edges and nodes
+  const connectedEdges = data.edges.filter(
+    edge => edge.source === itemId || edge.target === itemId
+  );
+  
+  const connectedEdgeIds = connectedEdges.map(edge => edge.id);
+  const connectedNodeIds = connectedEdges.flatMap(edge => [edge.source, edge.target]);
+  
+  graph.setElementState('edge', connectedEdgeIds, 'active');
+  graph.setElementState('node', connectedNodeIds, 'active');
+});
+
+graph.render();
     </script>
   </body>
 </html>
