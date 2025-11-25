@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Use G6 from CDN</title>
+  </head>
+  <body>
+    <!-- 1. Prepare container -->
+    <div id="container" style="width: 200px; height: 200px"></div>
+
+    <!-- 2. Add Script tag that specific G6 umd url -->
+    <script src="https://unpkg.com/@antv/g6@5/dist/g6.min.js"></script>
+
+    <script>
+      // 3. Prepare data
+      const data = {
+        // node data
+        nodes: [
+          {
+            id: "node-1",
+            style: { x: 50, y: 100 },
+          },
+          {
+            id: "node-2",
+            style: { x: 150, y: 100 },
+          },
+        ],
+        // edge data
+        edges: [{ id: "edge-1", source: "node-1", target: "node-2" }],
+      };
+
+      // 4. Create G6 instance
+      const graph = new G6.Graph({
+        container: "container",
+        data,
+      });
+
+      // 5. Render graph
+      graph.render();
+    </script>
+  </body>
+</html>
