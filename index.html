@@ -14,61 +14,56 @@
       // 3. Prepare data
 
 // Calculate degrees for each node
-const data = {
-  nodes: [
-    { id: 'node-1', label: 'Node 1' },
-    { id: 'node-2', label: 'Node 2' },
-    { id: 'node-3', label: 'Node 3' },
-    { id: 'node-4', label: 'Node 4' },
-    { id: 'node-5', label: 'Node 5' },
-    { id: 'node-6', label: 'Node 6' },
-    { id: 'node-7', label: 'Node 7' },
-    { id: 'node-8', label: 'Node 8' },
-    { id: 'node-9', label: 'Node 9' },
-    { id: 'node-10', label: 'Node 10' },
-  ],
-  edges: [
-    { source: 'node-1', target: 'node-2' },
-    { source: 'node-1', target: 'node-3' },
-    { source: 'node-1', target: 'node-4' },
-    { source: 'node-2', target: 'node-5' },
-    { source: 'node-2', target: 'node-6' },
-    { source: 'node-3', target: 'node-7' },
-    { source: 'node-4', target: 'node-8' },
-    { source: 'node-5', target: 'node-9' },
-    { source: 'node-6', target: 'node-10' },
-    { source: 'node-7', target: 'node-10' },
-    { source: 'node-8', target: 'node-9' },
-  ],
-};
+// 生成50个节点
+const nodes = Array.from({ length: 50 }, (_, i) => ({ id: `node-${i}` }));
 
-// Calculate degrees for each node (number of connections)
+// 随机生成边连接
+const edges = [];
+for (let i = 0; i < 50; i++) {
+  const sourceId = `node-${i}`;
+  // 每个节点随机连接1-5个其他节点
+  const connectionCount = Math.floor(Math.random() * 5) + 1;
+  for (let j = 0; j < connectionCount; j++) {
+    const targetIndex = Math.floor(Math.random() * 50);
+    const targetId = `node-${targetIndex}`;
+    // 避免自连接和重复连接
+    if (sourceId !== targetId && !edges.some(edge => 
+        (edge.source === sourceId && edge.target === targetId) || 
+        (edge.source === targetId && edge.target === sourceId))) {
+      edges.push({ source: sourceId, target: targetId });
+    }
+  }
+}
+
+// 计算每个节点的度数（连接数）
 const degrees = {};
-data.nodes.forEach(node => {
+nodes.forEach(node => {
   degrees[node.id] = 0;
 });
 
-data.edges.forEach(edge => {
+edges.forEach(edge => {
   degrees[edge.source]++;
   degrees[edge.target]++;
 });
 
-const graph = new G6.Graph({
+// 创建图数据
+const data = { nodes, edges };
+
+// 创建G6图实例
+const graph = new Graph({
   container: 'container',
-  width: 800,
-  height: 600,
+  width: 1200,
+  height: 800,
   autoFit: 'view',
   data: data,
   node: {
     style: {
-      size: (d) => Math.max(20, degrees[d.id] * 10 + 20), // Size based on degree
+      size: (d) => Math.max(20, degrees[d.id] * 5 + 10), // 根据连接数确定节点大小
       fill: '#1890FF',
       stroke: '#0077CC',
       lineWidth: 1,
-      label: (d) => d.label,
-      labelBackground: '#ffffff',
-      labelBackgroundRadius: 4,
-      labelFill: '#333',
+      label: (d) => degrees[d.id].toString(), // 显示连接数
+      labelFill: '#fff',
       labelFontSize: 12,
     },
   },
@@ -80,17 +75,28 @@ const graph = new G6.Graph({
     },
   },
   layout: {
-    type: 'force',
+    type: 'd3-force',
     preventOverlap: true,
-    nodeSize: (d) => Math.max(20, degrees[d.id] * 10 + 20),
-    linkDistance: 200,
-    center: [400, 300],
-    gravity: 50,
+    nodeSize: (d) => Math.max(20, degrees[d.id] * 5 + 10),
+    link: {
+      distance: 100,
+      strength: 0.5,
+    },
+    collide: {
+      radius: (d) => Math.max(20, degrees[d.id] * 5 + 10) / 2 + 5,
+      strength: 0.8,
+    },
+    manyBody: {
+      strength: -200,
+    },
   },
   behaviors: [
     'drag-canvas',
     'zoom-canvas',
-    'drag-element',
+    {
+      type: 'drag-element-force',
+      fixOnDragEnd: true,
+    },
   ],
 });
 
