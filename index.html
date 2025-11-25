@@ -14,90 +14,132 @@
       // 3. Prepare data
 
 // Calculate degrees for each node
-// 生成50个节点
-const nodes = Array.from({ length: 50 }, (_, i) => ({ id: `node-${i}` }));
+import { Graph, NodeEvent } from '@antv/g6';
 
-// 随机生成边连接
-const edges = [];
-for (let i = 0; i < 50; i++) {
-  const sourceId = `node-${i}`;
-  // 每个节点随机连接1-5个其他节点
-  const connectionCount = Math.floor(Math.random() * 5) + 1;
-  for (let j = 0; j < connectionCount; j++) {
-    const targetIndex = Math.floor(Math.random() * 50);
-    const targetId = `node-${targetIndex}`;
-    // 避免自连接和重复连接
-    if (sourceId !== targetId && !edges.some(edge => 
-        (edge.source === sourceId && edge.target === targetId) || 
-        (edge.source === targetId && edge.target === sourceId))) {
-      edges.push({ source: sourceId, target: targetId });
-    }
-  }
-}
+const data = {
+  nodes: [
+    {
+      id: '0',
+      label: '0',
+      value: 10,
+      cluster: 'a',
+      description: 'this is node 0, \nand the value of it is 10',
+    },
+    {
+      id: '1',
+      label: '1',
+      value: 20,
+      cluster: 'b',
+      description: 'this is node 1, \nand the value of it is 20',
+    },
+    {
+      id: '2',
+      label: '2',
+      value: 5,
+      cluster: 'a',
+      description: 'this is node 2, \nand the value of it is 5',
+    },
+    {
+      id: '3',
+      label: '3',
+      value: 10,
+      cluster: 'a',
+      description: 'this is node 3, \nand the value of it is 10',
+    },
+    {
+      id: '4',
+      label: '4',
+      value: 12,
+      cluster: 'c',
+      subCluster: 'sb',
+      description: 'this is node 4, \nand the value of it is 12',
+    },
+    {
+      id: '5',
+      label: '5',
+      value: 18,
+      cluster: 'c',
+      subCluster: 'sa',
+      description: 'this is node 5, \nand the value of it is 18',
+    },
+    {
+      id: '6',
+      label: '6',
+      value: 3,
+      cluster: 'c',
+      subCluster: 'sa',
+      description: 'this is node 6, \nand the value of it is 3',
+    },
+    {
+      id: '7',
+      label: '7',
+      value: 7,
+      cluster: 'b',
+      subCluster: 'sa',
+      description: 'this is node 7, \nand the value of it is 7',
+    },
+    {
+      id: '8',
+      label: '8',
+      value: 21,
+      cluster: 'd',
+      subCluster: 'sb',
+      description: 'this is node 8, \nand the value of it is 21',
+    },
+    {
+      id: '9',
+      label: '9',
+      value: 9,
+      cluster: 'd',
+      subCluster: 'sb',
+      description: 'this is node 9, \nand the value of it is 9',
+    },
+  ],
+  edges: [],
+};
 
-// 计算每个节点的度数（连接数）
-const degrees = {};
-nodes.forEach(node => {
-  degrees[node.id] = 0;
+const oriSize = {};
+
+const nodes = data.nodes;
+// randomize the node size
+nodes.forEach((node) => {
+  node.size = Math.random() * 30 + 16;
+  oriSize[node.id] = node.size;
 });
 
-edges.forEach(edge => {
-  degrees[edge.source]++;
-  degrees[edge.target]++;
-});
-
-// 创建图数据
-const data = { nodes, edges };
-
-// 创建G6图实例
 const graph = new Graph({
   container: 'container',
-  width: 1200,
-  height: 800,
-  autoFit: 'view',
-  data: data,
+  data,
   node: {
     style: {
-      size: (d) => Math.max(20, degrees[d.id] * 5 + 10), // 根据连接数确定节点大小
-      fill: '#1890FF',
-      stroke: '#0077CC',
-      lineWidth: 1,
-      label: (d) => degrees[d.id].toString(), // 显示连接数
+      size: (d) => d.size,
+      labelText: (d) => (d.size === 200 ? d.description : d.id),
+      labelPlacement: 'middle',
       labelFill: '#fff',
-      labelFontSize: 12,
     },
-  },
-  edge: {
-    style: {
-      stroke: '#91D5FF',
-      lineWidth: 1,
-      endArrow: true,
+    palette: {
+      field: (d) => d.cluster,
     },
   },
   layout: {
     type: 'd3-force',
-    preventOverlap: true,
-    nodeSize: (d) => Math.max(20, degrees[d.id] * 5 + 10),
-    link: {
-      distance: 100,
-      strength: 0.5,
-    },
     collide: {
-      radius: (d) => Math.max(20, degrees[d.id] * 5 + 10) / 2 + 5,
-      strength: 0.8,
+      radius: (d) => d.size / 2,
+      strength: 0.7,
     },
     manyBody: {
-      strength: -200,
+      strength: 30,
     },
   },
-  behaviors: [
-    'drag-canvas',
-    'zoom-canvas',
-    {
-      type: 'drag-element-force',
-      fixOnDragEnd: true,
-    },
-  ],
+  behaviors: ['drag-element-force'],
+});
+
+graph.on(NodeEvent.CLICK, async (e) => {
+  const nodeId = e.target.id;
+  const data = graph.getNodeData(nodeId);
+  const size = data.size === oriSize[nodeId] ? 200 : oriSize[nodeId];
+  graph.updateNodeData([{ id: nodeId, size }]);
+  await graph.layout();
 });
 
 graph.render();
