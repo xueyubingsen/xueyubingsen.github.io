@@ -1,148 +1,98 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TiDB Parameters Summary</title>
+    <title>Use G6 from CDN</title>
   </head>
   <body>
     <!-- 1. Prepare container -->
-    <div id="container" style="width: 800px; height: 400px"></div>
+    <div id="container" style="width: 800px; height: 600px"></div>
 
     <!-- 2. Add Script tag that specific G6 umd url -->
     <script src="https://unpkg.com/@antv/g6@5/dist/g6.min.js"></script>
 
+    
+
     <script>
-      // 3. Prepare data
 
-// Calculate degrees for each node
-import { Graph, NodeEvent } from '@antv/g6';
+const container = document.getElementById('container');
 
-const data = {
-  nodes: [
-    {
-      id: '0',
-      label: '0',
-      value: 10,
-      cluster: 'a',
-      description: 'this is node 0, \nand the value of it is 10',
-    },
-    {
-      id: '1',
-      label: '1',
-      value: 20,
-      cluster: 'b',
-      description: 'this is node 1, \nand the value of it is 20',
-    },
-    {
-      id: '2',
-      label: '2',
-      value: 5,
-      cluster: 'a',
-      description: 'this is node 2, \nand the value of it is 5',
-    },
-    {
-      id: '3',
-      label: '3',
-      value: 10,
-      cluster: 'a',
-      description: 'this is node 3, \nand the value of it is 10',
-    },
-    {
-      id: '4',
-      label: '4',
-      value: 12,
-      cluster: 'c',
-      subCluster: 'sb',
-      description: 'this is node 4, \nand the value of it is 12',
-    },
-    {
-      id: '5',
-      label: '5',
-      value: 18,
-      cluster: 'c',
-      subCluster: 'sa',
-      description: 'this is node 5, \nand the value of it is 18',
-    },
-    {
-      id: '6',
-      label: '6',
-      value: 3,
-      cluster: 'c',
-      subCluster: 'sa',
-      description: 'this is node 6, \nand the value of it is 3',
-    },
-    {
-      id: '7',
-      label: '7',
-      value: 7,
-      cluster: 'b',
-      subCluster: 'sa',
-      description: 'this is node 7, \nand the value of it is 7',
-    },
-    {
-      id: '8',
-      label: '8',
-      value: 21,
-      cluster: 'd',
-      subCluster: 'sb',
-      description: 'this is node 8, \nand the value of it is 21',
-    },
-    {
-      id: '9',
-      label: '9',
-      value: 9,
-      cluster: 'd',
-      subCluster: 'sb',
-      description: 'this is node 9, \nand the value of it is 9',
-    },
-  ],
-  edges: [],
-};
+// 生成50个节点
+const nodes = Array.from({ length: 50 }, (_, i) => ({
+  id: `node-${i}`,
+  label: `Node ${i}`,
+}));
 
-const oriSize = {};
+// 生成随机连接
+const edges = [];
+for (let i = 0; i < 50; i++) {
+  const source = `node-${i}`;
+  // 每个节点随机连接到1-5个其他节点
+  const targetCount = Math.floor(Math.random() * 5) + 1;
+  for (let j = 0; j < targetCount; j++) {
+    const target = `node-${Math.floor(Math.random() * 50)}`;
+    // 避免自己连接自己和重复连接
+    if (source !== target && !edges.some(e => e.source === source && e.target === target)) {
+      edges.push({ source, target });
+    }
+  }
+}
 
-const nodes = data.nodes;
-// randomize the node size
-nodes.forEach((node) => {
-  node.size = Math.random() * 30 + 16;
-  oriSize[node.id] = node.size;
+// 计算每个节点的入度（指向该节点的连接数）
+const inDegree = {};
+nodes.forEach(node => {
+  inDegree[node.id] = 0;
 });
 
-const graph = new Graph({
+edges.forEach(edge => {
+  inDegree[edge.target] = (inDegree[edge.target] || 0) + 1;
+});
+
+// 根据入度设置节点大小（入度越多节点越大）
+nodes.forEach(node => {
+  // 基础大小20，每个入度增加5
+  node.size = 20 + (inDegree[node.id] || 0) * 5;
+});
+
+const data = {
+  nodes,
+  edges
+};
+
+const graph = new G6.Graph({
   container: 'container',
+  width: container.clientWidth,
+  height: container.clientHeight,
   data,
+  autoFit: 'view',
+  modes: {
+    default: ['drag-canvas', 'zoom-canvas', 'drag-element'],
+  },
+  layout: {
+    type: 'force',
+    preventOverlap: true,
+    nodeSize: 20,
+    gravity: 0.9,
+    iterations: 100,
+  },
   node: {
     style: {
       size: (d) => d.size,
-      labelText: (d) => (d.size === 200 ? d.description : d.id),
-      labelPlacement: 'middle',
-      labelFill: '#fff',
-    },
-    palette: {
-      field: (d) => d.cluster,
-    },
-  },
-  layout: {
-    type: 'd3-force',
-    collide: {
-      radius: (d) => d.size / 2,
-      strength: 0.7,
-    },
-    manyBody: {
-      strength: 30,
+      fill: '#9EC9FF',
+      stroke: '#69C8FF',
+      label: (d) => d.label,
+      labelPlacement: 'center',
+      labelFill: '#333',
     },
   },
-  behaviors: ['drag-element-force'],
-});
-
-graph.on(NodeEvent.CLICK, async (e) => {
-  const nodeId = e.target.id;
-  const data = graph.getNodeData(nodeId);
-  const size = data.size === oriSize[nodeId] ? 200 : oriSize[nodeId];
-  graph.updateNodeData([{ id: nodeId, size }]);
-  await graph.layout();
+  edge: {
+    style: {
+      stroke: '#e2e2e2',
+    },
+  },
 });
 
 graph.render();
-    </script>
+
+</script>
   </body>
 </html>
