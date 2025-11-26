@@ -23,12 +23,39 @@
             background: #f5f5f5;
             border-radius: 5px;
         }
+        /* G6 Tooltip 样式定制 */
+        .g6-tooltip {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            max-width: 300px;
+        }
+
+        .g6-tooltip h4 {
+            margin: 0 0 8px 0;
+            color: #4D7CFF;
+            font-size: 14px;
+        }
+
+        .g6-tooltip ul {
+            margin: 0;
+            padding-left: 15px;
+        }
+
+        .g6-tooltip li {
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+
     </style>
 </head>
 <body>
-    <h1>G6力导向图示例 - 50个随机节点</h1>
+    <h1>TiDB 参数和指标 G6力导向图</h1>
     <div class="info-panel">
-        <p>• 节点大小随连接数增加而增大 • 可拖拽节点和画布 • 鼠标悬停查看连接数</p>
+        <p>• 力导向图展示了参数的权重，当参数被引用越多，体积越大 • 可拖拽节点和画布 • 鼠标悬停查看连接数</p>
     </div>
     <div id="container"></div>
 
@@ -43,6 +70,7 @@
                 nodes.push({
                     id: `node${i}`,
                     label: `节点${i}`,
+                    details: `这是节点${i}的详细信息。`,
                     size: 20, // 基础大小
                     degree: 0 // 初始化连接数为0
                 });
@@ -117,30 +145,68 @@
                 container: 'container',
                 width: document.getElementById('container').clientWidth,
                 height: document.getElementById('container').clientHeight,
-                
+
+                    // +++ 新增：Tooltip 插件配置 +++
+                plugins: [
+                    new G6.Tooltip({
+                        offsetX: 10,    // X 方向偏移
+                        offsetY: 10,    // Y 方向偏移
+                        // 自定义 Tooltip 内容
+                        getContent: (e) => {
+                            const model = e.item.getModel();
+                            const outDiv = document.createElement('div');
+                            outDiv.style.width = 'fit-content';
+                            outDiv.innerHTML = `
+                                <h4>节点详情</h4>
+                                <ul>
+                                    <li>节点ID: ${model.id}</li>
+                                    <li>连接数量: ${model.degree}</li>
+                                    <li>详细信息: ${model.details}</li>
+                                </ul>
+                            `;
+                            return outDiv;
+                        },
+                        itemTypes: ['node'] // 仅对节点生效
+                    })
+                ],
                 // 布局配置 - 力导向布局[12](@ref)[14](@ref)
                 // 修改后的 layout 配置
-layout: {
-  type: 'force',
-  preventOverlap: true,
-  linkDistance: 150,
-  nodeStrength: -100, // 节点间斥力强度，负值代表排斥
-  edgeStrength: 0.3,   // 边引力强度
-  // +++ 关键修改：调整力模拟系统参数以维持动态效果 +++
-  alpha: 0.5,         // 初始温度，稍高一些让初始运动更活跃
-  alphaDecay: 0.02,   // 降低衰减率，让模拟持续更久
-  alphaMin: 0.001,    // 停止阈值，保持较低以确保充分布局
-  // +++ 新增：配置防碰撞，这是防止节点重叠的关键 +++
-  collideStrength: 1, // 碰撞强度，1为完全弹性碰撞
-  nodeSpacing: 10,    // 节点间最小间距，结合 preventOverlap 使用
-},
+                layout: {
+                type: 'force',
+                preventOverlap: true,
+                linkDistance: 150,
+                nodeStrength: -100, // 节点间斥力强度，负值代表排斥
+                edgeStrength: 0.3,   // 边引力强度
+                // +++ 关键修改：调整力模拟系统参数以维持动态效果 +++
+                alpha: 0.5,         // 初始温度，稍高一些让初始运动更活跃
+                alphaDecay: 0.02,   // 降低衰减率，让模拟持续更久
+                alphaMin: 0.001,    // 停止阈值，保持较低以确保充分布局
+                // +++ 新增：配置防碰撞，这是防止节点重叠的关键 +++
+                collideStrength: 1, // 碰撞强度，1为完全弹性碰撞
+                nodeSpacing: 10,    // 节点间最小间距，结合 preventOverlap 使用
+                },
 
                 
                 // 交互模式配置[10](@ref)[11](@ref)
+                // modes: {
+                //     default: ['drag-canvas', 'zoom-canvas', 'drag-node']
+                // },
                 modes: {
-                    default: ['drag-canvas', 'zoom-canvas', 'drag-node']
+                    default: [
+                        'drag-canvas', 
+                        'zoom-canvas', 
+                        'drag-node',
+                        // +++ 新增：启用关联高亮行为 +++
+                        {
+                            type: 'activate-relations',
+                            trigger: 'click', // 指定触发方式为点击，默认为'mouseenter'
+                            activeState: 'active', // 激活状态名
+                            inactiveState: 'inactive', // 非激活状态名
+                            resetSelected: true // 点击画布空白处重置状态
+                        }
+                    ]
                 },
-                
+
                 // 默认节点样式[8](@ref)
                 defaultNode: {
                     size: 30,
@@ -162,13 +228,33 @@ layout: {
                 },
                 
                 // 默认边样式
+                // defaultEdge: {
+                //     style: {
+                //         stroke: '#A3B1BF',
+                //         lineWidth: 1.5,
+                //         opacity: 0.6
+                //     }
+                // },
+
+                // 默认边样式
                 defaultEdge: {
-                    style: {
-                        stroke: '#A3B1BF',
-                        lineWidth: 1.5,
-                        opacity: 0.6
+                // 指定边的类型，可以是内置边的类型名称，也可以是自定义边的名称，例如 'line'（直线）或 'polyline'（折线）[8](@ref)
+                // type: 'line', // 如果需要使用直线，可以取消注释
+                style: {
+                    stroke: '#A3B1BF', // 边的颜色
+                    lineWidth: 1.5,     // 边的宽度
+                    opacity: 0.6,
+                    // +++ 关键：添加箭头配置 +++
+                    endArrow: {
+                    // 使用 G6 内置的箭头路径函数
+                    path: G6.Arrow.triangle(8, 10, 0), // 参数：箭头宽度、长度、偏移量（默认为0）[6](@ref)
+                    // 或者直接使用预设
+                    // path: 'M 0,0 L 8,4 L 8,-4 Z', // 自定义路径，绘制一个三角形
+                    d: 0 // 沿路径方向的偏移量
                     }
+                }
                 },
+
                 
                 // 节点状态样式[11](@ref)
                 nodeStateStyles: {
@@ -178,6 +264,31 @@ layout: {
                         lineWidth: 3,
                         shadowColor: 'rgba(77,124,255,0.5)',
                         shadowBlur: 10
+                    },
+                    active: {
+                        fill: '#FF9E00', // 高亮填充色，例如橙色
+                        stroke: '#D93030',
+                        lineWidth: 3,
+                        shadowColor: 'rgba(255, 158, 0, 0.5)',
+                        shadowBlur: 10
+                    },
+                    // +++ 新增：非激活状态样式（非关联节点） +++
+                    inactive: {
+                        opacity: 0.2 // 降低非关联节点的不透明度，突出高亮节点
+                    }
+                },
+
+                // 边状态样式[4](@ref)
+                edgeStateStyles: {
+                    // +++ 新增：激活状态样式（关联边） +++
+                    active: {
+                        stroke: '#FF9E00', // 与高亮节点颜色一致
+                        lineWidth: 2,
+                        opacity: 1 // 提高不透明度
+                    },
+                    // +++ 新增：非激活状态样式（非关联边） +++
+                    inactive: {
+                        opacity: 0.1 // 降低非关联边的不透明度
                     }
                 }
             });
@@ -199,10 +310,64 @@ layout: {
                 graph.setItemState(e.item, 'hover', false);
             });
             
+            // graph.on('node:click', (e) => {
+            //     const model = e.item.getModel();
+            //     console.log(`点击节点: ${model.id}, 连接数: ${model.degree}`);
+            // });
+
             graph.on('node:click', (e) => {
-                const model = e.item.getModel();
-                console.log(`点击节点: ${model.id}, 连接数: ${model.degree}`);
+                const clickedItem = e.item;
+                const graphData = graph.save(); // 获取当前图数据
+
+                // 1. 重置所有元素状态
+                graph.getNodes().forEach(node => {
+                    graph.clearItemStates(node, ['active', 'inactive']);
+                });
+                graph.getEdges().forEach(edge => {
+                    graph.clearItemStates(edge, ['active', 'inactive']);
+                });
+
+                // 2. 设置被点击节点为激活状态
+                graph.setItemState(clickedItem, 'active', true);
+
+                // 3. 查找与点击节点直接相连的边和节点
+                const relatedEdges = clickedItem.getEdges(); // 获取所有关联边
+                const relatedNodes = new Set(); // 使用Set避免重复
+
+                relatedEdges.forEach(edge => {
+                    // 设置关联边为激活状态
+                    graph.setItemState(edge, 'active', true);
+                    
+                    // 获取边的源节点和目标节点
+                    const sourceNode = edge.getSource();
+                    const targetNode = edge.getTarget();
+                    
+                    // 将关联节点（不包括点击节点自身）加入集合
+                    if (sourceNode !== clickedItem) relatedNodes.add(sourceNode);
+                    if (targetNode !== clickedItem) relatedNodes.add(targetNode);
+                });
+
+                // 4. 设置关联节点为激活状态，其他节点为非激活状态
+                graph.getNodes().forEach(node => {
+                    if (node !== clickedItem && !relatedNodes.has(node)) {
+                        graph.setItemState(node, 'inactive', true);
+                    } else if (node !== clickedItem) {
+                        graph.setItemState(node, 'active', true);
+                    }
+                });
+
+                // 点击画布空白处重置所有状态
+                graph.on('canvas:click', () => {
+                    graph.getNodes().forEach(node => {
+                        graph.clearItemStates(node, ['active', 'inactive']);
+                    });
+                    graph.getEdges().forEach(edge => {
+                        graph.clearItemStates(edge, ['active', 'inactive']);
+                    });
+                });
+
             });
+
             // 假设 graph 是你的图实例
             graph.on('dragend', (e) => {
             // 重启力导向布局的模拟，alpha 值重置，重新开始动画
@@ -230,8 +395,6 @@ layout: {
         } else {
             console.error('G6库未正确加载，请检查CDN链接');
         }
-
-
 
     </script>
 </body>
