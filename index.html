@@ -1,98 +1,113 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Use G6 from CDN</title>
-  </head>
-  <body>
-    <!-- 1. Prepare container -->
-    <div id="container" style="width: 800px; height: 600px"></div>
-
-    <!-- 2. Add Script tag that specific G6 umd url -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>力导向图 Demo</title>
     <script src="https://unpkg.com/@antv/g6@5/dist/g6.min.js"></script>
-
-    
-
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #container {
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
     <script>
+        // 创建50个节点
+        const nodes = [];
+        for (let i = 0; i < 50; i++) {
+            nodes.push({
+                id: `${i}`,
+                label: `Node ${i}`,
+                size: 10, // 默认大小
+                x: Math.random() * 600, // 随机位置
+                y: Math.random() * 600
+            });
+        }
 
-const container = document.getElementById('container');
+        // 随机连接节点
+        const edges = [];
+        for (let i = 0; i < 50; i++) {
+            const targetNodeCount = Math.floor(Math.random() * 5); // 每个节点最多连接5个其他节点
+            for (let j = 0; j < targetNodeCount; j++) {
+                const target = Math.floor(Math.random() * 50);
+                if (i !== target) {
+                    edges.push({
+                        source: `${i}`,
+                        target: `${target}`
+                    });
+                }
+            }
+        }
 
-// 生成50个节点
-const nodes = Array.from({ length: 50 }, (_, i) => ({
-  id: `node-${i}`,
-  label: `Node ${i}`,
-}));
+        // 创建力导向图实例
+        const graph = new G6.Graph({
+            container: 'container',
+            width: window.innerWidth,
+            height: window.innerHeight,
+            modes: {
+                default: ['drag-node']  // 启用节点拖拽
+            },
+            layout: {
+                type: 'force',  // 力导向布局
+                preventOverlap: true,
+                nodeStrength: -30,
+                edgeStrength: 0.1,
+                gravity: 30
+            },
+            defaultNode: {
+                shape: 'circle',
+                size: [10],  // 初始节点大小
+                style: {
+                    fill: '#5B8FF9',
+                    stroke: '#1D78FF'
+                }
+            },
+            defaultEdge: {
+                style: {
+                    stroke: '#ccc',
+                    lineWidth: 1
+                }
+            },
+            nodeStateStyles: {
+                hover: {
+                    fill: '#F56C6C',
+                    stroke: '#F56C6C'
+                }
+            },
+            // 更新节点的大小，使得入度更多的节点变大
+            onAfterLayout() {
+                const nodeMap = new Map();
+                edges.forEach(edge => {
+                    const targetId = edge.target;
+                    if (!nodeMap.has(targetId)) {
+                        nodeMap.set(targetId, 0);
+                    }
+                    nodeMap.set(targetId, nodeMap.get(targetId) + 1);
+                });
 
-// 生成随机连接
-const edges = [];
-for (let i = 0; i < 50; i++) {
-  const source = `node-${i}`;
-  // 每个节点随机连接到1-5个其他节点
-  const targetCount = Math.floor(Math.random() * 5) + 1;
-  for (let j = 0; j < targetCount; j++) {
-    const target = `node-${Math.floor(Math.random() * 50)}`;
-    // 避免自己连接自己和重复连接
-    if (source !== target && !edges.some(e => e.source === source && e.target === target)) {
-      edges.push({ source, target });
-    }
-  }
-}
+                graph.getNodes().forEach(node => {
+                    const nodeId = node.getID();
+                    const size = nodeMap.get(nodeId) || 10; // 入度越多，节点越大
+                    graph.updateItem(node, {
+                        size: Math.min(size + 5, 50) // 最大大小为50
+                    });
+                });
+            }
+        });
 
-// 计算每个节点的入度（指向该节点的连接数）
-const inDegree = {};
-nodes.forEach(node => {
-  inDegree[node.id] = 0;
-});
-
-edges.forEach(edge => {
-  inDegree[edge.target] = (inDegree[edge.target] || 0) + 1;
-});
-
-// 根据入度设置节点大小（入度越多节点越大）
-nodes.forEach(node => {
-  // 基础大小20，每个入度增加5
-  node.size = 20 + (inDegree[node.id] || 0) * 5;
-});
-
-const data = {
-  nodes,
-  edges
-};
-
-const graph = new G6.Graph({
-  container: 'container',
-  width: container.clientWidth,
-  height: container.clientHeight,
-  data,
-  autoFit: 'view',
-  modes: {
-    default: ['drag-canvas', 'zoom-canvas', 'drag-element'],
-  },
-  layout: {
-    type: 'force',
-    preventOverlap: true,
-    nodeSize: 20,
-    gravity: 0.9,
-    iterations: 100,
-  },
-  node: {
-    style: {
-      size: (d) => d.size,
-      fill: '#9EC9FF',
-      stroke: '#69C8FF',
-      label: (d) => d.label,
-      labelPlacement: 'center',
-      labelFill: '#333',
-    },
-  },
-  edge: {
-    style: {
-      stroke: '#e2e2e2',
-    },
-  },
-});
-
-graph.render();
-
-</script>
-  </body>
+        // 添加节点和边
+        graph.data({
+            nodes,
+            edges
+        });
+        graph.render();
+    </script>
+</body>
 </html>
