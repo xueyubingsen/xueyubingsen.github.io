@@ -122,15 +122,19 @@
                 // 修改后的 layout 配置
 layout: {
   type: 'force',
-  preventOverlap: true,   // 防止节点重叠
-  linkDistance: 150,      // 边的理想长度，这个值影响弹力
-  nodeStrength: -100,     // 节点斥力强度，负值越大，节点间排斥越强
-  edgeStrength: 0.3,      // 边引力强度，影响边的拉力
-  nodeSpacing: 5,         // 节点间最小间距
-  alpha: 0.3,            // 初始的力模拟“温度”，影响初始运动强度
-  alphaDecay: 0.03,       // 每次迭代alpha的衰减率，影响收敛到稳定的速度
-  alphaMin: 0.001,        // 力模拟停止的阈值
+  preventOverlap: true,
+  linkDistance: 150,
+  nodeStrength: -100, // 节点间斥力强度，负值代表排斥
+  edgeStrength: 0.3,   // 边引力强度
+  // +++ 关键修改：调整力模拟系统参数以维持动态效果 +++
+  alpha: 0.5,         // 初始温度，稍高一些让初始运动更活跃
+  alphaDecay: 0.02,   // 降低衰减率，让模拟持续更久
+  alphaMin: 0.001,    // 停止阈值，保持较低以确保充分布局
+  // +++ 新增：配置防碰撞，这是防止节点重叠的关键 +++
+  collideStrength: 1, // 碰撞强度，1为完全弹性碰撞
+  nodeSpacing: 10,    // 节点间最小间距，结合 preventOverlap 使用
 },
+
                 
                 // 交互模式配置[10](@ref)[11](@ref)
                 modes: {
