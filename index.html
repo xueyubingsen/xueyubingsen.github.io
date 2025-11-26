@@ -182,6 +182,10 @@ layout: {
             graph.data(graphData);
             graph.render();
             
+
+            // +++ 新增这行代码，启动力导向布局的模拟 +++
+            graph.layout();
+
             // 添加交互事件
             graph.on('node:mouseenter', (e) => {
                 graph.setItemState(e.item, 'hover', true);
@@ -217,6 +221,9 @@ layout: {
         } else {
             console.error('G6库未正确加载，请检查CDN链接');
         }
+
+
+
     </script>
 </body>
 </html>
