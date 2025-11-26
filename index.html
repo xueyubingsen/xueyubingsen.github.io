@@ -92,17 +92,17 @@
             // 统计每个节点的连接数
             data.edges.forEach(edge => {
                 degreeMap[edge.source]++;
-                degreeMap[edge.target]++;
+                // degreeMap[edge.target]++;
             });
             
             // 根据连接数调整节点大小和标签
             data.nodes.forEach(node => {
                 const degree = degreeMap[node.id];
                 // 大小公式：基础大小20 + 连接数×6
-                node.size = 20 + degree * 6;
+                node.size = 40 + degree * 6;
                 node.degree = degree;
                 // 更新标签显示连接数
-                node.label = `${node.label}\n关联:${degree}`;
+                node.label = `${node.label}`;
                 
                 // 根据连接数设置不同颜色
                 if (degree >= 8) {
@@ -145,7 +145,8 @@
                             outDiv.innerHTML = `
                                 <h4>节点详情</h4>
                                 <ul>
-                                    <li>节点: ${model.label}</li>
+                                    <li>节点: ${model.id}</li>
+                                    <li>标签: ${nodel.label}</li>
                                     <li>连接数量: ${model.degree}</li>
                                     <li>详细信息: ${model.details}</li>
                                 </ul>
@@ -173,10 +174,6 @@
                 },
 
                 
-                // 交互模式配置[10](@ref)[11](@ref)
-                // modes: {
-                //     default: ['drag-canvas', 'zoom-canvas', 'drag-node']
-                // },
                 modes: {
                     default: [
                         'drag-canvas', 
@@ -213,15 +210,6 @@
                     }
                 },
                 
-                // 默认边样式
-                // defaultEdge: {
-                //     style: {
-                //         stroke: '#A3B1BF',
-                //         lineWidth: 1.5,
-                //         opacity: 0.6
-                //     }
-                // },
-
                 // 默认边样式
                 defaultEdge: {
                 // 指定边的类型，可以是内置边的类型名称，也可以是自定义边的名称，例如 'line'（直线）或 'polyline'（折线）[8](@ref)
@@ -295,11 +283,6 @@
             graph.on('node:mouseleave', (e) => {
                 graph.setItemState(e.item, 'hover', false);
             });
-            
-            // graph.on('node:click', (e) => {
-            //     const model = e.item.getModel();
-            //     console.log(`点击节点: ${model.id}, 连接数: ${model.degree}`);
-            // });
 
             graph.on('node:click', (e) => {
                 const clickedItem = e.item;
