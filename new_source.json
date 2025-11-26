@@ -1,0 +1,1295 @@
+{
+  "nodes": [
+    {
+      "id": "Page-01",
+      "label": "TiDB大规模删除实践",
+      "details": "https://tidb.net/blog/b7a90f87",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "",
+      "target": ""
+    },
+    {
+      "id": "Config-13",
+      "label": "soft-pending-compaction-bytes-limit",
+      "details": "soft-pending-compaction-bytes-limit,默认值192GB，达到阈值则触发write stall，客户端写入速度放慢",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-01,Event-05",
+      "target": ""
+    },
+    {
+      "id": "Config-14",
+      "label": "hard-pending-compaction-bytes-limit",
+      "details": "hard-pending-compaction-bytes-limit,默认1024GB，达到阈值之后，不让客户端写入数据",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-01,Event-05",
+      "target": ""
+    },
+    {
+      "id": "Config-15",
+      "label": "max-merge-region-size",
+      "details": "max-merge-region-size",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-01",
+      "target": ""
+    },
+    {
+      "id": "Config-16",
+      "label": "max-merge-region-keys",
+      "details": "max-merge-region-keys",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-01",
+      "target": ""
+    },
+    {
+      "id": "Config-17",
+      "label": "split-merge-interval",
+      "details": "split-merge-interval",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-01",
+      "target": ""
+    },
+    {
+      "id": "Index-01",
+      "label": "compaction pending bytes",
+      "details": "compaction pending bytes",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-01",
+      "target": ""
+    },
+    {
+      "id": "Config-01",
+      "label": "gc.max-write-bytes-per-sec",
+      "details": "gc.max-write-bytes-per-sec",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-01",
+      "target": ""
+    },
+    {
+      "id": "Index-02",
+      "label": "Commit Token Wait Duration",
+      "details": "Commit Token Wait Duration",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-01",
+      "target": ""
+    },
+    {
+      "id": "Page-02",
+      "label": "305-TiDB 故障排除案例学习-计划内单机停机",
+      "details": "",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "",
+      "target": ""
+    },
+    {
+      "id": "Config-02",
+      "label": "max-store-down-time",
+      "details": "系统补副本操作的等待store恢复时间",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-02",
+      "target": ""
+    },
+    {
+      "id": "Index-03",
+      "label": " miss-peer-region-count",
+      "details": "grafana PD->PD dashboard->Region Health<br>单机维护期间，预期是一直下降",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-02",
+      "target": ""
+    },
+    {
+      "id": "Index-04",
+      "label": "down-peer-region-count",
+      "details": "grafana PD->PD dashboard->Region Health<br>单机维护期间，预期是0",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-02",
+      "target": ""
+    },
+    {
+      "id": "Index-05",
+      "label": "pending-peer-region-count",
+      "details": "grafana PD->PD dashboard->Region Health<br>单机维护期间，预期是一直下降",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-02",
+      "target": ""
+    },
+    {
+      "id": "Index-06",
+      "label": "empty-region-count",
+      "details": "grafana PD->PD dashboard->Region Health<br>",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-02",
+      "target": ""
+    },
+    {
+      "id": "Index-07",
+      "label": "Schedule operator create",
+      "details": "grafana PD->Operator<br>发起Operator的监控<br>单机维护期间，miss-peer-region-count不下降的情况下观察这里",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-02",
+      "target": ""
+    },
+    {
+      "id": "Index-08",
+      "label": "Operator finish duration",
+      "details": "Operator 执行延迟",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-02",
+      "target": ""
+    },
+    {
+      "id": "Page-03",
+      "label": "305-TiDB 故障排除案例学习-计划外停机，满足多数派",
+      "details": "305-TiDB 故障排除案例学习-计划外停机，满足多数派",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "",
+      "target": "Index-07,Index-08"
+    },
+    {
+      "id": "Config-03",
+      "label": "region-schedule-limit",
+      "details": "手工修复TiKV之前，设置次参数，不让pd发起调度",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-03",
+      "target": ""
+    },
+    {
+      "id": "Config-04",
+      "label": "replica-schedule-limit",
+      "details": "手工修复TiKV之前，设置次参数，不让pd发起调度",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-03",
+      "target": ""
+    },
+    {
+      "id": "Config-05",
+      "label": "leader-schedule-limit",
+      "details": "手工修复TiKV之前，设置次参数，不让pd发起调度",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-03",
+      "target": ""
+    },
+    {
+      "id": "Config-06",
+      "label": "merge-schedule-limit",
+      "details": "手工修复TiKV之前，设置次参数，不让pd发起调度",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-03",
+      "target": ""
+    },
+    {
+      "id": "Error-01",
+      "label": "SST file size mismatch",
+      "details": "SST文件损坏，RocksDB Apply Snapshot",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-03",
+      "target": ""
+    },
+    {
+      "id": "Page-04",
+      "label": "记一次sst文件损坏修复过程",
+      "details": "记一次sst文件损坏修复过程<br>https://tidb.net/blog/54e388c8",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-03",
+      "target": ""
+    },
+    {
+      "id": "Error-02",
+      "label": "Region is unavailable",
+      "details": "",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-04",
+      "target": ""
+    },
+    {
+      "id": "Page-05",
+      "label": "如何处理损坏的sst文件",
+      "details": "如何处理损坏的sst文件<br>https://tidb.net/blog/22731ef0",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-03",
+      "target": ""
+    },
+    {
+      "id": "Error-03",
+      "label": "Raft 状态机器损坏",
+      "details": "设置一个 Region 副本为 tombstone 状态<br>https://docs.pingcap.com/zh/tidb/stable/tikv-control/?_gl=1*1sh7tol*_gcl_au*MTYwMzk2MTYyOS4xNzYyOTMzNjQ2*_ga*MTYwNjU5NTgzNC4xNzYyOTMzNjQ2*_ga_3JVXJ41175*czE3NjQxMzY5ODMkbzEwJGcwJHQxNzY0MTM2OTk0JGo0OSRsMCRoMTc4NDU4Mzc4OQ..*_ga_ZEL0RNV6R2*czE3NjM5NzA2MTUkbzckZzEkdDE3NjM5NzA2NDEkajM0JGwwJGgw*_ga_CPG2VW1Y41*czE3NjQxMzY5ODMkbzEwJGcwJHQxNzY0MTM2OTgzJGo2MCRsMCRoMA..#%E8%AE%BE%E7%BD%AE%E4%B8%80%E4%B8%AA-region-%E5%89%AF%E6%9C%AC%E4%B8%BA-tombstone-%E7%8A%B6%E6%80%81",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-05",
+      "target": ""
+    },
+    {
+      "id": "Error-04",
+      "label": "last index",
+      "details": "",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-05",
+      "target": ""
+    },
+    {
+      "id": "Page-06",
+      "label": "305-TiDB 故障排除案例学习-计划外停机，不满足多数派",
+      "details": "305-TiDB 故障排除案例学习-计划外停机，不满足多数派",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "",
+      "target": "Config-03,Config-03=4,Config-05,Config-06"
+    },
+    {
+      "id": "Note-01",
+      "label": "坏1个region，有可能整个系统不可用",
+      "details": "取决于region中存放的是什么数据",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-06",
+      "target": ""
+    },
+    {
+      "id": "Note-02",
+      "label": "2副本丢失处理方式",
+      "details": "2副本丢失处理方式<br>注意：<br>1、<br>2、",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-06",
+      "target": ""
+    },
+    {
+      "id": "Note-03",
+      "label": "3副本丢失处理方式",
+      "details": "3副本丢失处理方式<br>数据肯定丢失，恢复的目标是确保实例拉起<br>PD里面有丢失region的信息<br>1、关闭在线TiKV<br>2、创建空region<br>3、从应用侧将数据重新导入<br>4、数据与索引一致性检验<br>admin check index tbl_name idx_name",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-06",
+      "target": ""
+    },
+    {
+      "id": "Page-07",
+      "label": "305-TiDB 故障排除案例学习-计划外停机，不满足多数派，2副本丢失案例",
+      "details": "305-TiDB 故障排除案例学习-计划外停机，不满足多数派，2副本丢失案例",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "",
+      "target": ""
+    },
+    {
+      "id": "Note-04",
+      "label": "查看副本数",
+      "details": "pg-ctl config show replication -u xxx",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-07",
+      "target": "Note-05"
+    },
+    {
+      "id": "Note-05",
+      "label": "确认store状态",
+      "details": "pg-ctl -u xxx store --jq=\".stores[].store|{id,address,state_name}\"",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-07",
+      "target": "Note-06"
+    },
+    {
+      "id": "Note-06",
+      "label": "记录当前的调度规则",
+      "details": "pg-ctl config show -u xxx|grep schedule-limit",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-07",
+      "target": "Note-07"
+    },
+    {
+      "id": "Note-07",
+      "label": "禁止前端业务写入，禁止调度",
+      "details": "pg-ctl -u xxx -i<br>config set region-schedule-limit 0<br>config set leader-schedule-limit 0<br>config set replica-schedule-limit 0<br>config set merge-schedule-limit 0<br>config set hot-region-schedule-limit 0<br>",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-07",
+      "target": "Config-03,Config-03=4,Config-05,Config-06,Note-08"
+    },
+    {
+      "id": "Note-08",
+      "label": "统计副本数丢失一半及以上的region",
+      "details": "pg-ctl -u xxx region --jq='.regions[]|{id: .id,peer_stores: [.peers[].store_id]|select(length as $total | map(if .==(1,4,6) then . else empty end) | length>=$total-length)}'<br>1,4,6是故障节点的storeid<br>会打印出来一半以上的peer都在故障节点的region",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-07",
+      "target": "Note-09,Note-11"
+    },
+    {
+      "id": "Note-09",
+      "label": "确认问题region所属数据库对象",
+      "details": "select * from tikv_region_status where region_id in ('','','');",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-07",
+      "target": "Note-10"
+    },
+    {
+      "id": "Note-10",
+      "label": "2副本丢失处理：有损恢复",
+      "details": "使用--all-regions在所有未发生异常的实例上remove-fail-stores<br>#关闭存活的TiKV节点<br>cd ${deploy}/scripts<br>./stop_tikv.sh<br># 在存活的TiKV节点执行<br>tikv-ctl --db /path/to/tikv-data/db unsafe-recover remove-fail-stores -s 1,4,6 --all-regions<br>tikv-ctl --db /path/to/tikv-data/db unsafe-recover remove-fail-stores -s 1,4,6 --all-regions<br>tikv-ctl --db /path/to/tikv-data/db unsafe-recover remove-fail-stores -s 1,4,6 --all-regions<br>执行之后的效果，告诉PD，出问题的region，凡是副本在此3个故障storeid上的region失效，如果leader还在，则在发起命令的机器（可用节点）上重建副本，如果leader都没有只剩下一个follower在可用节点上，那么这个follower变成leader，并且在可用节点上创建新的副本。<br>执行完之后启动可用节点的TiKV<br>注意：坏的老的region要做缩容处理，不要在集群的情况下启动起来，否则pd管理的混乱",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-07",
+      "target": ""
+    },
+    {
+      "id": "Page-08",
+      "label": "305-TiDB 故障排除案例学习-计划外停机，不满足多数派，3副本丢失案例",
+      "details": "305-TiDB 故障排除案例学习-计划外停机，不满足多数派，3副本丢失案例",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "",
+      "target": "Page-07"
+    },
+    {
+      "id": "Note-11",
+      "label": "统计副本全丢的region",
+      "details": "pg-ctl -u xxx region --jq '.regions[] | select(has(\"leader\") | not) | {id: .id, peer_stores: [.peers[].store_id]}'<br>列出来的全是丢失3副本的region",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-08",
+      "target": "Note-12"
+    },
+    {
+      "id": "Note-12",
+      "label": "创建空region",
+      "details": "#关闭存活的TiKV节点<br>cd ${deploy}/scripts<br>./stop_tikv.sh<br># 在关闭的存活的其中的2个TiKV节点<br>tikv-ctl --db /path/to/tikv-data/db recreate-region -p xxx(pd) -r ${region_id}<br>tikv-ctl --db /path/to/tikv-data/db recreate-region -p xxx(pd) -r ${region_id}",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-08",
+      "target": "Note-15"
+    },
+    {
+      "id": "Note-13",
+      "label": "从应用侧重新倒入数据（可选）",
+      "details": "",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-08",
+      "target": ""
+    },
+    {
+      "id": "Note-14",
+      "label": "如果不可用的region是索引，则重建索引",
+      "details": "admin check index tbl_name idx_name",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-08",
+      "target": ""
+    },
+    {
+      "id": "Note-15",
+      "label": "开启PD调度",
+      "details": "",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-08",
+      "target": "Note-07"
+    },
+    {
+      "id": "Note-16",
+      "label": "确认region健康状态",
+      "details": "定期检测集群不足3副本的region情况<br>pg-ctl -u xxx region --jq=\".regions[] | {id: .id,peer_stores: [.peers[].store_id] | select(length != 3)}\"",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-08",
+      "target": "Index-03,Index-04,Index-05"
+    },
+    {
+      "id": "Page-09",
+      "label": "305-TiDB 故障排除案例学习-网络隔离",
+      "details": "305-TiDB 故障排除案例学习-网络隔离",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "",
+      "target": ""
+    },
+    {
+      "id": "Note-17",
+      "label": "2个IDC间出现网络隔离",
+      "details": "3个IDC，其中2个IDC间出现网络隔离<br>TiKV不会出现大面积Leader Drop现象<br>TiDB server可能会报错<br>（如果每个IDC都有一个TiDB Server，则出错的概率是2/9）<br>",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-09",
+      "target": ""
+    },
+    {
+      "id": "Note-18",
+      "label": "信息孤岛",
+      "details": "3个IDC，其中某个IDC出现网络隔离，形成信息孤岛<br>TiKV会出现大面积Leader Drop现象<br>TiDB server一定会报错",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-09",
+      "target": ""
+    },
+    {
+      "id": "Page-10",
+      "label": "305-TiDB 故障排除案例学习-TiKV Server is busy故障处理",
+      "details": "305-TiDB 故障排除案例学习-TiKV Server is busy故障处理",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "",
+      "target": ""
+    },
+    {
+      "id": "Error-5",
+      "label": "Server is busy",
+      "details": "当写入TiKV节点的时候，发现TiKV节点不可用<br>TiKV 节点写入压力过大，会触发TiKV的流控，Write stall",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-10",
+      "target": ""
+    },
+    {
+      "id": "Index-09",
+      "label": "Server is busy",
+      "details": "TiKV Details->Errors->Server is busy<br>",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Error-5,Event-06",
+      "target": ""
+    },
+    {
+      "id": "Event-01",
+      "label": "Write stall",
+      "details": "RocksDB中写入量巨大，导致触发流控",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Error-5",
+      "target": ""
+    },
+    {
+      "id": "Event-02",
+      "label": "Scheduler",
+      "details": "scheduler线程组，负责处理写入冲突检测，latch实现，先来后到的原则<br>过多的写请求处理会让scheduler触发流控",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Error-5",
+      "target": ""
+    },
+    {
+      "id": "Theory-01",
+      "label": "RocksDB写入",
+      "details": "1、先写wal日志，持久化到RocksDB raft中<br>2、写请求写入到内存中的memtable，任何dml都是put操作，memtable达到128MB之后，转储到immutable memtable，memtable供新的写入使用，当immutable memtable 达到5个之后，就会将immutable memtable写入到sst文件中，写入到sst文件（level 0）之后，wal中的日志就可以被覆盖了。将写入的文件分了多层，level 0 和immutable memtable是一样的，level 0的SST中，单个文件是有序的，文件之间是无序的，此种情况对读操作极不优化，所以level 1及之后的sst中，会做一个大的排序和压缩，所以level 1及之后的sst中，文件之间也都是有序的，<br>3、当memtable文件数量过多，且达到阈值<br>4、L0层SST文件数量过多，且达到阈值（合并和压缩的速度慢于大量写入的速度导致）<br>5、L1～Ln层待Compaction的SST文件大小过大，并且达到了阈值",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Page-10",
+      "target": ""
+    },
+    {
+      "id": "Event-03",
+      "label": "当memtable文件数量过多，且达到阈值",
+      "details": "TiKV以put,delete的形式写入到memtable<br>memtable受到write_buffer_size参数控制，默认128MB<br>lock_buffer_size，32MB<br>max_write_buffer_number，默认是5，积压的immutable memtable的数量<br>max-background-flushes，默认是2，immutable memtable刷到磁盘的线程数，搬运工<br>磁盘压力不大的情况下，调大搬运工<br>磁盘压力大的情况下：<br>调大immutable memtable的大小，write_buffer_size<br>调大max_write_buffer_number数量，让内存多容纳一些<br>",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Theory-01",
+      "target": ""
+    },
+    {
+      "id": "Index-10",
+      "label": "memtable_count_limit_stop",
+      "details": "TiKV Details->RocksDB KV/RocksDB raft -> Write stall reason",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-03",
+      "target": ""
+    },
+    {
+      "id": "Index-11",
+      "label": "memtable_count_limit_slowdown",
+      "details": "TiKV Details->RocksDB KV/RocksDB raft -> Write stall reason",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-03",
+      "target": ""
+    },
+    {
+      "id": "Log-01",
+      "label": "stalling",
+      "details": "rocksDB raft和kv中，搜stalling",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-03",
+      "target": ""
+    },
+    {
+      "id": "Config-06",
+      "label": "write-buffer-size",
+      "details": "默认128MB，memtable的大小",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-03",
+      "target": ""
+    },
+    {
+      "id": "Config-07",
+      "label": "max-write-buffer-number",
+      "details": "默认是5，积压的immutable memtable的数量",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-03",
+      "target": ""
+    },
+    {
+      "id": "Config-08",
+      "label": "max-background-flushes",
+      "details": "默认是2，immutable memtable刷到磁盘的线程数，搬运工",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-03",
+      "target": ""
+    },
+    {
+      "id": "Event-04",
+      "label": "L0层SST文件数量过多，且达到阈值",
+      "details": "level0写入到level1的过程流控参数<br>level0-file-num-compaction-trigger,默认是4，达到4个文件就开始合并排序<br>level0-slowdown-writes-trigger,默认是20，触发write stall的条件<br>level0-stop-writes-trigger,默认是36，停止写入，优先做合并<br><br>level0写入到level1，受到如下参数影响<br>磁盘压力不大情况下<br>rocksdb.max-sub-compactions，默认是3，分成3份做合并，调大<br><br>磁盘压力大的情况下<br>调大<br>level0-slowdown-writes-trigger<br>level0-stop-writes-trigger",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Theory-01",
+      "target": ""
+    },
+    {
+      "id": "Index-12",
+      "label": "level0_file_limit_stop",
+      "details": "TiKV Details->RocksDB KV/RocksDB raft -> Write stall reason",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-04",
+      "target": ""
+    },
+    {
+      "id": "Index-13",
+      "label": "level0_file_limit_slowdown",
+      "details": "TiKV Details->RocksDB KV/RocksDB raft -> Write stall reason",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-04",
+      "target": "Log-01"
+    },
+    {
+      "id": "Config-09",
+      "label": "rocksdb.max-sub-compactions",
+      "details": "rocksdb.max-sub-compactions，默认是3，分成3份做合并，调大",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-04",
+      "target": ""
+    },
+    {
+      "id": "Config-10",
+      "label": "level0-file-num-compaction-trigger",
+      "details": "level0-file-num-compaction-trigger,默认是4，达到4个文件就开始合并排序",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-04",
+      "target": ""
+    },
+    {
+      "id": "Config-11",
+      "label": "level0-slowdown-writes-trigger",
+      "details": "level0-slowdown-writes-trigger,默认是20，触发write stall的条件",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-04",
+      "target": ""
+    },
+    {
+      "id": "Config-12",
+      "label": "level0-stop-writes-trigger",
+      "details": "level0-stop-writes-trigger,默认是36，停止写入，优先做合并",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-04",
+      "target": ""
+    },
+    {
+      "id": "Event-05",
+      "label": "L1～Ln层待Compaction的SST文件大小过大，并且达到了阈值",
+      "details": "L1到Ln逐层向下压缩，压缩的条件：<br>每一层的数据了达到一个值之后才会向下进行压缩<br>读取L2的每个文件的最大最小值，扫描L3，<br>如果重合，则向下合并<br>如果L2有delete操作，则L3直接丢弃<br><br>rocksdb.defaultcf.soft-pending-compaction-bytes-limit,默认值192GB，达到阈值则触发write stall，客户端写入速度放慢<br>rocksdb.defaultcf.hard-pending-compaction-bytes-limit,默认1024GB，客户端不让写入<br>磁盘压力大的情况<br>rocksdb.rate-bytes-per-sec，默认是10GB，每秒写入的数据量<br>rocksdb.max-background-jobs,默认是8，线程数，可以调大<br><br>磁盘压力大的情况下<br>让上层多承担一些<br>调大rocksdb.defaultcf.soft-pending-compaction-bytes-limit<br>rocksdb.defaultcf.hard-pending-compaction-bytes-limit<br><br>压缩算法<br>compression-per-level",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Theory-01",
+      "target": ""
+    },
+    {
+      "id": "Index-14",
+      "label": "pending_compaction_bytes_stop",
+      "details": "TiKV Details->RocksDB KV/RocksDB raft -> Write stall reason",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-05",
+      "target": ""
+    },
+    {
+      "id": "Index-15",
+      "label": "pending_compaction_bytes_slowdown",
+      "details": "TiKV Details->RocksDB KV/RocksDB raft -> Write stall reason",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-05",
+      "target": ""
+    },
+    {
+      "id": "Index-16",
+      "label": "Compaction pending bytes",
+      "details": "TiKV Details->RocksDB KV/RocksDB raft<br>等待进行Compaction的量的大小，会上涨",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-05",
+      "target": ""
+    },
+    {
+      "id": "Index-17",
+      "label": "Compaction flow",
+      "details": "Compaction的流量，会上涨",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-05",
+      "target": ""
+    },
+    {
+      "id": "Config-18",
+      "label": "compression-per-level",
+      "details": "每一层默认压缩算法。<br>defaultcf 的默认值：[\"no\", \"no\", \"lz4\", \"lz4\", \"lz4\", \"zstd\", \"zstd\"]<br>writecf 的默认值：[\"no\", \"no\", \"lz4\", \"lz4\", \"lz4\", \"zstd\", \"zstd\"]<br>lockcf 的默认值：[\"no\", \"no\", \"no\", \"no\", \"no\", \"no\", \"no\"]",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-05",
+      "target": ""
+    },
+    {
+      "id": "Config-19",
+      "label": "storage.flow-control",
+      "details": "v5.2.0之后引入<br>代替RocksDB write stall流控机制<br>通过在TiKV scheduler层进行流控而不是在RocksDB层进行流控<br>改善流控算法，有效降低大写入压力下导致QPS下降的问题",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-05",
+      "target": ""
+    },
+    {
+      "id": "Event-06",
+      "label": "Scheduler is too busy",
+      "details": "scheduler pool里面有一个队列，请求越多队列越长，<br>通过内存轻量级锁latch来解决相同key的操作争用问题<br>sched_pending_write_threshold，默认值100MB，达到阈值之后，scheduler线程报错Scheduler is too busy<br>进而引起引Server is busy报错<br><br>解决：<br>autocommit改造为使用显示悲观事务<br>应用端改造调整业务实现方式，避免高并发key冲突",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-02",
+      "target": ""
+    },
+    {
+      "id": "Event-10",
+      "label": "写写冲突",
+      "details": "scheduler线程有一个线程池，由参数scheduler-pending-write-threshold决定，默认值100MB，达到阈值之后，scheduler线程报错Scheduler is too busy<br>进而引起引Server is busy报错<br>乐观锁才会比较容易造成scheduler的队列过长<br>悲观锁的锁等待不是在scheduler的latch里面<br>所有的自动提交默认都是乐观锁。所以自动提交的大量事务也会造成scheduler的队列过长",
+      "size": "",
+      "degree": "",
+      "source": "Event-06",
+      "target": ""
+    },
+    {
+      "id": "Config-20",
+      "label": "scheduler-pending-write-threshold",
+      "details": "",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-10",
+      "target": ""
+    },
+    {
+      "id": "Index-18",
+      "label": "QPS",
+      "details": "TiDB -> Query Summary ",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-10",
+      "target": ""
+    },
+    {
+      "id": "Index-19",
+      "label": "Scheduler worker CPU",
+      "details": "写热点<br>TiKV Details -> Thread CPU -> Scheduler worker CPU<br>每一条线就是一个TiKV，如果有某个TiKV格外繁忙，说明产生了热点",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-10",
+      "target": ""
+    },
+    {
+      "id": "Index-20",
+      "label": "Scheduler latch wait duration",
+      "details": "TiKV Details -> Scheduler -> Scheduler latch wait duration<br>可以间接看出队列的长度",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-10",
+      "target": ""
+    },
+    {
+      "id": "Index-21",
+      "label": "Scheduler pending commands",
+      "details": "TiKV Details -> Scheduler <br>",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-10",
+      "target": ""
+    },
+    {
+      "id": "Index-22",
+      "label": "Scheduler writing bytes",
+      "details": "TiKV Details -> Scheduler <br>等待写入的数据流量",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-10",
+      "target": ""
+    },
+    {
+      "id": "Index-23",
+      "label": "Failed Query OPM",
+      "details": "写写冲突太多的监控，日志中伴随着会有大量的9007错误<br>TiDB -> Query Summary -> Failed Query OPM",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-10",
+      "target": ""
+    },
+    {
+      "id": "Index-24",
+      "label": "KV Backoff OPS",
+      "details": "TiDB -> KV Errors -> KV Backoff OPS<br>txnLock多的话，提示写写冲突太多<br>要么用了大量的乐观锁",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-10",
+      "target": ""
+    },
+    {
+      "id": "Log-02",
+      "label": "grep conflict",
+      "details": "tidb.log中过滤conflict关键词，确认哪些key和语句导致的冲突<br>TiDB Dashboard SQL语句分析执行详情页面/慢查询页面",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-10",
+      "target": ""
+    },
+    {
+      "id": "Event-07",
+      "label": "TiKV集群写入慢",
+      "details": "TiKV集群写入慢也会导致Scheduler is too busy",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-06",
+      "target": ""
+    },
+    {
+      "id": "Event-08",
+      "label": "网络故障",
+      "details": "",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-06",
+      "target": ""
+    },
+    {
+      "id": "Index-25",
+      "label": "Server report failures",
+      "details": "TiKV Details->Errors",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-08",
+      "target": "Log-03"
+    },
+    {
+      "id": "Log-03",
+      "label": "过滤tikv.log",
+      "details": "",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "Event-08",
+      "target": ""
+    },
+    {
+      "id": "Page-11",
+      "label": "305-TiDB 故障排除案例学习-TiKV Leader Drop故障处理",
+      "details": "305-TiDB 故障排除案例学习-TiKV Leader Drop故障处理",
+      "size": "20.0",
+      "degree": "0.0",
+      "source": "",
+      "target": ""
+    }
+  ],
+  "edges": [
+    {
+      "source": "Page-01",
+      "target": "Config-13"
+    },
+    {
+      "source": "Event-05",
+      "target": "Config-13"
+    },
+    {
+      "source": "Page-01",
+      "target": "Config-14"
+    },
+    {
+      "source": "Event-05",
+      "target": "Config-14"
+    },
+    {
+      "source": "Page-01",
+      "target": "Config-15"
+    },
+    {
+      "source": "Page-01",
+      "target": "Config-16"
+    },
+    {
+      "source": "Page-01",
+      "target": "Config-17"
+    },
+    {
+      "source": "Page-01",
+      "target": "Index-01"
+    },
+    {
+      "source": "Page-01",
+      "target": "Config-01"
+    },
+    {
+      "source": "Page-01",
+      "target": "Index-02"
+    },
+    {
+      "source": "Page-02",
+      "target": "Config-02"
+    },
+    {
+      "source": "Page-02",
+      "target": "Index-03"
+    },
+    {
+      "source": "Page-02",
+      "target": "Index-04"
+    },
+    {
+      "source": "Page-02",
+      "target": "Index-05"
+    },
+    {
+      "source": "Page-02",
+      "target": "Index-06"
+    },
+    {
+      "source": "Page-02",
+      "target": "Index-07"
+    },
+    {
+      "source": "Page-02",
+      "target": "Index-08"
+    },
+    {
+      "source": "Page-03",
+      "target": "Index-07"
+    },
+    {
+      "source": "Page-03",
+      "target": "Index-08"
+    },
+    {
+      "source": "Page-03",
+      "target": "Config-03"
+    },
+    {
+      "source": "Page-03",
+      "target": "Config-04"
+    },
+    {
+      "source": "Page-03",
+      "target": "Config-05"
+    },
+    {
+      "source": "Page-03",
+      "target": "Config-06"
+    },
+    {
+      "source": "Page-03",
+      "target": "Error-01"
+    },
+    {
+      "source": "Page-03",
+      "target": "Page-04"
+    },
+    {
+      "source": "Page-04",
+      "target": "Error-02"
+    },
+    {
+      "source": "Page-03",
+      "target": "Page-05"
+    },
+    {
+      "source": "Page-05",
+      "target": "Error-03"
+    },
+    {
+      "source": "Page-05",
+      "target": "Error-04"
+    },
+    {
+      "source": "Page-06",
+      "target": "Config-03"
+    },
+    {
+      "source": "Page-06",
+      "target": "Config-03=4"
+    },
+    {
+      "source": "Page-06",
+      "target": "Config-05"
+    },
+    {
+      "source": "Page-06",
+      "target": "Config-06"
+    },
+    {
+      "source": "Page-06",
+      "target": "Note-01"
+    },
+    {
+      "source": "Page-06",
+      "target": "Note-02"
+    },
+    {
+      "source": "Page-06",
+      "target": "Note-03"
+    },
+    {
+      "source": "Page-07",
+      "target": "Note-04"
+    },
+    {
+      "source": "Note-04",
+      "target": "Note-05"
+    },
+    {
+      "source": "Page-07",
+      "target": "Note-05"
+    },
+    {
+      "source": "Note-05",
+      "target": "Note-06"
+    },
+    {
+      "source": "Page-07",
+      "target": "Note-06"
+    },
+    {
+      "source": "Note-06",
+      "target": "Note-07"
+    },
+    {
+      "source": "Page-07",
+      "target": "Note-07"
+    },
+    {
+      "source": "Note-07",
+      "target": "Config-03"
+    },
+    {
+      "source": "Note-07",
+      "target": "Config-03=4"
+    },
+    {
+      "source": "Note-07",
+      "target": "Config-05"
+    },
+    {
+      "source": "Note-07",
+      "target": "Config-06"
+    },
+    {
+      "source": "Note-07",
+      "target": "Note-08"
+    },
+    {
+      "source": "Page-07",
+      "target": "Note-08"
+    },
+    {
+      "source": "Note-08",
+      "target": "Note-09"
+    },
+    {
+      "source": "Note-08",
+      "target": "Note-11"
+    },
+    {
+      "source": "Page-07",
+      "target": "Note-09"
+    },
+    {
+      "source": "Note-09",
+      "target": "Note-10"
+    },
+    {
+      "source": "Page-07",
+      "target": "Note-10"
+    },
+    {
+      "source": "Page-08",
+      "target": "Page-07"
+    },
+    {
+      "source": "Page-08",
+      "target": "Note-11"
+    },
+    {
+      "source": "Note-11",
+      "target": "Note-12"
+    },
+    {
+      "source": "Page-08",
+      "target": "Note-12"
+    },
+    {
+      "source": "Note-12",
+      "target": "Note-15"
+    },
+    {
+      "source": "Page-08",
+      "target": "Note-13"
+    },
+    {
+      "source": "Page-08",
+      "target": "Note-14"
+    },
+    {
+      "source": "Page-08",
+      "target": "Note-15"
+    },
+    {
+      "source": "Note-15",
+      "target": "Note-07"
+    },
+    {
+      "source": "Page-08",
+      "target": "Note-16"
+    },
+    {
+      "source": "Note-16",
+      "target": "Index-03"
+    },
+    {
+      "source": "Note-16",
+      "target": "Index-04"
+    },
+    {
+      "source": "Note-16",
+      "target": "Index-05"
+    },
+    {
+      "source": "Page-09",
+      "target": "Note-17"
+    },
+    {
+      "source": "Page-09",
+      "target": "Note-18"
+    },
+    {
+      "source": "Page-10",
+      "target": "Error-5"
+    },
+    {
+      "source": "Error-5",
+      "target": "Index-09"
+    },
+    {
+      "source": "Event-06",
+      "target": "Index-09"
+    },
+    {
+      "source": "Error-5",
+      "target": "Event-01"
+    },
+    {
+      "source": "Error-5",
+      "target": "Event-02"
+    },
+    {
+      "source": "Page-10",
+      "target": "Theory-01"
+    },
+    {
+      "source": "Theory-01",
+      "target": "Event-03"
+    },
+    {
+      "source": "Event-03",
+      "target": "Index-10"
+    },
+    {
+      "source": "Event-03",
+      "target": "Index-11"
+    },
+    {
+      "source": "Event-03",
+      "target": "Log-01"
+    },
+    {
+      "source": "Event-03",
+      "target": "Config-06"
+    },
+    {
+      "source": "Event-03",
+      "target": "Config-07"
+    },
+    {
+      "source": "Event-03",
+      "target": "Config-08"
+    },
+    {
+      "source": "Theory-01",
+      "target": "Event-04"
+    },
+    {
+      "source": "Event-04",
+      "target": "Index-12"
+    },
+    {
+      "source": "Event-04",
+      "target": "Index-13"
+    },
+    {
+      "source": "Index-13",
+      "target": "Log-01"
+    },
+    {
+      "source": "Event-04",
+      "target": "Config-09"
+    },
+    {
+      "source": "Event-04",
+      "target": "Config-10"
+    },
+    {
+      "source": "Event-04",
+      "target": "Config-11"
+    },
+    {
+      "source": "Event-04",
+      "target": "Config-12"
+    },
+    {
+      "source": "Theory-01",
+      "target": "Event-05"
+    },
+    {
+      "source": "Event-05",
+      "target": "Index-14"
+    },
+    {
+      "source": "Event-05",
+      "target": "Index-15"
+    },
+    {
+      "source": "Event-05",
+      "target": "Index-16"
+    },
+    {
+      "source": "Event-05",
+      "target": "Index-17"
+    },
+    {
+      "source": "Event-05",
+      "target": "Config-18"
+    },
+    {
+      "source": "Event-05",
+      "target": "Config-19"
+    },
+    {
+      "source": "Event-02",
+      "target": "Event-06"
+    },
+    {
+      "source": "Event-06",
+      "target": "Event-10"
+    },
+    {
+      "source": "Event-10",
+      "target": "Config-20"
+    },
+    {
+      "source": "Event-10",
+      "target": "Index-18"
+    },
+    {
+      "source": "Event-10",
+      "target": "Index-19"
+    },
+    {
+      "source": "Event-10",
+      "target": "Index-20"
+    },
+    {
+      "source": "Event-10",
+      "target": "Index-21"
+    },
+    {
+      "source": "Event-10",
+      "target": "Index-22"
+    },
+    {
+      "source": "Event-10",
+      "target": "Index-23"
+    },
+    {
+      "source": "Event-10",
+      "target": "Index-24"
+    },
+    {
+      "source": "Event-10",
+      "target": "Log-02"
+    },
+    {
+      "source": "Event-06",
+      "target": "Event-07"
+    },
+    {
+      "source": "Event-06",
+      "target": "Event-08"
+    },
+    {
+      "source": "Event-08",
+      "target": "Index-25"
+    },
+    {
+      "source": "Index-25",
+      "target": "Log-03"
+    },
+    {
+      "source": "Event-08",
+      "target": "Log-03"
+    }
+  ]
+}

@@ -63,7 +63,7 @@
         // 新增：异步从对象存储加载数据
         async function loadDataFromOSS() {
             try {
-                const response = await fetch('./source.json');
+                const response = await fetch('./new_source.json');
                 
                 if (!response.ok) {
                     throw new Error(`网络响应不正常: ${response.status}`);
@@ -102,7 +102,7 @@
                 node.size = 20 + degree * 6;
                 node.degree = degree;
                 // 更新标签显示连接数
-                node.label = `节点${node.id.replace('node', '')}\n连接:${degree}`;
+                node.label = `${node.label}\n关联:${degree}`;
                 
                 // 根据连接数设置不同颜色
                 if (degree >= 8) {
