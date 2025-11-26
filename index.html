@@ -1,113 +1,222 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>力导向图 Demo</title>
-    <script src="https://unpkg.com/@antv/g6@5/dist/g6.min.js"></script>
+    <title>G6力导向图Demo - 50个节点</title>
+    <script src=" https://unpkg.com/@antv/g6@4.8.0/dist/g6.min.js "></script>
     <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-        }
         #container {
             width: 100%;
-            height: 100vh;
+            height: 800px;
+            border: 1px solid #e0e0e0;
+            background-color: #f9f9f9;
+        }
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .info-panel {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
+    <h1>G6力导向图示例 - 50个随机节点</h1>
+    <div class="info-panel">
+        <p>• 节点大小随连接数增加而增大 • 可拖拽节点和画布 • 鼠标悬停查看连接数</p>
+    </div>
     <div id="container"></div>
+
     <script>
-        // 创建50个节点
-        const nodes = [];
-        for (let i = 0; i < 50; i++) {
-            nodes.push({
-                id: `${i}`,
-                label: `Node ${i}`,
-                size: 10, // 默认大小
-                x: Math.random() * 600, // 随机位置
-                y: Math.random() * 600
-            });
-        }
-
-        // 随机连接节点
-        const edges = [];
-        for (let i = 0; i < 50; i++) {
-            const targetNodeCount = Math.floor(Math.random() * 5); // 每个节点最多连接5个其他节点
-            for (let j = 0; j < targetNodeCount; j++) {
-                const target = Math.floor(Math.random() * 50);
-                if (i !== target) {
-                    edges.push({
-                        source: `${i}`,
-                        target: `${target}`
-                    });
-                }
+        // 生成随机数据
+        function generateData(nodeCount = 50) {
+            const nodes = [];
+            const edges = [];
+            
+            // 生成节点
+            for (let i = 0; i < nodeCount; i++) {
+                nodes.push({
+                    id: `node${i}`,
+                    label: `节点${i}`,
+                    size: 20, // 基础大小
+                    degree: 0 // 初始化连接数为0
+                });
             }
-        }
-
-        // 创建力导向图实例
-        const graph = new G6.Graph({
-            container: 'container',
-            width: window.innerWidth,
-            height: window.innerHeight,
-            modes: {
-                default: ['drag-node']  // 启用节点拖拽
-            },
-            layout: {
-                type: 'force',  // 力导向布局
-                preventOverlap: true,
-                nodeStrength: -30,
-                edgeStrength: 0.1,
-                gravity: 30
-            },
-            defaultNode: {
-                shape: 'circle',
-                size: [10],  // 初始节点大小
-                style: {
-                    fill: '#5B8FF9',
-                    stroke: '#1D78FF'
-                }
-            },
-            defaultEdge: {
-                style: {
-                    stroke: '#ccc',
-                    lineWidth: 1
-                }
-            },
-            nodeStateStyles: {
-                hover: {
-                    fill: '#F56C6C',
-                    stroke: '#F56C6C'
-                }
-            },
-            // 更新节点的大小，使得入度更多的节点变大
-            onAfterLayout() {
-                const nodeMap = new Map();
-                edges.forEach(edge => {
-                    const targetId = edge.target;
-                    if (!nodeMap.has(targetId)) {
-                        nodeMap.set(targetId, 0);
+            
+            // 生成随机连接（每个节点平均有2-4个连接）
+            for (let i = 0; i < nodeCount; i++) {
+                const connectionCount = Math.floor(Math.random() * 3) + 2;
+                
+                for (let j = 0; j < connectionCount; j++) {
+                    const targetIndex = Math.floor(Math.random() * nodeCount);
+                    if (targetIndex !== i && Math.random() > 0.3) { // 30%概率不创建连接，增加随机性
+                        edges.push({
+                            source: `node${i}`,
+                            target: `node${targetIndex}`
+                        });
                     }
-                    nodeMap.set(targetId, nodeMap.get(targetId) + 1);
-                });
-
-                graph.getNodes().forEach(node => {
-                    const nodeId = node.getID();
-                    const size = nodeMap.get(nodeId) || 10; // 入度越多，节点越大
-                    graph.updateItem(node, {
-                        size: Math.min(size + 5, 50) // 最大大小为50
-                    });
-                });
+                }
             }
-        });
+            
+            return { nodes, edges };
+        }
 
-        // 添加节点和边
-        graph.data({
-            nodes,
-            edges
-        });
-        graph.render();
+        // 计算节点度数并调整大小
+        function calculateNodeDegrees(data) {
+            const degreeMap = {};
+            
+            // 初始化度数记录
+            data.nodes.forEach(node => {
+                degreeMap[node.id] = 0;
+            });
+            
+            // 统计每个节点的连接数
+            data.edges.forEach(edge => {
+                degreeMap[edge.source]++;
+                degreeMap[edge.target]++;
+            });
+            
+            // 根据连接数调整节点大小和标签
+            data.nodes.forEach(node => {
+                const degree = degreeMap[node.id];
+                // 大小公式：基础大小20 + 连接数×6
+                node.size = 20 + degree * 6;
+                node.degree = degree;
+                // 更新标签显示连接数
+                node.label = `节点${node.id.replace('node', '')}\n连接:${degree}`;
+                
+                // 根据连接数设置不同颜色
+                if (degree >= 8) {
+                    node.style = { fill: '#ff6b6b', stroke: '#d93030' }; // 高连接数-红色
+                } else if (degree >= 5) {
+                    node.style = { fill: '#4ecdc4', stroke: '#1a7f7a' }; // 中高连接数-青色
+                } else if (degree >= 3) {
+                    node.style = { fill: '#45b7d1', stroke: '#1e7c9c' }; // 中连接数-蓝色
+                } else {
+                    node.style = { fill: '#96ceb4', stroke: '#5a9c7d' }; // 低连接数-绿色
+                }
+            });
+            
+            console.log('节点连接数统计:', degreeMap);
+            return data;
+        }
+
+        // 初始化图表
+        function initGraph() {
+            // 生成并处理数据
+            let graphData = generateData(50);
+            graphData = calculateNodeDegrees(graphData);
+            
+            // 创建图实例
+            const graph = new G6.Graph({
+                container: 'container',
+                width: document.getElementById('container').clientWidth,
+                height: document.getElementById('container').clientHeight,
+                
+                // 布局配置 - 力导向布局[12](@ref)[14](@ref)
+                // 修改后的 layout 配置
+layout: {
+  type: 'force',
+  preventOverlap: true,   // 防止节点重叠
+  linkDistance: 150,      // 边的理想长度，这个值影响弹力
+  nodeStrength: -100,     // 节点斥力强度，负值越大，节点间排斥越强
+  edgeStrength: 0.3,      // 边引力强度，影响边的拉力
+  nodeSpacing: 5,         // 节点间最小间距
+  alpha: 0.3,            // 初始的力模拟“温度”，影响初始运动强度
+  alphaDecay: 0.03,       // 每次迭代alpha的衰减率，影响收敛到稳定的速度
+  alphaMin: 0.001,        // 力模拟停止的阈值
+},
+                
+                // 交互模式配置[10](@ref)[11](@ref)
+                modes: {
+                    default: ['drag-canvas', 'zoom-canvas', 'drag-node']
+                },
+                
+                // 默认节点样式[8](@ref)
+                defaultNode: {
+                    size: 30,
+                    style: {
+                        fill: '#6EA0FF',
+                        stroke: '#2D62D9',
+                        lineWidth: 2,
+                        cursor: 'pointer'
+                    },
+                    labelCfg: {
+                        style: {
+                            fill: '#333',
+                            fontSize: 10,
+                            fontWeight: 'bold',
+                            textAlign: 'center'
+                        },
+                        position: 'center'
+                    }
+                },
+                
+                // 默认边样式
+                defaultEdge: {
+                    style: {
+                        stroke: '#A3B1BF',
+                        lineWidth: 1.5,
+                        opacity: 0.6
+                    }
+                },
+                
+                // 节点状态样式[11](@ref)
+                nodeStateStyles: {
+                    hover: {
+                        fill: '#4D7CFF',
+                        stroke: '#1A4FD6',
+                        lineWidth: 3,
+                        shadowColor: 'rgba(77,124,255,0.5)',
+                        shadowBlur: 10
+                    }
+                }
+            });
+            
+            // 绑定数据并渲染
+            graph.data(graphData);
+            graph.render();
+            
+            // 添加交互事件
+            graph.on('node:mouseenter', (e) => {
+                graph.setItemState(e.item, 'hover', true);
+            });
+            
+            graph.on('node:mouseleave', (e) => {
+                graph.setItemState(e.item, 'hover', false);
+            });
+            
+            graph.on('node:click', (e) => {
+                const model = e.item.getModel();
+                console.log(`点击节点: ${model.id}, 连接数: ${model.degree}`);
+            });
+            
+            return graph;
+        }
+
+        // 页面加载完成后初始化
+        if (typeof G6 !== 'undefined') {
+            document.addEventListener('DOMContentLoaded', function() {
+                const graph = initGraph();
+                
+                // 窗口大小改变时调整图表大小
+                window.addEventListener('resize', function() {
+                    if (graph && !graph.get('destroyed')) {
+                        graph.changeSize(
+                            document.getElementById('container').clientWidth,
+                            document.getElementById('container').clientHeight
+                        );
+                    }
+                });
+            });
+        } else {
+            console.error('G6库未正确加载，请检查CDN链接');
+        }
     </script>
 </body>
 </html>
