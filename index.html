@@ -203,7 +203,12 @@ layout: {
                 const model = e.item.getModel();
                 console.log(`点击节点: ${model.id}, 连接数: ${model.degree}`);
             });
-            
+            // 假设 graph 是你的图实例
+            graph.on('dragend', (e) => {
+            // 重启力导向布局的模拟，alpha 值重置，重新开始动画
+            graph.layout();
+            });
+
             return graph;
         }
 
