@@ -63,7 +63,7 @@
         // 新增：异步从对象存储加载数据
         async function loadDataFromOSS() {
             try {
-                const response = await fetch('https://anvg6-datasource.oss-cn-beijing.aliyuncs.com/source.json');
+                const response = await fetch('./source.json');
                 
                 if (!response.ok) {
                     throw new Error(`网络响应不正常: ${response.status}`);
@@ -79,40 +79,6 @@
                 throw error; // 将错误向上传递，以便调用方处理
             }
         }
-
-        // 生成随机数据
-        // function generateData(nodeCount = 50) {
-        //     const nodes = [];
-        //     const edges = [];
-            
-        //     // 生成节点
-        //     for (let i = 0; i < nodeCount; i++) {
-        //         nodes.push({
-        //             id: `node${i}`,
-        //             label: `节点${i}`,
-        //             details: `这是节点${i}的详细信息。`,
-        //             size: 20, // 基础大小
-        //             degree: 0 // 初始化连接数为0
-        //         });
-        //     }
-            
-        //     // 生成随机连接（每个节点平均有2-4个连接）
-        //     for (let i = 0; i < nodeCount; i++) {
-        //         const connectionCount = Math.floor(Math.random() * 3) + 2;
-                
-        //         for (let j = 0; j < connectionCount; j++) {
-        //             const targetIndex = Math.floor(Math.random() * nodeCount);
-        //             if (targetIndex !== i && Math.random() > 0.3) { // 30%概率不创建连接，增加随机性
-        //                 edges.push({
-        //                     source: `node${i}`,
-        //                     target: `node${targetIndex}`
-        //                 });
-        //             }
-        //         }
-        //     }
-            
-        //     return { nodes, edges };
-        // }
 
         // 计算节点度数并调整大小
         function calculateNodeDegrees(data) {

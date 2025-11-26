@@ -1,0 +1,660 @@
+{
+  "nodes": [
+    {
+      "id": "node0",
+      "label": "节点0",
+      "details": "这是节点0的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node1",
+      "label": "节点1",
+      "details": "这是节点1的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node2",
+      "label": "节点2",
+      "details": "这是节点2的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node3",
+      "label": "节点3",
+      "details": "这是节点3的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node4",
+      "label": "节点4",
+      "details": "这是节点4的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node5",
+      "label": "节点5",
+      "details": "这是节点5的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node6",
+      "label": "节点6",
+      "details": "这是节点6的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node7",
+      "label": "节点7",
+      "details": "这是节点7的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node8",
+      "label": "节点8",
+      "details": "这是节点8的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node9",
+      "label": "节点9",
+      "details": "这是节点9的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node10",
+      "label": "节点10",
+      "details": "这是节点10的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node11",
+      "label": "节点11",
+      "details": "这是节点11的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node12",
+      "label": "节点12",
+      "details": "这是节点12的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node13",
+      "label": "节点13",
+      "details": "这是节点13的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node14",
+      "label": "节点14",
+      "details": "这是节点14的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node15",
+      "label": "节点15",
+      "details": "这是节点15的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node16",
+      "label": "节点16",
+      "details": "这是节点16的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node17",
+      "label": "节点17",
+      "details": "这是节点17的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node18",
+      "label": "节点18",
+      "details": "这是节点18的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node19",
+      "label": "节点19",
+      "details": "这是节点19的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node20",
+      "label": "节点20",
+      "details": "这是节点20的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node21",
+      "label": "节点21",
+      "details": "这是节点21的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node22",
+      "label": "节点22",
+      "details": "这是节点22的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node23",
+      "label": "节点23",
+      "details": "这是节点23的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node24",
+      "label": "节点24",
+      "details": "这是节点24的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node25",
+      "label": "节点25",
+      "details": "这是节点25的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node26",
+      "label": "节点26",
+      "details": "这是节点26的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node27",
+      "label": "节点27",
+      "details": "这是节点27的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node28",
+      "label": "节点28",
+      "details": "这是节点28的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node29",
+      "label": "节点29",
+      "details": "这是节点29的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node30",
+      "label": "节点30",
+      "details": "这是节点30的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node31",
+      "label": "节点31",
+      "details": "这是节点31的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node32",
+      "label": "节点32",
+      "details": "这是节点32的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node33",
+      "label": "节点33",
+      "details": "这是节点33的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node34",
+      "label": "节点34",
+      "details": "这是节点34的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node35",
+      "label": "节点35",
+      "details": "这是节点35的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node36",
+      "label": "节点36",
+      "details": "这是节点36的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node37",
+      "label": "节点37",
+      "details": "这是节点37的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node38",
+      "label": "节点38",
+      "details": "这是节点38的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node39",
+      "label": "节点39",
+      "details": "这是节点39的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node40",
+      "label": "节点40",
+      "details": "这是节点40的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node41",
+      "label": "节点41",
+      "details": "这是节点41的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node42",
+      "label": "节点42",
+      "details": "这是节点42的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node43",
+      "label": "节点43",
+      "details": "这是节点43的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node44",
+      "label": "节点44",
+      "details": "这是节点44的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node45",
+      "label": "节点45",
+      "details": "这是节点45的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node46",
+      "label": "节点46",
+      "details": "这是节点46的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node47",
+      "label": "节点47",
+      "details": "这是节点47的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node48",
+      "label": "节点48",
+      "details": "这是节点48的详细信息。",
+      "size": 20,
+      "degree": 0
+    },
+    {
+      "id": "node49",
+      "label": "节点49",
+      "details": "这是节点49的详细信息。",
+      "size": 20,
+      "degree": 0
+    }
+  ],
+  "edges": [
+    {
+      "source": "node0",
+      "target": "node5"
+    },
+    {
+      "source": "node0",
+      "target": "node12"
+    },
+    {
+      "source": "node0",
+      "target": "node23"
+    },
+    {
+      "source": "node1",
+      "target": "node7"
+    },
+    {
+      "source": "node1",
+      "target": "node15"
+    },
+    {
+      "source": "node1",
+      "target": "node32"
+    },
+    {
+      "source": "node2",
+      "target": "node9"
+    },
+    {
+      "source": "node2",
+      "target": "node18"
+    },
+    {
+      "source": "node2",
+      "target": "node27"
+    },
+    {
+      "source": "node3",
+      "target": "node11"
+    },
+    {
+      "source": "node3",
+      "target": "node21"
+    },
+    {
+      "source": "node3",
+      "target": "node35"
+    },
+    {
+      "source": "node4",
+      "target": "node14"
+    },
+    {
+      "source": "node4",
+      "target": "node25"
+    },
+    {
+      "source": "node4",
+      "target": "node41"
+    },
+    {
+      "source": "node5",
+      "target": "node8"
+    },
+    {
+      "source": "node5",
+      "target": "node19"
+    },
+    {
+      "source": "node5",
+      "target": "node37"
+    },
+    {
+      "source": "node6",
+      "target": "node13"
+    },
+    {
+      "source": "node6",
+      "target": "node22"
+    },
+    {
+      "source": "node6",
+      "target": "node39"
+    },
+    {
+      "source": "node7",
+      "target": "node16"
+    },
+    {
+      "source": "node7",
+      "target": "node28"
+    },
+    {
+      "source": "node7",
+      "target": "node44"
+    },
+    {
+      "source": "node8",
+      "target": "node17"
+    },
+    {
+      "source": "node8",
+      "target": "node30"
+    },
+    {
+      "source": "node8",
+      "target": "node46"
+    },
+    {
+      "source": "node9",
+      "target": "node20"
+    },
+    {
+      "source": "node9",
+      "target": "node33"
+    },
+    {
+      "source": "node9",
+      "target": "node48"
+    },
+    {
+      "source": "node10",
+      "target": "node24"
+    },
+    {
+      "source": "node10",
+      "target": "node36"
+    },
+    {
+      "source": "node10",
+      "target": "node49"
+    },
+    {
+      "source": "node11",
+      "target": "node26"
+    },
+    {
+      "source": "node11",
+      "target": "node38"
+    },
+    {
+      "source": "node12",
+      "target": "node29"
+    },
+    {
+      "source": "node12",
+      "target": "node42"
+    },
+    {
+      "source": "node13",
+      "target": "node31"
+    },
+    {
+      "source": "node13",
+      "target": "node45"
+    },
+    {
+      "source": "node14",
+      "target": "node34"
+    },
+    {
+      "source": "node14",
+      "target": "node47"
+    },
+    {
+      "source": "node15",
+      "target": "node40"
+    },
+    {
+      "source": "node16",
+      "target": "node43"
+    },
+    {
+      "source": "node17",
+      "target": "node0"
+    },
+    {
+      "source": "node18",
+      "target": "node1"
+    },
+    {
+      "source": "node19",
+      "target": "node2"
+    },
+    {
+      "source": "node20",
+      "target": "node3"
+    },
+    {
+      "source": "node21",
+      "target": "node4"
+    },
+    {
+      "source": "node22",
+      "target": "node5"
+    },
+    {
+      "source": "node23",
+      "target": "node6"
+    },
+    {
+      "source": "node24",
+      "target": "node7"
+    },
+    {
+      "source": "node25",
+      "target": "node8"
+    },
+    {
+      "source": "node26",
+      "target": "node9"
+    },
+    {
+      "source": "node27",
+      "target": "node10"
+    },
+    {
+      "source": "node28",
+      "target": "node11"
+    },
+    {
+      "source": "node29",
+      "target": "node12"
+    },
+    {
+      "source": "node30",
+      "target": "node13"
+    },
+    {
+      "source": "node31",
+      "target": "node14"
+    },
+    {
+      "source": "node32",
+      "target": "node15"
+    },
+    {
+      "source": "node33",
+      "target": "node16"
+    },
+    {
+      "source": "node34",
+      "target": "node17"
+    },
+    {
+      "source": "node35",
+      "target": "node18"
+    },
+    {
+      "source": "node36",
+      "target": "node19"
+    },
+    {
+      "source": "node37",
+      "target": "node20"
+    },
+    {
+      "source": "node38",
+      "target": "node21"
+    },
+    {
+      "source": "node39",
+      "target": "node22"
+    },
+    {
+      "source": "node40",
+      "target": "node23"
+    },
+    {
+      "source": "node41",
+      "target": "node24"
+    },
+    {
+      "source": "node42",
+      "target": "node25"
+    },
+    {
+      "source": "node43",
+      "target": "node26"
+    },
+    {
+      "source": "node44",
+      "target": "node27"
+    },
+    {
+      "source": "node45",
+      "target": "node28"
+    },
+    {
+      "source": "node46",
+      "target": "node29"
+    },
+    {
+      "source": "node47",
+      "target": "node30"
+    },
+    {
+      "source": "node48",
+      "target": "node31"
+    },
+    {
+      "source": "node49",
+      "target": "node32"
+    }
+  ]
+}
