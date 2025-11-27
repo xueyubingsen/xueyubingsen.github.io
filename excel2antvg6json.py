@@ -1,6 +1,12 @@
+import time
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
 import pandas as pd
 import json
 import re
+import pyperclip
+import paramiko
+from scp import SCPClient
 
 def process_and_expand_edges(input_excel_path, output_json_path):
     """
@@ -119,9 +125,102 @@ def process_and_expand_edges(input_excel_path, output_json_path):
         print(f"处理过程中发生错误: {str(e)}")
         return None
 
-# 使用示例
-if __name__ == "__main__":
-    input_file = "/Users/junzhang/Downloads/参数、指标、页面、报错、笔记.xlsx"
+
+def create_ssh_client(server, port, user, password):
+    client = paramiko.SSHClient()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy()) # 处理未知主机密钥
+    client.connect(server, port=port, username=user, password=password)
+    return client
+
+def transfer_file_scp(local_file, remote_path, server, port, user, password):
+    ssh_client = create_ssh_client(server, port, user, password)
+    with SCPClient(ssh_client.get_transport()) as scp:
+        scp.put(local_file, remote_path)
+    print(f"文件 {local_file} 已成功传输至 {server}:{remote_path}")
+    ssh_client.close()
+
+    
+def run_convert(file_path):
+    input_file = file_path
     output_file = "/Users/junzhang/Downloads/expanded_graph_data2.json"
     
     result = process_and_expand_edges(input_file, output_file)
+    # with open(output_file, 'r', encoding='utf-8') as json_file:
+    #     data = json.load(json_file);
+    #     pyperclip.copy(json.dumps(data, indent=4, ensure_ascii=False))
+    time.sleep(1)
+    transfer_file_scp('/Users/junzhang/Downloads/expanded_graph_data2.json', '/data/tidb-dev/xueyubingsen.github.io/new_source.json', '47.121.187.81', 6502, 'zhangjun', 'Tidb@2026')
+
+
+class FileSaveHandler(FileSystemEventHandler):
+    """
+    处理文件系统事件的类
+    """
+    def __init__(self, target_file, callback_function):
+        super().__init__()
+        self.target_file = target_file  # 要监控的特定文件
+        self.callback_function = callback_function  # 回调函数
+        self.last_triggered = 0  # 防抖计时器
+
+    def on_modified(self, event):
+        """
+        当文件被修改时触发
+        """
+        # 只处理目标文件，忽略其他文件
+        if event.src_path != self.target_file:
+            return
+        
+        # 防抖处理：1秒内只触发一次
+        current_time = time.time()
+        if current_time - self.last_triggered < 3.0:
+            return
+        self.last_triggered = current_time
+        
+        print(f"检测到文件保存: {event.src_path}")
+        # 调用你的处理函数
+        self.callback_function(event.src_path)
+        
+
+def start_file_monitoring(file_path, processing_function):
+    """
+    启动文件监控
+    
+    参数:
+    file_path (str): 要监控的文件的完整路径
+    processing_function (function): 文件保存后要执行的函数
+    """
+    # 创建事件处理器和观察者
+    event_handler = FileSaveHandler(file_path, processing_function)
+    observer = Observer()
+    
+    # 获取文件所在目录
+    directory_path = file_path.rsplit('/', 1)[0]
+    
+    # 调度监控任务（不递归监控子目录）
+    observer.schedule(event_handler, path=directory_path, recursive=False)
+    
+    # 启动观察者
+    observer.start()
+    print(f"开始监控文件: {file_path}")
+    print("按下 Ctrl+C 停止监控...")
+
+    try:
+        # 保持主线程运行
+        while True:
+            time.sleep(10)
+            # print("继续监控...")
+    except KeyboardInterrupt:
+        # 优雅地停止监控
+        observer.stop()
+        print("\n监控已停止。")
+    
+    # 等待观察者线程完全结束
+    observer.join()
+
+# 使用示例
+if __name__ == "__main__":
+    # 配置要监控的文件路径和处理函数
+    file_to_watch = "/Users/junzhang/Downloads/参数、指标、页面、报错、笔记.xlsx"  # 替换为你的文件路径
+    
+    # 启动监控
+    start_file_monitoring(file_to_watch, run_convert)
