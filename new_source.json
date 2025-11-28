@@ -164,8 +164,8 @@
     },
     {
       "id": "Index-44",
-      "label": "store availiable ratio",
-      "details": "Grafana->PD->Statistics-balance<br>store的空间利用率监控",
+      "label": "Store availiable ratio",
+      "details": "Grafana->PD->Statistics-balance<br>store的空间利用率监控<br>注意：达到了high-space-ratio参数值（老版本60%，新版本70%），此时TiDB的score计算公式会有变化，可能会导致score变化，进而引起PD调度<br>注意参数high-space-ratio和low-space-ratio",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Page-15",
@@ -489,7 +489,7 @@
     {
       "id": "Index-09",
       "label": "Server is busy",
-      "details": "TiKV Details->Errors->Server is busy<br>",
+      "details": "TiKV-Details->Errors->Server is busy<br>",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Page-10",
@@ -534,7 +534,7 @@
     {
       "id": "Index-10",
       "label": "memtable_count_limit_stop",
-      "details": "TiKV Details->RocksDB KV/RocksDB raft -> Write stall reason",
+      "details": "TiKV-Details->RocksDB KV/RocksDB raft->Write stall reason",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Event-03",
@@ -543,7 +543,7 @@
     {
       "id": "Index-11",
       "label": "memtable_count_limit_slowdown",
-      "details": "TiKV Details->RocksDB KV/RocksDB raft -> Write stall reason",
+      "details": "TiKV-Details->RocksDB KV/RocksDB raft->Write stall reason",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Event-03",
@@ -597,7 +597,7 @@
     {
       "id": "Index-12",
       "label": "level0_file_limit_stop",
-      "details": "TiKV Details->RocksDB KV/RocksDB raft -> Write stall reason",
+      "details": "TiKV-Details->RocksDB KV/RocksDB raft->Write stall reason",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Event-04",
@@ -606,7 +606,7 @@
     {
       "id": "Index-13",
       "label": "level0_file_limit_slowdown",
-      "details": "TiKV Details->RocksDB KV/RocksDB raft -> Write stall reason",
+      "details": "TiKV-Details->RocksDB KV/RocksDB raft->Write stall reason",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Event-04",
@@ -660,7 +660,7 @@
     {
       "id": "Index-14",
       "label": "pending_compaction_bytes_stop",
-      "details": "TiKV Details->RocksDB KV/RocksDB raft -> Write stall reason",
+      "details": "TiKV-Details->RocksDB KV/RocksDB raft->Write stall reason",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Event-05",
@@ -669,7 +669,7 @@
     {
       "id": "Index-15",
       "label": "pending_compaction_bytes_slowdown",
-      "details": "TiKV Details->RocksDB KV/RocksDB raft -> Write stall reason",
+      "details": "TiKV-Details->RocksDB KV/RocksDB raft->Write stall reason",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Event-05",
@@ -678,7 +678,7 @@
     {
       "id": "Index-16",
       "label": "Compaction pending bytes",
-      "details": "TiKV Details->RocksDB KV/RocksDB raft<br>等待进行Compaction的量的大小，会上涨",
+      "details": "TiKV-Details->RocksDB KV/RocksDB raft<br>等待进行Compaction的量的大小，会上涨",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Event-05",
@@ -732,7 +732,7 @@
     {
       "id": "Config-20",
       "label": "scheduler-pending-write-threshold",
-      "details": "",
+      "details": "默认值：100MiB<br>写入数据队列的最大值，超过该值之后对于新的写入 TiKV 会返回 Server Is Busy 错误。",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Event-10",
@@ -741,7 +741,7 @@
     {
       "id": "Index-18",
       "label": "QPS",
-      "details": "TiDB -> Query Summary ",
+      "details": "TiDB->Query Summary ",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Event-10",
@@ -750,7 +750,7 @@
     {
       "id": "Index-19",
       "label": "Scheduler worker CPU",
-      "details": "写热点<br>TiKV Details -> Thread CPU -> Scheduler worker CPU<br>每一条线就是一个TiKV，如果有某个TiKV格外繁忙，说明产生了热点",
+      "details": "TiKV-Details->Thread CPU->Scheduler worker CPU<br>每一条线就是一个TiKV，如果有某个TiKV格外繁忙，说明产生了热点",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Event-10",
@@ -759,7 +759,7 @@
     {
       "id": "Index-20",
       "label": "Scheduler latch wait duration",
-      "details": "TiKV Details -> Scheduler -> Scheduler latch wait duration<br>可以间接看出队列的长度",
+      "details": "TiKV-Details->Scheduler->Scheduler latch wait duration<br>可以间接看出队列的长度",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Event-10",
@@ -768,7 +768,7 @@
     {
       "id": "Index-21",
       "label": "Scheduler pending commands",
-      "details": "TiKV Details -> Scheduler <br>",
+      "details": "TiKV-Details->Scheduler <br>每个 TiKV 实例上 pending 命令的个数",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Event-10",
@@ -777,7 +777,7 @@
     {
       "id": "Index-22",
       "label": "Scheduler writing bytes",
-      "details": "TiKV Details -> Scheduler <br>等待写入的数据流量",
+      "details": "TiKV-Details->Scheduler <br>等待写入的数据流量",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Event-10",
@@ -786,7 +786,7 @@
     {
       "id": "Index-23",
       "label": "Failed Query OPM",
-      "details": "写写冲突太多的监控，日志中伴随着会有大量的9007错误<br>TiDB -> Query Summary -> Failed Query OPM",
+      "details": "TiDB->Query Summary->Failed Query OPM<br>每个 TiDB 实例上，对每分钟执行 SQL 语句发生的错误按照错误类型进行统计（例如语法错误、主键冲突等）。包含了错误所属的模块和错误码。<br>写写冲突太多的监控，日志中伴随着会有大量的9007错误<br>",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Event-10",
@@ -795,7 +795,7 @@
     {
       "id": "Index-24",
       "label": "KV Backoff OPS",
-      "details": "TiDB -> KV Errors -> KV Backoff OPS<br>txnLock多的话，提示写写冲突太多<br>要么用了大量的乐观锁",
+      "details": "TiDB->KV Errors->KV Backoff OPS<br>TiKV 返回错误信息的数量<br><br>txnLock多的话，提示写写冲突太多<br>要么用了大量的乐观锁",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Event-10",
@@ -817,7 +817,7 @@
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Event-06",
-      "target": ""
+      "target": "Page-24"
     },
     {
       "id": "Event-08",
@@ -831,7 +831,7 @@
     {
       "id": "Index-25",
       "label": "Server report failures",
-      "details": "TiKV Details->Errors",
+      "details": "TiKV-Details->Errors",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Event-08",
@@ -849,7 +849,7 @@
     {
       "id": "Page-11",
       "label": "305-TiDB 故障排除案例学习-TiKV Leader Drop故障处理",
-      "details": "305-TiDB 故障排除案例学习<br>-TiKV Leader Drop故障处理<br><br>现象：<br>Leader drop升高<br>TiClient Region Error OPS升高<br>客户查询延迟升高,Duration升高<br>Leader drop错误升高<br><br>可能原因：<br>raft group超时选举<br>PD调度<br><br>定位：<br>TiKV-Details->Rfat message->Messages<br>",
+      "details": "305-TiDB 故障排除案例学习<br>-TiKV Leader Drop故障处理<br><br>现象：<br>Leader drop升高<br>TiClient Region Error OPS升高<br>客户查询延迟升高,Duration升高<br>Leader drop错误升高<br><br>可能原因：<br>raft group超时选举<br>PD调度<br><br>定位：<br>TiKV-Details->Raft message->Messages<br>",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Page-00",
@@ -858,7 +858,7 @@
     {
       "id": "Index-26",
       "label": "Leader drop",
-      "details": "TiKV-Details -> Errors -> Leader drop<br>每个TiKV实例上drop leader的个数",
+      "details": "TiKV-Details->Errors->Leader drop<br>每个TiKV实例上drop leader的个数",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Page-11",
@@ -867,7 +867,7 @@
     {
       "id": "Index-27",
       "label": "TiClient Region Error OPS",
-      "details": "TiDB -> KV Errors -> TiClient Region Error OPS<br>region相关错误信息数量，leader发生切换之后，客户端发生的错误，not_leader升高 ",
+      "details": "TiDB->KV Errors->TiClient Region Error OPS<br>region相关错误信息数量，leader发生切换之后，客户端发生的错误，not_leader升高 ",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Page-11",
@@ -876,7 +876,7 @@
     {
       "id": "Index-28",
       "label": "Leader drop",
-      "details": "TiKV-Trouble-Shooting -> Leader Drop -> Leader",
+      "details": "TiKV-Trouble-Shooting->Leader Drop->Leader",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Page-11",
@@ -885,7 +885,7 @@
     {
       "id": "Index-29",
       "label": "Duration",
-      "details": "TiDB Dashboard -> Query Summary -> Duration<br>",
+      "details": "TiDB Dashboard->Query Summary->Duration<br>",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Page-11",
@@ -912,7 +912,7 @@
     {
       "id": "Index-30",
       "label": "Messages",
-      "details": "TiKV-Details->Rfat message->Messages<br>1、transfer_leader指标：PD调度参考的指标<br>2、prevote指标：超时选举参考的指标",
+      "details": "TiKV-Details->Raft message->Messages<br>1、transfer_leader指标：PD调度参考的指标<br>2、prevote指标：超时选举参考的指标",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Page-11",
@@ -975,7 +975,7 @@
     {
       "id": "Index-32",
       "label": "Disk Latency",
-      "details": "Overview->System Info->IO util -> Disk Latency",
+      "details": "Overview->System Info->IO util->Disk Latency",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Event-13",
@@ -984,7 +984,7 @@
     {
       "id": "Index-33",
       "label": "ping latency",
-      "details": "Grafana -> blackbox_exporter -> ping latency",
+      "details": "Grafana->blackbox_exporter->ping latency",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Event-08",
@@ -1164,7 +1164,7 @@
     {
       "id": "Index-38",
       "label": "Store region score",
-      "details": "TiKV region的分数",
+      "details": "PD->Statistics-balance->Store region score<br>TiKV region的分数",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Page-13",
@@ -1407,11 +1407,137 @@
     {
       "id": "Page-23",
       "label": "大量查询超时案例",
-      "details": "核实情况：<br>TiDB->Query Summary->Duration<br>TiDB->Query Summary->QPS 排查是否有业务激增<br>TiDB->Query Summary->999/99/95/80 Duration 排查具体是写的问题还是读的问题<br>TiDB->Query Detail->Duration 999/99/95/80 by instance 排查是否是某一台的问题，如果不是某一台，大概率不是TiDB Server的问题<br>结合DML语句读写流程<br>（1）TSO获取快慢<br>TiDB->PD Client->PD TSO Wait/RPC Duration<br>（2）编译/解析<br>TiDB->Executor->Parse/Compile Duration<br>（3）排除backup off问题<br>TiDB->KV Errors->KV Backoff Duration/KV Backoff OPS 排除是Backup off的错误问题<br>（4）TiKV问题<br>TiDB->KV Request->KV Request Duration 99 by store 排查哪个TiKV有问题<br>TiDB->KV Request->KV Request Duration 99 by type 排除是那种类型的Request，BatchGet是pointGet的一种。<br><br><br>",
+      "details": "核实情况：<br>TiDB->Query Summary->Duration<br>TiDB->Query Summary->QPS 排查是否有业务激增<br>TiDB->Query Summary->999/99/95/80 Duration 排查具体是写的问题还是读的问题<br>TiDB->Query Detail->Duration 999/99/95/80 by instance 排查是否是某一台的问题，如果不是某一台，大概率不是TiDB Server的问题<br>结合DML语句读写流程<br>（1）TSO获取快慢<br>TiDB->PD Client->PD TSO Wait/RPC Duration<br>（2）编译/解析<br>TiDB->Executor->Parse/Compile Duration<br>（3）排除backup off问题<br>TiDB->KV Errors->KV Backoff Duration/KV Backoff OPS 排除是Backup off的错误问题<br>（4）TiKV问题<br>TiDB->KV Request->KV Request Duration 99 by store 排查哪个TiKV有问题<br>TiDB->KV Request->KV Request Duration 99 by type 排除是那种类型的Request，BatchGet是pointGet的一种。<br>",
       "originalSize": 20,
       "originalDegree": 0,
       "source": "Page-22",
       "target": "Index-52,Index-53,Index-54,Index-55,Index-56"
+    },
+    {
+      "id": "Page-24",
+      "label": "写入频繁抖动",
+      "details": "背景<br>v5.1.0，TiKV aws 4c32g+千兆+1TBnvme<br>9:30左右insert 写入频繁抖动，最高1s，集群资源（CPU，IP，网络）均未达到瓶颈<br><br>排查<br>TiKV-Details->gRPC->99% gRPC message duration排除掉网络问题，并且该指标有具体的写入类型，kv_prewrite慢<br>结合TiKV写入流程继续分析是线程的问题？还是IO的问题<br>写入线程问题指标：<br>TiKV-Details->Thread CPU->gRPC poll CPU<br>TiKV-Details->Thread CPU->Scheduler worker CPU<br>TiKV-Details->Thread CPU->Raft store CPU<br>TiKV-Details->Thread CPU->Async apply CPU<br>上述指标都正常<br><br>IO问题相关指标：<br>TiKV-Details->Raft IO->99% Apply log duration per server<br>TiKV-Details->Raft IO->99% Append log duration per server<br>TiKV-Details->Raft IO->99% Commit log duration per server 有1台TiKV指标升高<br>TiKV-Details->Raft propose->Propose wait duration per server 对应实例的Raft store线程队列也出现排队等待  <br>TiKV-Details->Raft propose->Apply wait duration per server<br><br>TiKV-Details->Raft Engine->Write Duration <br>Node_exporter->Disk 磁盘IO比较低，但是写入延迟上涨明显。<br><br>结论：<br>问题TiKV 磁盘有问题，换了一台云主机解决。",
+      "originalSize": 20,
+      "originalDegree": 0,
+      "source": "Page-22",
+      "target": "Index-19,Index-31"
+    },
+    {
+      "id": "Index-60",
+      "label": "99% gRPC message duration",
+      "details": "TiKV-Details->gRPC->99% gRPC message duration<br>排查问题时间",
+      "originalSize": 20,
+      "originalDegree": 0,
+      "source": "Page-24",
+      "target": ""
+    },
+    {
+      "id": "Note-20",
+      "label": "TiKV数据写入流程",
+      "details": "raftstore pool负责处理写入，同时也负责处理心跳信息<br>写入流程如下<br>（1）propose<br>（2）append<br>（3）replicate->remote append<br>（4）commit<br>（5）apply",
+      "originalSize": 20,
+      "originalDegree": 0,
+      "source": "Page-24",
+      "target": ""
+    },
+    {
+      "id": "Index-61",
+      "label": "gRPC poll CPU",
+      "details": "TiKV-Details->Thread CPU->gRPC poll CPU",
+      "originalSize": 20,
+      "originalDegree": 0,
+      "source": "Page-24",
+      "target": ""
+    },
+    {
+      "id": "Index-62",
+      "label": "Async apply CPU",
+      "details": "TiKV-Details->Thread CPU->Async apply CPU",
+      "originalSize": 20,
+      "originalDegree": 0,
+      "source": "Page-24",
+      "target": ""
+    },
+    {
+      "id": "Index-63",
+      "label": "99% Apply log duration per server",
+      "details": "TiKV-Details->Raft IO->99% Apply log duration per server<br>每一条线是1个TiKV服务器，很方便的排查出是否是单个TiKV的磁盘问题，rocksdb Apply的平均时间",
+      "originalSize": 20,
+      "originalDegree": 0,
+      "source": "Page-24",
+      "target": ""
+    },
+    {
+      "id": "Index-64",
+      "label": "99% Append log duration per server",
+      "details": "TiKV-Details->Raft IO->99% Append log duration per server<br>每一条线是1个TiKV服务器，很方便的排查出是否是单个TiKV的磁盘问题，rocksdb Append的平均时间",
+      "originalSize": 20,
+      "originalDegree": 0,
+      "source": "Page-24",
+      "target": ""
+    },
+    {
+      "id": "Index-65",
+      "label": "99% Commit log duration per server",
+      "details": "TiKV-Details->Raft IO->99% Commit log duration per server<br>每一条线是1个TiKV服务器，很方便的排查出是否是单个TiKV的磁盘问题，rocksdb Apply的平均时间",
+      "originalSize": 20,
+      "originalDegree": 0,
+      "source": "Page-24",
+      "target": ""
+    },
+    {
+      "id": "Index-66",
+      "label": "99% Propose wait duration per server ",
+      "details": "TiKV-Details->Raft propose->99% Propose wait duration per server<br>每一条线是1个TiKV服务器，很方便的排查出是否是单个TiKV的磁盘问题，Propose的平均时间，如果是IO慢，这里会随之变慢",
+      "originalSize": 20,
+      "originalDegree": 0,
+      "source": "Page-24",
+      "target": ""
+    },
+    {
+      "id": "Index-67",
+      "label": "99% Apply wait duration per server",
+      "details": "TiKV-Details->Raft propose->99% Apply wait duration per server<br>每一条线是1个TiKV服务器，很方便的排查出是否是单个TiKV的磁盘问题，Propose的平均时间，如果是IO慢，这里会随之变慢",
+      "originalSize": 20,
+      "originalDegree": 0,
+      "source": "Page-24",
+      "target": ""
+    },
+    {
+      "id": "Page-25",
+      "label": "磁盘容量影响PD调度",
+      "details": "现象：<br>TiDB Duration从11.10日开始突然不稳定，几个TiKV的region数量频繁变化<br><br>原理：<br>PD频繁调度会导致大量backoff报错，查询的流程变的复杂很多，进而引起查询时间抖动<br><br>排查：<br>PD->Statistics-balance->Store region score<br>PD->Scheduler->Balance region movement(老版本名Balance region event)<br>PD->Statistics-balance->Store availiable ratio 接近40%左右，达到了high-space-ratio参数值60%，此时TiDB的score计算公式会有变化，导致score一只上涨<br><br>PD产生调度的原因：<br>热点<br>磁盘容量：high-space-ratio",
+      "originalSize": 20,
+      "originalDegree": 0,
+      "source": "Page-22",
+      "target": "Index-38,Index-44"
+    },
+    {
+      "id": "Config-27",
+      "label": "high-space-ratio",
+      "details": "默认值：0.7。<br>设置 store 空间充裕的阈值。当节点的空间占用比例小于该阈值时，PD 调度时会忽略节点的剩余空间，主要根据实际数据量进行均衡。此配置仅在 region-score-formula-version = v1 时生效。",
+      "originalSize": 20,
+      "originalDegree": 0,
+      "source": "Page-25",
+      "target": ""
+    },
+    {
+      "id": "Config-28",
+      "label": "low-space-ratio",
+      "details": "默认值：0.8。<br>设置 store 空间不足的阈值。当某个节点的空间占用比例超过该阈值时，PD 会尽可能避免往该节点迁移数据，同时主要根据节点剩余空间大小进行调度，避免对应节点的磁盘空间被耗尽。",
+      "originalSize": 20,
+      "originalDegree": 0,
+      "source": "Page-25",
+      "target": ""
+    },
+    {
+      "id": "Index-69",
+      "label": "Balance region movement",
+      "details": "PD->Scheduler->Balance region movement(老版本名Balance region event)",
+      "originalSize": 20,
+      "originalDegree": 0,
+      "source": "Page-25",
+      "target": ""
     }
   ],
   "edges": [
@@ -1912,6 +2038,10 @@
       "target": "Event-07"
     },
     {
+      "source": "Event-07",
+      "target": "Page-24"
+    },
+    {
       "source": "Event-06",
       "target": "Event-08"
     },
@@ -2230,6 +2360,78 @@
     {
       "source": "Page-23",
       "target": "Index-56"
+    },
+    {
+      "source": "Page-22",
+      "target": "Page-24"
+    },
+    {
+      "source": "Page-24",
+      "target": "Index-19"
+    },
+    {
+      "source": "Page-24",
+      "target": "Index-31"
+    },
+    {
+      "source": "Page-24",
+      "target": "Index-60"
+    },
+    {
+      "source": "Page-24",
+      "target": "Note-20"
+    },
+    {
+      "source": "Page-24",
+      "target": "Index-61"
+    },
+    {
+      "source": "Page-24",
+      "target": "Index-62"
+    },
+    {
+      "source": "Page-24",
+      "target": "Index-63"
+    },
+    {
+      "source": "Page-24",
+      "target": "Index-64"
+    },
+    {
+      "source": "Page-24",
+      "target": "Index-65"
+    },
+    {
+      "source": "Page-24",
+      "target": "Index-66"
+    },
+    {
+      "source": "Page-24",
+      "target": "Index-67"
+    },
+    {
+      "source": "Page-22",
+      "target": "Page-25"
+    },
+    {
+      "source": "Page-25",
+      "target": "Index-38"
+    },
+    {
+      "source": "Page-25",
+      "target": "Index-44"
+    },
+    {
+      "source": "Page-25",
+      "target": "Config-27"
+    },
+    {
+      "source": "Page-25",
+      "target": "Config-28"
+    },
+    {
+      "source": "Page-25",
+      "target": "Index-69"
     }
   ]
 }
