@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G6力导向图Demo - 50个节点</title>
+    <title>TiDB学习笔记</title>
     <script src=" https://unpkg.com/@antv/g6@4.8.0/dist/g6.min.js "></script>
     <style>
         #container {
@@ -53,7 +53,7 @@
     </style>
 </head>
 <body>
-    <h1>TiDB 参数和指标 G6力导向图</h1>
+    <h1>TiDB 参数、指标、事件、学习记录</h1>
     <div class="info-panel">
         <p>• 力导向图展示了参数的权重，当参数被引用越多，体积越大 • 可拖拽节点和画布 • 鼠标悬停查看连接数</p>
     </div>
@@ -80,49 +80,6 @@
             }
         }
 
-        // 计算节点度数并调整大小
-        // function calculateNodeDegrees(data) {
-        //     const degreeMap = {};
-            
-        //     // 初始化度数记录
-        //     data.nodes.forEach(node => {
-        //         degreeMap[node.id] = 0;
-        //     });
-            
-        //     // 统计每个节点的连接数
-        //     data.edges.forEach(edge => {
-        //         degreeMap[edge.source]++;
-        //         degreeMap[edge.target]++;
-        //     });
-            
-        //     // 根据连接数调整节点大小和标签
-        //     data.nodes.forEach(node => {
-        //         const degree = degreeMap[node.id];
-        //         const baseSize = node.originalSize || node.size || 20; // 优先使用原始大小，如果没有则用20
-        //         node.size = baseSize + (degree+1) * 6; // 缩放系数可以调整
-        //         node.degree = degree;
-        //         // 大小公式：基础大小20 + 连接数×6
-        //         // node.size = 20 + degree * 6;
-        //         // node.degree = degree;
-        //         // 更新标签显示连接数
-        //         node.label = `${node.label}`;
-                
-        //         // 根据连接数设置不同颜色
-        //         if (degree >= 8) {
-        //             node.style = { fill: '#ff6b6b', stroke: '#d93030' }; // 高连接数-红色
-        //         } else if (degree >= 5) {
-        //             node.style = { fill: '#4ecdc4', stroke: '#1a7f7a' }; // 中高连接数-青色
-        //         } else if (degree >= 3) {
-        //             node.style = { fill: '#45b7d1', stroke: '#1e7c9c' }; // 中连接数-蓝色
-        //         } else {
-        //             node.style = { fill: '#96ceb4', stroke: '#5a9c7d' }; // 低连接数-绿色
-        //         }
-        //     });
-            
-        //     console.log('节点连接数统计:', degreeMap);
-        //     return data;
-        // }
-
         // 计算节点度数并调整大小（改进版）
         function calculateNodeDegrees(data) {
             const degreeMap = {};
@@ -137,7 +94,6 @@
                 degreeMap[edge.source]++;
                 degreeMap[edge.target]++;
             });
-
 
             // 定义颜色分级标准和对应的颜色
             const colorScales = [
@@ -165,6 +121,7 @@
                 node.realTimeDegree = realTimeDegree; // 存储实时连接数以便Tooltip显示
                 node.baseSize = baseSize; // 存储基础大小以便调试
                 node.label = `${node.label}`; // 保持标签
+                node.link = node.link || '#'; // 确保有链接字段
 
                 // 根据连接数调整节点大小和颜色
                 let selectedColor = colorScales[0]; // 默认最低级别
@@ -185,55 +142,10 @@
 
             });
 
-
             console.log('节点连接数统计（实时）:', degreeMap);
             console.log('节点最终属性（已结合初始值）:', data.nodes.map(n => ({ id: n.id, finalSize: n.size, finalDegree: n.degree })));
             return data;
         }
-
-
-        // 计算节点度数并调整大小（按你的需求修改：仅统计作为target的度数）
-        // function calculateNodeDegrees(data) {
-        //     const targetDegreeMap = {}; // 更改变量名，明确其含义
-            
-        //     // 初始化度数记录
-        //     data.nodes.forEach(node => {
-        //         targetDegreeMap[node.id] = 0; // 初始化为0
-        //     });
-            
-        //     // 关键修改：只统计作为target的连接数
-        //     data.edges.forEach(edge => {
-        //         // 只有当边的target是当前节点ID时，才增加该节点的度数
-        //         targetDegreeMap[edge.target]++;
-        //         // 注释掉或删除对 source 的统计：degreeMap[edge.source]++;
-        //     });
-            
-        //     // 根据连接数调整节点大小和标签
-        //     data.nodes.forEach(node => {
-        //         // 关键修改：使用新的、只统计了target的度数
-        //         const targetDegree = targetDegreeMap[node.id]; // 变量名也更明确
-        //         const baseSize = node.originalSize || node.size || 20;
-        //         // 注意：这里使用的是 targetDegree，计算逻辑保持不变
-        //         node.size = baseSize + (targetDegree + 1) * 6;
-        //         node.degree = targetDegree; // 存储的是作为target的度数
-        //         node.label = `${node.label}`;
-                
-        //         // 根据新的targetDegree设置颜色
-        //         if (targetDegree >= 8) {
-        //             node.style = { fill: '#ff6b6b', stroke: '#d93030' };
-        //         } else if (targetDegree >= 5) {
-        //             node.style = { fill: '#4ecdc4', stroke: '#1a7f7a' };
-        //         } else if (targetDegree >= 3) {
-        //             node.style = { fill: '#45b7d1', stroke: '#1e7c9c' };
-        //         } else {
-        //             node.style = { fill: '#96ceb4', stroke: '#5a9c7d' };
-        //         }
-        //     });
-            
-        //     console.log('节点作为Target的连接数统计:', targetDegreeMap);
-        //     return data;
-        // }
-
 
         // 初始化图表
         async function initGraph() {
@@ -265,6 +177,7 @@
                                     <li>连接信息: ${model.baseDegree},${model.realTimeDegree},${model.degree}</li>
                                     <li>大小信息: ${model.baseSize},${model.size}</li>
                                     <li>详细信息: ${model.details}</li>
+                                    <li>链接: <a href="${model.link}" target="_blank">${model.link}</a></li>
                                 </ul>
                             `;
                             return outDiv;
@@ -397,37 +310,16 @@
             // +++ 新增这行代码，启动力导向布局的模拟 +++
             graph.layout();
             // 创建图实例后，添加鼠标事件监听
-            let tooltipTimeout;
             // 添加交互事件
             graph.on('node:mouseenter', (e) => {
                 graph.setItemState(e.item, 'hover', true);
-                // const item = e.item;
-                
-                // // 清除可能存在的已有定时器
-                // if (tooltipTimeout) {
-                //     clearTimeout(tooltipTimeout);
-                // }
-                
-                // // 设置1秒延迟
-                // tooltipTimeout = setTimeout(() => {
-                //     // 手动显示Tooltip
-                //     graph.emit('tooltip:show', { item: item, x: e.x, y: e.y });
-                // }, 1000); // 1000毫秒 = 1秒
+
             });
             
             graph.on('node:mouseleave', (e) => {
                 graph.setItemState(e.item, 'hover', false);
-                // if (tooltipTimeout) {
-                //     clearTimeout(tooltipTimeout);
-                //     tooltipTimeout = null;
-                // }
-                // // 立即隐藏Tooltip
-                // graph.emit('tooltip:hide');
             });
-            // 鼠标在节点上移动时，更新Tooltip位置
-            // graph.on('node:mousemove', (e) => {
-            //     graph.emit('tooltip:update', { x: e.x, y: e.y });
-            // });
+
             graph.on('node:click', (e) => {
                 const clickedItem = e.item;
                 const graphData = graph.save(); // 获取当前图数据

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TiDB学习笔记</title>
+    <script src="https://unpkg.com/@antv/g6@4.8.0/dist/g6.min.js"></script>
+    <style>
+        #container {
+            width: 100%;
+            height: 800px;
+            border: 1px solid #e0e0e0;
+            background-color: #f9f9f9;
+        }
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .info-panel {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
+        /* 新增：下拉菜单样式 */
+        .data-selector {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #f0f8ff;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .data-selector label {
+            font-weight: bold;
+            color: #333;
+        }
+        .data-selector select {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .data-selector select:focus {
+            outline: none;
+            border-color: #4D7CFF;
+            box-shadow: 0 0 0 2px rgba(77, 124, 255, 0.2);
+        }
+        /* G6 Tooltip 样式定制 */
+        .g6-tooltip {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            max-width: 300px;
+        }
+        .g6-tooltip h4 {
+            margin: 0 0 8px 0;
+            color: #4D7CFF;
+            font-size: 14px;
+        }
+        .g6-tooltip ul {
+            margin: 0;
+            padding-left: 15px;
+        }
+        .g6-tooltip li {
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <h1>TiDB 参数、指标、事件、学习记录</h1>
+    
+    <!-- 新增：数据源选择下拉菜单 -->
+    <div class="data-selector">
+        <label for="data-source">选择数据源:</label>
+        <select id="data-source">
+            <option value="./new_source.json">案例学习记录</option>
+            <option value="./sop.json">工作SOP记录</option>
+        </select>
+    </div>
+    
+    <div class="info-panel">
+        <p>• 力导向图展示了参数的权重，当参数被引用越多，体积越大 • 可拖拽节点和画布 • 鼠标悬停查看连接数</p>
+    </div>
+    <div id="container"></div>
+
+    <script>
+        // 全局变量存储当前图表实例
+        let graphInstance = null;
+        // 当前数据源URL
+        let currentDataSource = './new_source.json';
+
+        // 异步从对象存储加载数据
+        async function loadDataFromOSS(url) {
+            try {
+                const response = await fetch(url);
+                
+                if (!response.ok) {
+                    throw new Error(`网络响应不正常: ${response.status}`);
+                }
+                
+                const graphData = await response.json();
+                console.log('从OSS加载数据成功:', graphData);
+                return graphData;
+                
+            } catch (error) {
+                console.error('加载数据失败:', error);
+                throw error;
+            }
+        }
+
+        // 计算节点度数并调整大小
+        function calculateNodeDegrees(data) {
+            const degreeMap = {};
+
+            // 初始化度数记录
+            data.nodes.forEach(node => {
+                degreeMap[node.id] = 0;
+            });
+
+            // 统计每个节点的连接数
+            data.edges.forEach(edge => {
+                degreeMap[edge.source]++;
+                degreeMap[edge.target]++;
+            });
+
+            // 定义颜色分级标准和对应的颜色
+            const colorScales = [
+                { threshold: 0, fill: '#cccccc', stroke: '#999999' },
+                { threshold: 1, fill: '#96ceb4', stroke: '#5a9c7d' },
+                { threshold: 3, fill: '#45b7d1', stroke: '#1e7c9c' },
+                { threshold: 5, fill: '#4ecdc4', stroke: '#1a7f7a' },
+                { threshold: 8, fill: '#FFD700', stroke: '#DAA520' },
+                { threshold: 11, fill: '#FFA500', stroke: '#FF8C00' },
+                { threshold: 15, fill: '#FF6347', stroke: '#CD5C5C' },
+                { threshold: 18, fill: '#DC143C', stroke: '#B22222' },
+                { threshold: 21, fill: '#9932CC', stroke: '#8A2BE2' },
+                { threshold: 24, fill: '#8B0000', stroke: '#660000' }
+            ];
+            
+            // 根据连接数和初始值调整节点属性
+            data.nodes.forEach(node => {
+                const realTimeDegree = degreeMap[node.id];
+                const baseDegree = node.originalDegree || 0;
+                const baseSize = node.originalSize || node.size || 20;
+
+                // 综合计算最终度数和大小
+                node.degree = baseDegree + realTimeDegree;
+                node.size = baseSize + (realTimeDegree + 1) * 3;
+                node.baseDegree = baseDegree;
+                node.realTimeDegree = realTimeDegree;
+                node.baseSize = baseSize;
+                node.label = `${node.label}`;
+
+                // 根据连接数调整节点大小和颜色
+                let selectedColor = colorScales[0];
+                
+                for (let i = colorScales.length - 1; i >= 0; i--) {
+                    if (node.degree >= colorScales[i].threshold) {
+                        selectedColor = colorScales[i];
+                        break;
+                    }
+                }
+                
+                // 应用颜色
+                node.style = { 
+                    fill: selectedColor.fill, 
+                    stroke: selectedColor.stroke,
+                    lineWidth: 1.5
+                };
+            });
+
+            console.log('节点连接数统计（实时）:', degreeMap);
+            return data;
+        }
+
+        // 初始化图表
+        async function initGraph(url) {
+            // 如果已有图表实例，先销毁
+            if (graphInstance && !graphInstance.destroyed) {
+                graphInstance.destroy();
+            }
+            
+            // 生成并处理数据
+            let graphData = await loadDataFromOSS(url);
+            graphData = calculateNodeDegrees(graphData);
+            
+            // 创建图实例
+            graphInstance = new G6.Graph({
+                container: 'container',
+                width: document.getElementById('container').clientWidth,
+                height: document.getElementById('container').clientHeight,
+
+                // Tooltip 插件配置
+                plugins: [
+                    new G6.Tooltip({
+                        offsetX: 10,
+                        offsetY: 10,
+                        getContent: (e) => {
+                            const model = e.item.getModel();
+                            const outDiv = document.createElement('div');
+                            outDiv.style.width = 'fit-content';
+                            outDiv.innerHTML = `
+                                <h4>节点详情</h4>
+                                <ul>
+                                    <li>节点: ${model.id}</li>
+                                    <li>标签: ${model.label}</li>
+                                    <li>连接信息: ${model.baseDegree},${model.realTimeDegree},${model.degree}</li>
+                                    <li>大小信息: ${model.baseSize},${model.size}</li>
+                                    <li>详细信息: ${model.details}</li>
+                                </ul>
+                            `;
+                            return outDiv;
+                        },
+                        itemTypes: ['node'],
+                    })
+                ],
+                
+                // 布局配置 - 力导向布局
+                layout: {
+                    type: 'force',
+                    preventOverlap: true,
+                    linkDistance: 150,
+                    nodeStrength: -100,
+                    edgeStrength: 0.3,
+                    alpha: 0.5,
+                    alphaDecay: 0.02,
+                    alphaMin: 0.001,
+                    collideStrength: 1,
+                    nodeSpacing: 10,
+                },
+
+                modes: {
+                    default: [
+                        'drag-canvas', 
+                        'zoom-canvas', 
+                        'drag-node',
+                        {
+                            type: 'activate-relations',
+                            trigger: 'click',
+                            activeState: 'active',
+                            inactiveState: 'inactive',
+                            resetSelected: true
+                        }
+                    ]
+                },
+
+                // 默认节点样式
+                defaultNode: {
+                    size: 30,
+                    style: {
+                        fill: '#6EA0FF',
+                        stroke: '#2D62D9',
+                        lineWidth: 2,
+                        cursor: 'pointer'
+                    },
+                    labelCfg: {
+                        style: {
+                            fill: '#333',
+                            fontSize: 10,
+                            fontWeight: 'bold',
+                            textAlign: 'center'
+                        },
+                        position: 'center'
+                    }
+                },
+                
+                // 默认边样式
+                defaultEdge: {
+                    style: {
+                        stroke: '#A3B1BF',
+                        lineWidth: 1.5,
+                        opacity: 0.6,
+                        endArrow: {
+                            path: G6.Arrow.triangle(8, 10, 0),
+                            d: 0
+                        }
+                    }
+                },
+                
+                // 节点状态样式
+                nodeStateStyles: {
+                    hover: {
+                        fill: '#4D7CFF',
+                        stroke: '#1A4FD6',
+                        lineWidth: 3,
+                        shadowColor: 'rgba(77,124,255,0.5)',
+                        shadowBlur: 10
+                    },
+                    active: {
+                        fill: '#FF9E00',
+                        stroke: '#D93030',
+                        lineWidth: 3,
+                        shadowColor: 'rgba(255, 158, 0, 0.5)',
+                        shadowBlur: 10
+                    },
+                    inactive: {
+                        opacity: 0.2
+                    }
+                },
+
+                // 边状态样式
+                edgeStateStyles: {
+                    active: {
+                        stroke: '#FF9E00',
+                        lineWidth: 2,
+                        opacity: 1
+                    },
+                    inactive: {
+                        opacity: 0.1
+                    }
+                }
+            });
+            
+            // 绑定数据并渲染
+            graphInstance.data(graphData);
+            graphInstance.render();
+            graphInstance.layout();
+
+            // 添加交互事件
+            graphInstance.on('node:mouseenter', (e) => {
+                graphInstance.setItemState(e.item, 'hover', true);
+            });
+            
+            graphInstance.on('node:mouseleave', (e) => {
+                graphInstance.setItemState(e.item, 'hover', false);
+            });
+
+            graphInstance.on('node:click', (e) => {
+                const clickedItem = e.item;
+                const graphData = graphInstance.save();
+
+                // 1. 重置所有元素状态
+                graphInstance.getNodes().forEach(node => {
+                    graphInstance.clearItemStates(node, ['active', 'inactive']);
+                });
+                graphInstance.getEdges().forEach(edge => {
+                    graphInstance.clearItemStates(edge, ['active', 'inactive']);
+                });
+
+                // 2. 设置被点击节点为激活状态
+                graphInstance.setItemState(clickedItem, 'active', true);
+
+                // 3. 查找与点击节点直接相连的边和节点
+                const relatedEdges = clickedItem.getEdges();
+                const relatedNodes = new Set();
+
+                relatedEdges.forEach(edge => {
+                    graphInstance.setItemState(edge, 'active', true);
+                    
+                    const sourceNode = edge.getSource();
+                    const targetNode = edge.getTarget();
+                    
+                    if (sourceNode !== clickedItem) relatedNodes.add(sourceNode);
+                    if (targetNode !== clickedItem) relatedNodes.add(targetNode);
+                });
+
+                // 4. 设置关联节点为激活状态，其他节点为非激活状态
+                graphInstance.getNodes().forEach(node => {
+                    if (node !== clickedItem && !relatedNodes.has(node)) {
+                        graphInstance.setItemState(node, 'inactive', true);
+                    } else if (node !== clickedItem) {
+                        graphInstance.setItemState(node, 'active', true);
+                    }
+                });
+            });
+
+            // 点击画布空白处重置所有状态
+            graphInstance.on('canvas:click', () => {
+                graphInstance.getNodes().forEach(node => {
+                    graphInstance.clearItemStates(node, ['active', 'inactive']);
+                });
+                graphInstance.getEdges().forEach(edge => {
+                    graphInstance.clearItemStates(edge, ['active', 'inactive']);
+                });
+            });
+
+            graphInstance.on('dragend', (e) => {
+                graphInstance.layout();
+            });
+
+            return graphInstance;
+        }
+
+        // 页面加载完成后初始化
+        if (typeof G6 !== 'undefined') {
+            document.addEventListener('DOMContentLoaded', function() {
+                // 初始加载默认数据源
+                initGraph(currentDataSource);
+                
+                // 为下拉菜单添加事件监听
+                const dataSourceSelect = document.getElementById('data-source');
+                dataSourceSelect.addEventListener('change', function() {
+                    const selectedUrl = this.value;
+                    currentDataSource = selectedUrl;
+                    
+                    // 显示加载状态
+                    const container = document.getElementById('container');
+                    const originalHTML = container.innerHTML;
+                    container.innerHTML = '<div style="text-align:center; padding-top: 50px;">加载数据中...</div>';
+                    
+                    // 重新初始化图表
+                    setTimeout(() => {
+                        initGraph(selectedUrl).catch(error => {
+                            console.error('加载数据失败:', error);
+                            container.innerHTML = '<div style="text-align:center; padding-top: 50px; color: red;">数据加载失败，请检查控制台</div>';
+                        });
+                    }, 100);
+                });
+                
+                // 窗口大小改变时调整图表大小
+                window.addEventListener('resize', function() {
+                    if (graphInstance && !graphInstance.get('destroyed')) {
+                        graphInstance.changeSize(
+                            document.getElementById('container').clientWidth,
+                            document.getElementById('container').clientHeight
+                        );
+                    }
+                });
+            });
+        } else {
+            console.error('G6库未正确加载，请检查CDN链接');
+        }
+    </script>
+</body>
+</html>

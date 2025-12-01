@@ -4,1540 +4,1781 @@
       "id": "Page-00",
       "label": "305故障案例",
       "details": "305故障案例",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-00",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Page-01",
       "label": "TiDB大规模删除实践",
-      "details": "TiDB大规模删除实践<br>https://tidb.net/blog/b7a90f87",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "details": "TiDB大规模删除实践<br>",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-00",
-      "target": ""
+      "target": "",
+      "link": "https://tidb.net/blog/b7a90f87"
     },
     {
       "id": "Config-13",
       "label": "soft-pending-compaction-bytes-limit",
       "details": "soft-pending-compaction-bytes-limit<br>默认值192GB，达到阈值则触发write stall，客户端写入速度放慢",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-01,Event-05",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Config-14",
       "label": "hard-pending-compaction-bytes-limit",
       "details": "hard-pending-compaction-bytes-limit<br>默认1024GB，达到阈值之后，不让客户端写入数据",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-01,Event-05",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Config-15",
       "label": "max-merge-region-size",
       "details": "max-merge-region-size",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-01",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Config-16",
       "label": "max-merge-region-keys",
       "details": "max-merge-region-keys",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-01",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Config-17",
       "label": "split-merge-interval",
       "details": "split-merge-interval",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-01",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-01",
       "label": "compaction pending bytes",
       "details": "compaction pending bytes",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-01",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Config-01",
       "label": "gc.max-write-bytes-per-sec",
       "details": "gc.max-write-bytes-per-sec",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-01",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-02",
       "label": "Commit Token Wait Duration",
       "details": "Commit Token Wait Duration",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-01",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Page-02",
       "label": "305 故障排除案例学习\n -计划内单机停机",
       "details": "",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-00",
-      "target": "Page-03"
+      "target": "Page-03",
+      "link": ""
     },
     {
       "id": "Config-02",
       "label": "max-store-down-time",
       "details": "系统补副本操作的等待store恢复时间",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-02",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-03",
       "label": " miss-peer-region-count",
       "details": "grafana PD->PD dashboard->Region Health<br>单机维护期间，预期是一直下降",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-02",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-04",
       "label": "down-peer-region-count",
       "details": "grafana PD->PD dashboard->Region Health<br>单机维护期间，预期是0",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-02",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-05",
       "label": "pending-peer-region-count",
       "details": "grafana PD->PD dashboard->Region Health<br>单机维护期间，预期是一直下降",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-02",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-06",
       "label": "empty-region-count",
       "details": "grafana PD->PD dashboard->Region Health<br>",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-02",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-07",
       "label": "Schedule operator create",
       "details": "grafana PD->Operator<br>发起Operator的监控<br>单机维护期间，miss-peer-region-count不下降的情况下观察这里<br><br>调度类型：balance根据指标（score）来调度。<br>remove-extra-replica，产生的remove extra replica的数量多少",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-02",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-43",
       "label": "Statistics-balance",
       "details": "Grafana->PD->Statistics-balance<br>监控每个TiKV的score的变化，TiDB v3.0 只和size有关，store-region-size，1MB=1分，pd-ctl store可以看到score和size一样的。",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Index-07",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-44",
       "label": "Store availiable ratio",
       "details": "Grafana->PD->Statistics-balance<br>store的空间利用率监控<br>注意：达到了high-space-ratio参数值（老版本60%，新版本70%），此时TiDB的score计算公式会有变化，可能会导致score变化，进而引起PD调度<br>注意参数high-space-ratio和low-space-ratio",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-15",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-08",
       "label": "Operator finish duration",
       "details": "Operator 执行延迟",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-02",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Page-03",
       "label": "305 故障排除案例学习\n -计划外停机，满足多数派",
       "details": "305-TiDB 故障排除案例学习-计划外停机，满足多数派",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-00",
-      "target": "Index-07,Index-08,Page-06"
+      "target": "Index-07,Index-08,Page-06",
+      "link": ""
     },
     {
       "id": "Config-03",
       "label": "region-schedule-limit",
       "details": "手工修复TiKV之前，设置次参数，不让pd发起调度",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-03",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Config-04",
       "label": "replica-schedule-limit",
       "details": "手工修复TiKV之前，设置次参数，不让pd发起调度",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-03",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Config-05",
       "label": "leader-schedule-limit",
       "details": "手工修复TiKV之前，设置次参数，不让pd发起调度",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-03",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Config-06",
       "label": "merge-schedule-limit",
       "details": "手工修复TiKV之前，设置次参数，不让pd发起调度",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-03",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Error-01",
       "label": "SST file size mismatch",
       "details": "SST文件损坏，RocksDB Apply Snapshot",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-03",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Page-04",
       "label": "记一次sst文件损坏修复过程",
       "details": "记一次sst文件损坏修复过程<br>https://tidb.net/blog/54e388c8",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-03",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Error-02",
       "label": "Region is unavailable",
       "details": "",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-04",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Page-05",
       "label": "如何处理损坏的sst文件",
       "details": "如何处理损坏的sst文件<br>https://tidb.net/blog/22731ef0",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-03",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Error-03",
       "label": "Raft 状态机器损坏",
-      "details": "设置一个 Region 副本为 tombstone 状态<br>https://docs.pingcap.com/zh/tidb/stable/tikv-control/?_gl=1*1sh7tol*_gcl_au*MTYwMzk2MTYyOS4xNzYyOTMzNjQ2*_ga*MTYwNjU5NTgzNC4xNzYyOTMzNjQ2*_ga_3JVXJ41175*czE3NjQxMzY5ODMkbzEwJGcwJHQxNzY0MTM2OTk0JGo0OSRsMCRoMTc4NDU4Mzc4OQ..*_ga_ZEL0RNV6R2*czE3NjM5NzA2MTUkbzckZzEkdDE3NjM5NzA2NDEkajM0JGwwJGgw*_ga_CPG2VW1Y41*czE3NjQxMzY5ODMkbzEwJGcwJHQxNzY0MTM2OTgzJGo2MCRsMCRoMA..#%E8%AE%BE%E7%BD%AE%E4%B8%80%E4%B8%AA-region-%E5%89%AF%E6%9C%AC%E4%B8%BA-tombstone-%E7%8A%B6%E6%80%81",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "details": "设置一个 Region 副本为 tombstone 状态",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-05",
-      "target": ""
+      "target": "",
+      "link": "https://docs.pingcap.com/zh/tidb/stable/tikv-control/?_gl=1*1sh7tol*_gcl_au*MTYwMzk2MTYyOS4xNzYyOTMzNjQ2*_ga*MTYwNjU5NTgzNC4xNzYyOTMzNjQ2*_ga_3JVXJ41175*czE3NjQxMzY5ODMkbzEwJGcwJHQxNzY0MTM2OTk0JGo0OSRsMCRoMTc4NDU4Mzc4OQ..*_ga_ZEL0RNV6R2*czE3NjM5NzA2MTUkbzckZzEkdDE3NjM5NzA2NDEkajM0JGwwJGgw*_ga_CPG2VW1Y41*czE3NjQxMzY5ODMkbzEwJGcwJHQxNzY0MTM2OTgzJGo2MCRsMCRoMA..#%E8%AE%BE%E7%BD%AE%E4%B8%80%E4%B8%AA-region-%E5%89%AF%E6%9C%AC%E4%B8%BA-tombstone-%E7%8A%B6%E6%80%81"
     },
     {
       "id": "Error-04",
       "label": "last index",
       "details": "",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-05",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Page-06",
       "label": "305 故障排除案例学习\n -计划外停机，不满足多数派",
       "details": "305 故障排除案例学习 <br>-计划外停机，不满足多数派<br><br>坏1个region有可能整个系统不可用，取决于region中存放的是什么数据<br>1、无法选举新Leader以及宕机超过max-store-down-time也无法进行补副本操作<br>2、前端业务访问部分出现报错<br>3、仅访问到异常Region的应用会出现报错<br><br>注意：<br>要先处理2副本丢失的region，处理完了再处理3副本丢失的region",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-00",
-      "target": "Config-03,Config-04,Config-05,Config-06,Page-07"
+      "target": "Config-03,Config-04,Config-05,Config-06,Page-07",
+      "link": ""
     },
     {
       "id": "Note-02",
       "label": "2副本丢失处理方式",
       "details": "2副本丢失处理方式，有损恢复<br>注意：<br>1、禁止前端业务写入，禁用相关调度<br>2、统计副本数丢失一半及以上region<br>3、确认region所属的数据库对象<br>4、unsafe-recover remove-fail-stores有损恢复<br>5、开启调度<br>6、确认region健康状态，数据校验",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-06",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Note-03",
       "label": "3副本丢失处理方式",
       "details": "3副本丢失处理方式<br>数据肯定丢失，恢复的目标是确保实例拉起<br>PD里面有丢失region的信息<br>1、关闭在线TiKV<br>2、创建空region<br>3、从应用侧将数据重新导入<br>4、数据与索引一致性检验<br>admin check index tbl_name idx_name",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-06",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Page-07",
       "label": "305 故障排除案例学习\n -计划外停机，不满足多数派，2副本丢失案例",
       "details": "305 故障排除案例学习<br> -计划外停机，不满足多数派，2副本丢失案例",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Note-02",
-      "target": "Page-08"
+      "target": "Page-08",
+      "link": ""
     },
     {
       "id": "Note-04",
       "label": "查看副本数",
       "details": "pg-ctl config show replication -u xxx",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-07",
-      "target": "Note-05"
+      "target": "Note-05",
+      "link": ""
     },
     {
       "id": "Note-05",
       "label": "确认store状态",
       "details": "pg-ctl -u xxx store --jq=\".stores[].store|{id,address,state_name}\"",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-07",
-      "target": "Note-06"
+      "target": "Note-06",
+      "link": ""
     },
     {
       "id": "Note-06",
       "label": "记录当前的调度规则",
       "details": "pg-ctl config show -u xxx|grep schedule-limit",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-07",
-      "target": "Note-07"
+      "target": "Note-07",
+      "link": ""
     },
     {
       "id": "Note-07",
       "label": "禁止前端业务写入，禁止调度",
       "details": "pg-ctl -u xxx -i<br>config set region-schedule-limit 0<br>config set leader-schedule-limit 0<br>config set replica-schedule-limit 0<br>config set merge-schedule-limit 0<br>config set hot-region-schedule-limit 0<br>",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-07",
-      "target": "Config-03,Config-04,Config-05,Config-06,Note-08"
+      "target": "Config-03,Config-04,Config-05,Config-06,Note-08",
+      "link": ""
     },
     {
       "id": "Note-08",
       "label": "统计副本数丢失一半及以上的region",
       "details": "pg-ctl -u xxx region --jq='.regions[]|{id: .id,peer_stores: [.peers[].store_id]|select(length as $total | map(if .==(1,4,6) then . else empty end) | length>=$total-length)}'<br>1,4,6是故障节点的storeid<br>会打印出来一半以上的peer都在故障节点的region",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-07",
-      "target": "Note-09,Note-11"
+      "target": "Note-09,Note-11",
+      "link": ""
     },
     {
       "id": "Note-09",
       "label": "确认问题region所属数据库对象",
       "details": "select * from tikv_region_status where region_id in ('','','');",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-07",
-      "target": "Note-10"
+      "target": "Note-10",
+      "link": ""
     },
     {
       "id": "Note-10",
       "label": "2副本丢失处理：有损恢复",
       "details": "使用--all-regions在所有未发生异常的实例上remove-fail-stores<br>#关闭存活的TiKV节点<br>cd ${deploy}/scripts<br>./stop_tikv.sh<br># 在存活的TiKV节点执行<br>tikv-ctl --db /path/to/tikv-data/db unsafe-recover remove-fail-stores -s 1,4,6 --all-regions<br>tikv-ctl --db /path/to/tikv-data/db unsafe-recover remove-fail-stores -s 1,4,6 --all-regions<br>tikv-ctl --db /path/to/tikv-data/db unsafe-recover remove-fail-stores -s 1,4,6 --all-regions<br>执行之后的效果：告诉PD，出问题的region，凡是副本在此3个故障storeid上的region失效，<br>如果leader还在，则在发起命令的机器（可用节点）上重建副本，<br>如果leader都没有只剩下一个follower在可用节点上，那么这个follower变成leader，并且在可用节点上创建新的副本。<br>执行完之后启动可用节点的TiKV<br><br>注意：坏的老的region要做缩容处理，不要在集群的情况下启动起来，否则pd管理的混乱",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-07",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Page-08",
       "label": "305 故障排除案例学习\n -计划外停机，不满足多数派，3副本丢失案例",
       "details": "305 故障排除案例学习<br>-计划外停机，不满足多数派，3副本丢失案例<br>",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Note-03",
-      "target": "Note-04,Note-05,Note-06"
+      "target": "Note-04,Note-05,Note-06",
+      "link": ""
     },
     {
       "id": "Note-11",
       "label": "统计副本全丢的region",
       "details": "pg-ctl -u xxx region --jq '.regions[] | select(has(\"leader\") | not) | {id: .id, peer_stores: [.peers[].store_id]}'<br>列出来的全是丢失3副本的region",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-08",
-      "target": "Note-12"
+      "target": "Note-12",
+      "link": ""
     },
     {
       "id": "Note-12",
       "label": "创建空region",
       "details": "#关闭存活的TiKV节点<br>cd ${deploy}/scripts<br>./stop_tikv.sh<br># 在关闭的存活的其中的2个TiKV节点<br>tikv-ctl --db /path/to/tikv-data/db recreate-region -p xxx(pd) -r ${region_id}<br>tikv-ctl --db /path/to/tikv-data/db recreate-region -p xxx(pd) -r ${region_id}",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-08",
-      "target": "Note-15"
+      "target": "Note-15",
+      "link": ""
     },
     {
       "id": "Note-13",
       "label": "从应用侧重新倒入数据（可选）",
       "details": "",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-08",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Note-14",
       "label": "如果不可用的region是索引，则重建索引",
       "details": "admin check index tbl_name idx_name",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-08",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Note-15",
       "label": "开启PD调度",
       "details": "",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-08",
-      "target": "Note-07"
+      "target": "Note-07",
+      "link": ""
     },
     {
       "id": "Note-16",
       "label": "确认region健康状态",
       "details": "定期检测集群不足3副本的region情况<br>pg-ctl -u xxx region --jq=\".regions[] | {id: .id,peer_stores: [.peers[].store_id] | select(length != 3)}\"",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-08",
-      "target": "Index-03,Index-04,Index-05"
+      "target": "Index-03,Index-04,Index-05",
+      "link": ""
     },
     {
       "id": "Page-09",
       "label": "305 故障排除案例学习\n -网络隔离",
       "details": "305-TiDB 故障排除案例学习-网络隔离",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-00",
-      "target": "Page-10"
+      "target": "Page-10",
+      "link": ""
     },
     {
       "id": "Note-17",
       "label": "2个IDC间出现网络隔离",
       "details": "3个IDC，其中2个IDC间出现网络隔离<br>TiKV不会出现大面积Leader Drop现象<br>TiDB server可能会报错<br>（如果每个IDC都有一个TiDB Server，则出错的概率是2/9）<br>",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-09",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Note-18",
       "label": "信息孤岛",
       "details": "3个IDC，其中某个IDC出现网络隔离，形成信息孤岛<br>TiKV会出现大面积Leader Drop现象<br>TiDB server一定会报错",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-09",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Page-10",
       "label": "305 故障排除案例学习\n -TiKV Server is busy故障处理",
       "details": "305 故障排除案例学习<br> -TiKV Server is busy故障处理<br><br>原因有2个：<br>Write stall<br>Scheduler",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-00",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Error-5",
       "label": "Server is busy",
       "details": "当写入TiKV节点的时候，发现TiKV节点不可用<br>TiKV 节点写入压力过大，会触发TiKV的流控，Write stall",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-10",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-09",
       "label": "Server is busy",
       "details": "TiKV-Details->Errors->Server is busy<br>",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-10",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Event-01",
       "label": "Write stall",
       "details": "RocksDB中写入量巨大，导致触发流控<br><br>1、当memtable文件数量过多，且达到阈值<br>2、L0层SST文件数量过多，且达到阈值（合并和压缩的速度慢于大量写入的速度导致）<br>3、L1～Ln层待Compaction的SST文件大小过大，并且达到了阈值<br>",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-10",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Event-02",
       "label": "Scheduler",
       "details": "scheduler线程组，负责处理写入冲突检测，latch实现，先来后到的原则<br>过多的写请求处理会让scheduler触发流控",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-10",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Theory-01",
       "label": "RocksDB的写入流程",
       "details": "1、先写wal日志，持久化到RocksDB raft中<br>2、写请求写入到内存中的memtable，任何dml都是put操作，<br>memtable达到128MB之后，转储到immutable memtable，memtable供新的写入使用，<br>当immutable memtable 达到5个之后，就会将immutable memtable写入到sst文件中，<br>写入到sst文件（level 0）之后，wal中的日志就可以被覆盖了。<br>将写入的文件分了多层，level 0 和immutable memtable是一样的，<br>level 0的SST中，单个文件是有序的，文件之间是无序的，<br>此种情况对读操作极不优化，所以level 1及之后的sst中，会做一个大的排序和压缩，<br>所以level 1及之后的sst中，文件之间也都是有序的.<br><br>",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-01",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Event-03",
       "label": "当memtable文件数量过多，且达到阈值",
       "details": "TiKV以put,delete的形式写入到memtable<br>memtable受到write_buffer_size参数控制，默认128MB<br>lock_buffer_size，32MB<br>max_write_buffer_number，默认是5，积压的immutable memtable的数量<br>max-background-flushes，默认是2，immutable memtable刷到磁盘的线程数，搬运工<br>磁盘压力不大的情况下，调大搬运工<br>磁盘压力大的情况下：<br>调大immutable memtable的大小，write_buffer_size<br>调大max_write_buffer_number数量，让内存多容纳一些<br>",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-01",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-10",
       "label": "memtable_count_limit_stop",
       "details": "TiKV-Details->RocksDB KV/RocksDB raft->Write stall reason",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-03",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-11",
       "label": "memtable_count_limit_slowdown",
       "details": "TiKV-Details->RocksDB KV/RocksDB raft->Write stall reason",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-03",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Log-01",
       "label": "stalling",
       "details": "rocksDB raft和kv中，搜stalling",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-03",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Config-06",
       "label": "write-buffer-size",
       "details": "默认128MB，memtable的大小",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-03",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Config-07",
       "label": "max-write-buffer-number",
       "details": "默认是5，积压的immutable memtable的数量",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-03",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Config-08",
       "label": "max-background-flushes",
       "details": "默认是2，immutable memtable刷到磁盘的线程数，搬运工",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-03",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Event-04",
       "label": "L0层SST文件数量过多，且达到阈值",
       "details": "level0写入到level1的过程流控参数<br>level0-file-num-compaction-trigger,默认是4，达到4个文件就开始合并排序<br>level0-slowdown-writes-trigger,默认是20，触发write stall的条件<br>level0-stop-writes-trigger,默认是36，停止写入，优先做合并<br><br>level0写入到level1，受到如下参数影响<br>磁盘压力不大情况下<br>rocksdb.max-sub-compactions，默认是3，分成3份做合并，调大<br><br>磁盘压力大的情况下<br>调大<br>level0-slowdown-writes-trigger<br>level0-stop-writes-trigger",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-01",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-12",
       "label": "level0_file_limit_stop",
       "details": "TiKV-Details->RocksDB KV/RocksDB raft->Write stall reason",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-04",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-13",
       "label": "level0_file_limit_slowdown",
       "details": "TiKV-Details->RocksDB KV/RocksDB raft->Write stall reason",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-04",
-      "target": "Log-01"
+      "target": "Log-01",
+      "link": ""
     },
     {
       "id": "Config-09",
       "label": "rocksdb.max-sub-compactions",
       "details": "rocksdb.max-sub-compactions，默认是3，分成3份做合并，调大",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-04",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Config-10",
       "label": "level0-file-num-compaction-trigger",
       "details": "level0-file-num-compaction-trigger,默认是4，达到4个文件就开始合并排序",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-04",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Config-11",
       "label": "level0-slowdown-writes-trigger",
       "details": "level0-slowdown-writes-trigger,默认是20，触发write stall的条件",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-04",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Config-12",
       "label": "level0-stop-writes-trigger",
       "details": "level0-stop-writes-trigger,默认是36，停止写入，优先做合并",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-04",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Event-05",
       "label": "L1～Ln层待Compaction的SST文件大小过大，并且达到了阈值",
       "details": "L1到Ln逐层向下压缩，压缩的条件：<br>每一层的数据了达到一个值之后才会向下进行压缩<br>读取L2的每个文件的最大最小值，扫描L3，<br>如果重合，则向下合并<br>如果L2有delete操作，则L3直接丢弃<br><br>rocksdb.defaultcf.soft-pending-compaction-bytes-limit,默认值192GB，达到阈值则触发write stall，客户端写入速度放慢<br>rocksdb.defaultcf.hard-pending-compaction-bytes-limit,默认1024GB，客户端不让写入<br>磁盘压力大的情况<br>rocksdb.rate-bytes-per-sec，默认是10GB，每秒写入的数据量<br>rocksdb.max-background-jobs,默认是8，线程数，可以调大<br><br>磁盘压力大的情况下<br>让上层多承担一些<br>调大rocksdb.defaultcf.soft-pending-compaction-bytes-limit<br>rocksdb.defaultcf.hard-pending-compaction-bytes-limit<br><br>压缩算法<br>compression-per-level",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-01",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-14",
       "label": "pending_compaction_bytes_stop",
       "details": "TiKV-Details->RocksDB KV/RocksDB raft->Write stall reason",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-05",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-15",
       "label": "pending_compaction_bytes_slowdown",
       "details": "TiKV-Details->RocksDB KV/RocksDB raft->Write stall reason",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-05",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-16",
       "label": "Compaction pending bytes",
       "details": "TiKV-Details->RocksDB KV/RocksDB raft<br>等待进行Compaction的量的大小，会上涨",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-05",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-17",
       "label": "Compaction flow",
       "details": "Compaction的流量，会上涨",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-05",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Config-18",
       "label": "compression-per-level",
       "details": "每一层默认压缩算法。<br>defaultcf 的默认值：[\"no\", \"no\", \"lz4\", \"lz4\", \"lz4\", \"zstd\", \"zstd\"]<br>writecf 的默认值：[\"no\", \"no\", \"lz4\", \"lz4\", \"lz4\", \"zstd\", \"zstd\"]<br>lockcf 的默认值：[\"no\", \"no\", \"no\", \"no\", \"no\", \"no\", \"no\"]",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-05",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Config-19",
       "label": "storage.flow-control",
       "details": "v5.2.0之后引入<br>代替RocksDB write stall流控机制<br>通过在TiKV scheduler层进行流控而不是在RocksDB层进行流控<br>改善流控算法，有效降低大写入压力下导致QPS下降的问题",
-      "originalSize": 50,
-      "originalDegree": 20,
+      "originalSize": 50.0,
+      "originalDegree": 20.0,
       "source": "Event-05",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Event-06",
       "label": "Scheduler is too busy",
       "details": "scheduler pool里面有一个队列，请求越多队列越长，<br>通过内存轻量级锁latch来解决相同key的操作争用问题<br>sched_pending_write_threshold，默认值100MB，达到阈值之后，scheduler线程报错Scheduler is too busy<br>进而引起引Server is busy报错<br><br>解决：<br>autocommit改造为使用显示悲观事务<br>应用端改造调整业务实现方式，避免高并发key冲突",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-02",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Event-10",
       "label": "写写冲突",
       "details": "scheduler线程有一个线程池，由参数scheduler-pending-write-threshold决定，默认值100MB，达到阈值之后，scheduler线程报错Scheduler is too busy<br>进而引起引Server is busy报错<br>乐观锁才会比较容易造成scheduler的队列过长<br>悲观锁的锁等待不是在scheduler的latch里面<br>所有的自动提交默认都是乐观锁。所以自动提交的大量事务也会造成scheduler的队列过长",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-06",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Config-20",
       "label": "scheduler-pending-write-threshold",
       "details": "默认值：100MiB<br>写入数据队列的最大值，超过该值之后对于新的写入 TiKV 会返回 Server Is Busy 错误。",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-10",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-18",
       "label": "QPS",
       "details": "TiDB->Query Summary ",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-10",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-19",
       "label": "Scheduler worker CPU",
       "details": "TiKV-Details->Thread CPU->Scheduler worker CPU<br>每一条线就是一个TiKV，如果有某个TiKV格外繁忙，说明产生了热点",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-10",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-20",
       "label": "Scheduler latch wait duration",
       "details": "TiKV-Details->Scheduler->Scheduler latch wait duration<br>可以间接看出队列的长度",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-10",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-21",
       "label": "Scheduler pending commands",
       "details": "TiKV-Details->Scheduler <br>每个 TiKV 实例上 pending 命令的个数",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-10",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-22",
       "label": "Scheduler writing bytes",
       "details": "TiKV-Details->Scheduler <br>等待写入的数据流量",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-10",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-23",
       "label": "Failed Query OPM",
       "details": "TiDB->Query Summary->Failed Query OPM<br>每个 TiDB 实例上，对每分钟执行 SQL 语句发生的错误按照错误类型进行统计（例如语法错误、主键冲突等）。包含了错误所属的模块和错误码。<br>写写冲突太多的监控，日志中伴随着会有大量的9007错误<br>",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-10",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-24",
       "label": "KV Backoff OPS",
       "details": "TiDB->KV Errors->KV Backoff OPS<br>TiKV 返回错误信息的数量<br><br>txnLock多的话，提示写写冲突太多<br>要么用了大量的乐观锁",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-10",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Log-02",
       "label": "grep conflict",
       "details": "tidb.log中过滤conflict关键词，确认哪些key和语句导致的冲突<br>TiDB Dashboard SQL语句分析执行详情页面/慢查询页面",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-10",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Event-07",
       "label": "TiKV集群写入慢",
       "details": "TiKV集群写入慢也会导致Scheduler is too busy",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-06",
-      "target": "Page-24"
+      "target": "Page-24",
+      "link": ""
     },
     {
       "id": "Event-08",
       "label": "网络故障",
       "details": "网卡丢包<br>ring buffer打满问题<br>tcp缓冲池打满<br>网卡绑定的问题，2个不同品牌的网卡绑定会有问题",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-06",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-25",
       "label": "Server report failures",
       "details": "TiKV-Details->Errors",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-08",
-      "target": "Log-03"
+      "target": "Log-03",
+      "link": ""
     },
     {
       "id": "Log-03",
       "label": "过滤tikv.log",
       "details": "",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-08",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Page-11",
       "label": "305-TiDB 故障排除案例学习-TiKV Leader Drop故障处理",
       "details": "305-TiDB 故障排除案例学习<br>-TiKV Leader Drop故障处理<br><br>现象：<br>Leader drop升高<br>TiClient Region Error OPS升高<br>客户查询延迟升高,Duration升高<br>Leader drop错误升高<br><br>可能原因：<br>raft group超时选举<br>PD调度<br><br>定位：<br>TiKV-Details->Raft message->Messages<br>",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-00",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-26",
       "label": "Leader drop",
       "details": "TiKV-Details->Errors->Leader drop<br>每个TiKV实例上drop leader的个数",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-11",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-27",
       "label": "TiClient Region Error OPS",
       "details": "TiDB->KV Errors->TiClient Region Error OPS<br>region相关错误信息数量，leader发生切换之后，客户端发生的错误，not_leader升高 ",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-11",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-28",
       "label": "Leader drop",
       "details": "TiKV-Trouble-Shooting->Leader Drop->Leader",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-11",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-29",
       "label": "Duration",
       "details": "TiDB Dashboard->Query Summary->Duration<br>",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-11",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Event-09",
       "label": "raft group超时选举",
       "details": "raftstore pool负责处理写入<br>1、propose<br>2、apply<br>3、replicate<br><br>每个region副本所在的节点都会发送心跳<br>raftstore pool同时也负责心跳信息处理<br><br>如果没有收到心跳信息，则会发生leader 选举<br>1、网络繁忙<br>2、raftstore pool繁忙（写入繁忙）",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-11",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Event-15",
       "label": "PD调度",
       "details": "<br>PD调度<br>1、balance-leader<br>2、hot-region-scheduler<br>大部分情况下，都是因为节点发生故障导致发生节点选举超时，引起的PD调度<br>",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-11",
-      "target": "Index-07"
+      "target": "Index-07",
+      "link": ""
     },
     {
       "id": "Index-30",
       "label": "Messages",
       "details": "TiKV-Details->Raft message->Messages<br>1、transfer_leader指标：PD调度参考的指标<br>2、prevote指标：超时选举参考的指标",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-11",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Event-14",
       "label": "raftgroup选举超时的原因",
       "details": "1、raftstore pool太繁忙<br>2、心跳发送太多<br>3、IO问题<br>4、TiKV集群写入慢<br>5、网络异常<br>6、TiKV发生重启",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-09",
-      "target": "Event-07,Event-08"
+      "target": "Event-07,Event-08",
+      "link": ""
     },
     {
       "id": "Event-12",
       "label": "raftstore pool太繁忙",
       "details": "TiKV-Details->Thread CPU->Raft store CPU<br>70%～80%是正常值<br>可以调整这个参数，store-pool-size参数",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-14",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-31",
       "label": "Raft store CPU",
       "details": "TiKV-Details->Thread CPU->Raft store CPU<br>70%～80%是正常值",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-12",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Event-11",
       "label": "心跳发送太多",
       "details": "减少Region的心跳发送，降低Raftstore心跳负担<br>Hibernate Region：特定Region减少发心跳频率<br>Region Merge：减少Region数量，间接减少心跳发送",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-12",
-      "target": "Config-25"
+      "target": "Config-25",
+      "link": ""
     },
     {
       "id": "Config-21",
       "label": "store-pool-size",
       "details": "单位是线程个数，默认2个线程，打满是200%",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-12",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Event-13",
       "label": "IO问题",
       "details": "查看指标Disk Latency",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-14",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-32",
       "label": "Disk Latency",
       "details": "Overview->System Info->IO util->Disk Latency",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-13",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-33",
       "label": "ping latency",
       "details": "Grafana->blackbox_exporter->ping latency",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-08",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-57",
       "label": "node_exporter",
       "details": "网络相关的在Network部分",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-08",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Event-16",
       "label": "TiKV 异常重启",
       "details": "",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-14",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-34",
       "label": "Uptime",
       "details": "TiKV-Details->Cluster->Uptime",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-16",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-35",
       "label": "Store leader score",
       "details": "Grafana PD->Statistics - banalce->Store leader score/size/count<br>TiKV leader节点的分数",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-15",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-36",
       "label": "Store leader size",
       "details": "Grafana PD->Statistics - banalce->Store leader score/size/count<br>TiKV leader节点的数量",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-15",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-37",
       "label": "Store leader count",
       "details": "Grafana PD->Statistics - banalce->Store leader score/size/count<br>TiKV leader节点的大小",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Event-15",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Page-12",
       "label": "305 故障排除案例学习-PD故障处理",
       "details": "",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-00",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Page-13",
       "label": "不产生调度",
       "details": "现象：<br>扩容（增加节点），4扩5，扩容之后，等了很长时间没发生调度<br>调度生成的规则：<br>首先根据label来生成，pd-ctl store查看，发现2个store的labels一样。<br>总结：<br>扩容一定要注意维护label和隔离级别。",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-12",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Page-14",
       "label": "调度过慢",
       "details": "现象：region health里面的<br>extra-peer-region-count一只在上升，不符合预期<br><br>grafana PD->PD dashboard->Region Health<br>集群内部进行region分裂，迁移等操作<br>某些低版本，如果使用了tiflash<br><br>1、产生多少remove调度<br>过滤PD leader日志中的split<br>如果多的化，说明产生了调度，继续排查执行调度的问题<br>如果少的化，说明PD没有启动调度来删除中间的peer<br><br>2、其他调度影响<br>对比其他调度的Schedule operator create和Schedule operator finish,发现balance-leader和balance-region的完成度都不太好，能确认是PD本身的问题。<br><br>3、排查PD的原因<br>PD的作用：生成TSO，提供数据字典，处理心跳，生成调度<br>Region heartbeat report有200个<br>Heartbeat region event QPS，有2000个<br>说明PD处理心跳已经力不从心了<br><br>结论：<br>heartbeat导致的PD CPU使用率较高，并出现了心跳更新瓶颈。<br><br>解决：<br>消除extra peer，修改trace-region-flow，没有读写的region，即使报了心跳，也会忽略。5.1之后，被参数flow-round-by-digit代替<br>开启Hibernate Region（静默region），滚动重启",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-12",
-      "target": "Index-07"
+      "target": "Index-07",
+      "link": ""
     },
     {
       "id": "Index-46",
       "label": "extra-peer-region-count",
       "details": "grafana PD->PD dashboard->Region Health<br>集群内部进行region分裂，迁移等操作<br>某些低版本，如果使用了tiflash<br>schedule.enable-remove-extra-replica参数关闭",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-14",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-47",
       "label": "remove-extra-replica",
       "details": "PD->Operator->Schedule operator create",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-14",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-48",
       "label": "Heartbeat region event",
       "details": "PD->Heartbeat region event<br>region很多的情况下，会处理大量的心跳信息，默认10s一次<br>",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-14",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-49",
       "label": "Region heartbeat report",
       "details": "PD这边处理过的心跳数量，处理不过来的心跳信息会缓存到PD的缓存中。<br>这个值和TiKV Leader count的值做比对",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-14",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-50",
       "label": "Heartbeat region event QPS",
       "details": "PD->Heartbeat->Heartbeat region event QPS<br>update_cache多的话，说明缓存到PD内存中的心跳比较多",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-14",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Config-26",
       "label": "flow-round-by-digit",
       "details": "PD根据流量来判断是否处理心跳信息<br>PD 会对流量信息的末尾数字进行四舍五入处理，减少 Region 流量信息变化引起的统计信息更新。",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-14",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Config-25",
       "label": "raftstore.hibernate-regions",
       "details": "TiKV的参数，静默region",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-14",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Page-15",
       "label": "频繁产生调度",
       "details": "现象：<br>集群版本v3.0，TiDB Server大量出现 not leader错误<br>QPS/TPS延迟升高<br><br>排查：<br>确认调度类型->排查对应调度类型的参数->分析产生原因（扩缩容，修改label，参数修改）<br><br>集群总region是30k，但是空region达到了20k。<br>假设空region是6w个，每个分数是1分（1MB），分数就是6w。<br>此时数据加载，100MB1个region，1000个region，共记10wMB，<br>这1000个region分布在3个TiKV上，每个TiKV都加了10W分，<br>但是region的个数只加了1000，count很低，分数很高，导致触发调度。<br><br>V3.0版本之后，新增参数：<br>leader-schedule-policy，可选值size/count，<br>region-weight，默认2<br>leader-weight，默认2<br><br>解决：<br>1、调大tolerant-size-retio，调整可容忍的比率，比如是10，<br>那么分数是十倍也是可以被容忍的，即十倍以内都不会调度。先调整这个参数停止频繁的调度。<br>2、开启region merge功能",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-12",
-      "target": "Index-27,Index-07,Index-06"
+      "target": "Index-27,Index-07,Index-06",
+      "link": ""
     },
     {
       "id": "Page-16",
       "label": "store leader score不均衡",
       "details": "现象：<br>开启hibernate-regions参数，滚动重启集群期间。中途中断后，发现store之间的leader分布始终处于不均衡状态。store1的leader数量一直很低。<br><br>排查思路：<br>调度有没有产生->调度产生情况->调度执行情况<br><br>PD的日志：<br>store1频繁发生调度，因为hibernate-regions参数开启，<br>不活跃的regions发送心跳频率降低，导致其他region发起选举，由于该region不发送心跳，PD认为该storeid的leader节点太少，重新发起调度。",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-12",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-51",
       "label": "balance leader scheduler",
       "details": "",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-16",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-38",
       "label": "Store region score",
       "details": "PD->Statistics-balance->Store region score<br>TiKV region的分数",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-13",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-39",
       "label": "Store region size",
       "details": "",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-13",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-40",
       "label": "Store region count",
       "details": "",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-13",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Page-17",
       "label": "label和高可用",
       "details": "PD只能保证region不在同一个TiKV上，<br>默认不会识别zone，DC，rack，host等，<br>label的作用就是让PD可以感知到。<br><br>工作原理：<br>TiKV：每个TiKV都打一个标签<br>PD：指定location-labels和isolation-level<br>",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-13",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-41",
       "label": "TiKV-Details->Cluster->region",
       "details": "TiKV-Details->Cluster->region<br>region数量从故障开始时间点比较剧烈波动",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-15",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-42",
       "label": "TiKV-Details->Cluster->leader",
       "details": "TiKV-Details->Cluster->leader<br>leader数量从故障开始时间点比较剧烈的波动",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-15",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-45",
       "label": "Number of Regions",
       "details": "",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-15",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Config-22",
       "label": "leader-schedule-policy",
       "details": "PD的参数，可选值size/count",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-15",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Config-23",
       "label": "region-weight",
       "details": "TiKV的参数",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-15",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Config-24",
       "label": "leader-weight",
       "details": "TiKV的参数",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-15",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Page-18",
       "label": "PD故障案例-TSO生成慢",
       "details": "现象<br><br>诊断：<br>Start TSO Wait Duration 300ms<br>Start TSO Wait Duration 30ms<br>PD TSO Wait Duration 250ms<br>PD TSO OPS 数量有激增<br>PD Client CMD OPS 有激增<br><br>解决：<br>云主机TiDB Server混合部署，高并发下，CPU处理能力下降<br>分开部署<br><br>总结：<br>根据TSO的获取流程及对应监控项，定位获取tso慢的范围。<br>如果TiDB节点服务器PCU负载较高，可能会导致TSO的获取duration较高。<br>",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-00",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Log-04",
       "label": "get timestamp too slow",
       "details": "TiDB日志中有get timestamp too slow的日志，说明TSO生成慢",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-18",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Note-19",
       "label": "TSO的工作原理",
       "details": "参考PD(Placement Driver)主要功能",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-18",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-52",
       "label": "Start TSO Wait Duration",
       "details": "TiDB->PD Client-> Start TSO Wait Duration<br>请求TSO到收到tsFuture的duration，只到PDclient，TiDB Server内部处理",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-18",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-53",
       "label": "PD TSO RPC Duration",
       "details": "TiDB->PD Client->PD TSO RPC Duration<br>PD client发出TSO请求到收到分配的TSO的时间，网络+PD处理",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-18",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-54",
       "label": "PD TSO Wait Duration",
       "details": "TiDB->PD Client->PD TSO Wait Duration<br>从进入tsFuture.wait到获得TSO的等待时间",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-18",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-55",
       "label": "PD Client CMD OPS",
       "details": "TiDB->PD Client<br>tso_async_wait有激增",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-18",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-56",
       "label": "PD TSO OPS",
       "details": "CMD永远大于request，因为PD Client有批处理的优化",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-18",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Page-19",
       "label": "PD故障案例-PD高可用异常",
       "details": "现象：<br>巡检发现PD日志中出现 sync duration of 3.0s, expected less than 1s告警信息<br>与leader/follower角色无关<br>每隔28天出现一次，持续3s左右<br>集群中各个主机伴随leader切换的行为（肯定有业务的延迟）<br><br>PD高可用异常定位思路<br><br>PD leader选举依赖内嵌的etcd选举，etcd也是raft选举机制。<br>etcd磁盘性能抖动也会导致选举<br>网络抖动：<br>（1）网络故障<br>（2）服务器负载高<br><br>磁盘抖动：<br>（1）etcd本身问题<br>etcd->99% Handle txn duration<br>etcd->99% Peer round trip time seconds<br>指标都在5ms<br>（2）磁盘问题<br>",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-00",
-      "target": "Event-08"
+      "target": "Event-08",
+      "link": ""
     },
     {
       "id": "Index-58",
       "label": "etcd->99% Handle txn duration",
       "details": "PD->etcd",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-19",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-59",
       "label": "etcd->99% Peer round trip time seconds",
       "details": "PD->etcd",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-19",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Event-17",
       "label": "磁盘问题",
       "details": "磁盘空间<br>单享盘<br>io util<br>write latency<br>硬件问题<br>raid卡28天充放点一次。",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-19",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Page-20",
       "label": "PD故障案例-扩缩异常",
       "details": "状态变化：online->offline->tombstone<br>region health->offline-peer-region-count<br><br>排查方向：<br>磁盘空间<br>label配置<br>违反raft协议<br><br>解决（手工下线）：<br>1、查看下线store还存在的region id<br>pg-ctl -d -u xxx region store 4(要下线的storeid)<br>2、使用pd-ctl transfer-region手工调度<br>3、所有region transfer之后状态自动变为tombstone<br><br>注意：<br>pd-ctl -d看不到learner角色，PD下线之前先创建1个learner角色，等learner角色日志追上之后，会变成follower<br><br>如下命令会打印出包括learner角色的storeid是4的所有的region信息<br>region -jq=\".regions[] | {id: .id,peer_stores: [.peers[].store_id] | select(any(.==4))}\"<br><br>",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-00",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-59",
       "label": "offline-peer-region-count",
       "details": "扩所容的时候，预期是不断下降",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-20",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Page-21",
       "label": "PD故障案例-TiKV状态异常",
       "details": "超过20s没收到TiKV发送的heartbeat之后，会把该TiKV标记为<br>Disconnected状态<br>网络<br>raftstore pool主要处理写请求，处理心跳<br>如果写请求延迟表达的化，说明raftstore 线程的确比较忙<br><br>总结：<br>store heartbeat的任务需要先发送tick 给raftstore，然后在发送heartbeat 给 pd，因为raftstore较忙，propose wait 很高，导致store heartbeat无法及时发送，PD节点发现20s未收到heartbeat就会标记TiKV未disconnected状态。",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-00",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-60",
       "label": "Propose wait duration",
       "details": "TiKV-Details->Raft propose->Propose wait duration<br>从发送请求给Raftstore，到Raftstore真正开始处理请求之间的延迟时间。<br>如果2-3s，说明raftstore在线程池队列的比较多，都在排队<br>",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-21",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Page-22",
       "label": "304 性能调优",
       "details": "304 性能调优",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Page-23",
       "label": "大量查询超时案例",
       "details": "核实情况：<br>TiDB->Query Summary->Duration<br>TiDB->Query Summary->QPS 排查是否有业务激增<br>TiDB->Query Summary->999/99/95/80 Duration 排查具体是写的问题还是读的问题<br>TiDB->Query Detail->Duration 999/99/95/80 by instance 排查是否是某一台的问题，如果不是某一台，大概率不是TiDB Server的问题<br>结合DML语句读写流程<br>（1）TSO获取快慢<br>TiDB->PD Client->PD TSO Wait/RPC Duration<br>（2）编译/解析<br>TiDB->Executor->Parse/Compile Duration<br>（3）排除backup off问题<br>TiDB->KV Errors->KV Backoff Duration/KV Backoff OPS 排除是Backup off的错误问题<br>（4）TiKV问题<br>TiDB->KV Request->KV Request Duration 99 by store 排查哪个TiKV有问题<br>TiDB->KV Request->KV Request Duration 99 by type 排除是那种类型的Request，BatchGet是pointGet的一种。<br>",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-22",
-      "target": "Index-52,Index-53,Index-54,Index-55,Index-56"
+      "target": "Index-52,Index-53,Index-54,Index-55,Index-56",
+      "link": ""
     },
     {
       "id": "Page-24",
       "label": "写入频繁抖动",
       "details": "背景<br>v5.1.0，TiKV aws 4c32g+千兆+1TBnvme<br>9:30左右insert 写入频繁抖动，最高1s，集群资源（CPU，IP，网络）均未达到瓶颈<br><br>排查<br>TiKV-Details->gRPC->99% gRPC message duration排除掉网络问题，并且该指标有具体的写入类型，kv_prewrite慢<br>结合TiKV写入流程继续分析是线程的问题？还是IO的问题<br>写入线程问题指标：<br>TiKV-Details->Thread CPU->gRPC poll CPU<br>TiKV-Details->Thread CPU->Scheduler worker CPU<br>TiKV-Details->Thread CPU->Raft store CPU<br>TiKV-Details->Thread CPU->Async apply CPU<br>上述指标都正常<br><br>IO问题相关指标：<br>TiKV-Details->Raft IO->99% Apply log duration per server<br>TiKV-Details->Raft IO->99% Append log duration per server<br>TiKV-Details->Raft IO->99% Commit log duration per server 有1台TiKV指标升高<br>TiKV-Details->Raft propose->Propose wait duration per server 对应实例的Raft store线程队列也出现排队等待  <br>TiKV-Details->Raft propose->Apply wait duration per server<br><br>TiKV-Details->Raft Engine->Write Duration <br>Node_exporter->Disk 磁盘IO比较低，但是写入延迟上涨明显。<br><br>结论：<br>问题TiKV 磁盘有问题，换了一台云主机解决。",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-22",
-      "target": "Index-19,Index-31"
+      "target": "Index-19,Index-31",
+      "link": ""
     },
     {
       "id": "Index-60",
       "label": "99% gRPC message duration",
       "details": "TiKV-Details->gRPC->99% gRPC message duration<br>排查问题时间",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-24",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Note-20",
       "label": "TiKV数据写入流程",
       "details": "raftstore pool负责处理写入，同时也负责处理心跳信息<br>写入流程如下<br>（1）propose<br>（2）append<br>（3）replicate->remote append<br>（4）commit<br>（5）apply",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-24",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-61",
       "label": "gRPC poll CPU",
       "details": "TiKV-Details->Thread CPU->gRPC poll CPU",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-24",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-62",
       "label": "Async apply CPU",
       "details": "TiKV-Details->Thread CPU->Async apply CPU",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-24",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-63",
       "label": "99% Apply log duration per server",
       "details": "TiKV-Details->Raft IO->99% Apply log duration per server<br>每一条线是1个TiKV服务器，很方便的排查出是否是单个TiKV的磁盘问题，rocksdb Apply的平均时间",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-24",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-64",
       "label": "99% Append log duration per server",
       "details": "TiKV-Details->Raft IO->99% Append log duration per server<br>每一条线是1个TiKV服务器，很方便的排查出是否是单个TiKV的磁盘问题，rocksdb Append的平均时间",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-24",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-65",
       "label": "99% Commit log duration per server",
       "details": "TiKV-Details->Raft IO->99% Commit log duration per server<br>每一条线是1个TiKV服务器，很方便的排查出是否是单个TiKV的磁盘问题，rocksdb Apply的平均时间",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-24",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-66",
       "label": "99% Propose wait duration per server ",
       "details": "TiKV-Details->Raft propose->99% Propose wait duration per server<br>每一条线是1个TiKV服务器，很方便的排查出是否是单个TiKV的磁盘问题，Propose的平均时间，如果是IO慢，这里会随之变慢",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-24",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-67",
       "label": "99% Apply wait duration per server",
       "details": "TiKV-Details->Raft propose->99% Apply wait duration per server<br>每一条线是1个TiKV服务器，很方便的排查出是否是单个TiKV的磁盘问题，Propose的平均时间，如果是IO慢，这里会随之变慢",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-24",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Page-25",
       "label": "磁盘容量影响PD调度",
       "details": "现象：<br>TiDB Duration从11.10日开始突然不稳定，几个TiKV的region数量频繁变化<br><br>原理：<br>PD频繁调度会导致大量backoff报错，查询的流程变的复杂很多，进而引起查询时间抖动<br><br>排查：<br>PD->Statistics-balance->Store region score<br>PD->Scheduler->Balance region movement(老版本名Balance region event)<br>PD->Statistics-balance->Store availiable ratio 接近40%左右，达到了high-space-ratio参数值60%，此时TiDB的score计算公式会有变化，导致score一只上涨<br><br>PD产生调度的原因：<br>热点<br>磁盘容量：high-space-ratio",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-22",
-      "target": "Index-38,Index-44"
+      "target": "Index-38,Index-44",
+      "link": ""
     },
     {
       "id": "Config-27",
       "label": "high-space-ratio",
       "details": "默认值：0.7。<br>设置 store 空间充裕的阈值。当节点的空间占用比例小于该阈值时，PD 调度时会忽略节点的剩余空间，主要根据实际数据量进行均衡。此配置仅在 region-score-formula-version = v1 时生效。",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-25",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Config-28",
       "label": "low-space-ratio",
       "details": "默认值：0.8。<br>设置 store 空间不足的阈值。当某个节点的空间占用比例超过该阈值时，PD 会尽可能避免往该节点迁移数据，同时主要根据节点剩余空间大小进行调度，避免对应节点的磁盘空间被耗尽。",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-25",
-      "target": ""
+      "target": "",
+      "link": ""
     },
     {
       "id": "Index-69",
       "label": "Balance region movement",
       "details": "PD->Scheduler->Balance region movement(老版本名Balance region event)",
-      "originalSize": 20,
-      "originalDegree": 0,
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-25",
-      "target": ""
+      "target": "",
+      "link": ""
+    },
+    {
+      "id": "Page-26",
+      "label": "UnifyRead Pool原理",
+      "details": "TiDB 4.0 新 Feature 原理及实践：统一读线程池",
+      "originalSize": "",
+      "originalDegree": "",
+      "source": "",
+      "target": "",
+      "link": "https://tidb.net/blog/56f2a0cd"
+    },
+    {
+      "id": "",
+      "label": "use-unified-pool",
+      "details": "",
+      "originalSize": "",
+      "originalDegree": "",
+      "source": "Page-26",
+      "target": "",
+      "link": ""
+    },
+    {
+      "id": "",
+      "label": "auto-adjust-pool-size",
+      "details": "",
+      "originalSize": "",
+      "originalDegree": "",
+      "source": "Page-26",
+      "target": "",
+      "link": ""
+    },
+    {
+      "id": "Page-27",
+      "label": "TiDB的变量类型",
+      "details": "系统变量<br>（1）全局系统变量<br>set @@global.auto_increment_increment=10;<br>set global auto_increment_increment = 10;<br>select @@global.auto_increment_increment;<br>show global variables like 'auto_increment_increment';<br>（2）会话系统变量<br>set @@session.auto_increment_increment=10;<br>set session auto_increment_increment = 10;<br>select @@session.auto_increment_increment;<br>show session variables like 'auto_increment_increment';<br><br>用户变量<br>set @aaa='bb';<br>select @aaa;<br><br>服务器状态变量<br>show global status;<br>show session status;<br><br>配置文件参数<br>tiup cluster edit-config xxx<br>tiup cluster show-config xxx<br>注意：PD的参数修改有可能用edit-config不生效，需要用pg-ctl来修改",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
+      "source": "",
+      "target": "",
+      "link": ""
+    },
+    {
+      "id": "Doc-01",
+      "label": "SOP文档",
+      "details": "平凯7.1.8 SOP",
+      "originalSize": 50.0,
+      "originalDegree": 20.0,
+      "source": "",
+      "target": "",
+      "link": "https://pingcap-cn.feishu.cn/wiki/Y6Mzw7PVqiydiAkXGOOcpCsPnxc"
+    },
+    {
+      "id": "Doc-02",
+      "label": "参数规范",
+      "details": "SOP-参数规范",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
+      "source": "Doc-01",
+      "target": "",
+      "link": "https://pingcap-cn.feishu.cn/wiki/TusEwJBCDibl7wknBzFcV8pOnOY"
+    },
+    {
+      "id": "Doc-03",
+      "label": "微众银行参数规范",
+      "details": "微众银行参数规范",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
+      "source": "Doc-02",
+      "target": "",
+      "link": "https://pingcap-cn.feishu.cn/sheets/HSvwszXtFhZCSJtave7cozehnNf?sheet=SwcSZv"
     }
   ],
   "edges": [
@@ -2432,6 +2673,18 @@
     {
       "source": "Page-25",
       "target": "Index-69"
+    },
+    {
+      "source": "Page-26",
+      "target": ""
+    },
+    {
+      "source": "Doc-01",
+      "target": "Doc-02"
+    },
+    {
+      "source": "Doc-02",
+      "target": "Doc-03"
     }
   ]
 }
