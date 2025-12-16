@@ -8,7 +8,8 @@
       "originalDegree": 0.0,
       "source": "Page-00",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-01",
@@ -18,7 +19,8 @@
       "originalDegree": 0.0,
       "source": "Page-00",
       "target": "",
-      "link": "https://tidb.net/blog/b7a90f87"
+      "link": "https://tidb.net/blog/b7a90f87",
+      "picture": ""
     },
     {
       "id": "Config-13",
@@ -28,7 +30,8 @@
       "originalDegree": 0.0,
       "source": "Page-01,Event-05",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-14",
@@ -38,27 +41,30 @@
       "originalDegree": 0.0,
       "source": "Page-01,Event-05",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-15",
       "label": "max-merge-region-size",
-      "details": "max-merge-region-size",
+      "details": "默认值54MB，控制Region Merge的size上限，当 Region key 大于指定值时 PD 不会将其与相邻的 Region 合并。<br><br>当region merge 速度慢的时候，考虑是否这个参数不当。",
       "originalSize": 20.0,
       "originalDegree": 0.0,
       "source": "Page-01",
       "target": "",
-      "link": ""
+      "link": "https://docs.pingcap.com/zh/tidb/stable/pd-configuration-file/#max-merge-region-size",
+      "picture": ""
     },
     {
       "id": "Config-16",
       "label": "max-merge-region-keys",
-      "details": "max-merge-region-keys",
+      "details": "控制 Region Merge 的 key 上限，当 Region key 大于指定值时 PD 不会将其与相邻的 Region 合并。<br>默认：540000。在 v8.4.0 之前，默认值为 200000；从 v8.4.0 开始，默认值为 540000。<br><br>当region merge 速度慢的时候，考虑是否这个参数不当。",
       "originalSize": 20.0,
       "originalDegree": 0.0,
       "source": "Page-01",
       "target": "",
-      "link": ""
+      "link": "https://docs.pingcap.com/zh/tidb/stable/pd-configuration-file/#max-merge-region-keys",
+      "picture": ""
     },
     {
       "id": "Config-17",
@@ -68,17 +74,19 @@
       "originalDegree": 0.0,
       "source": "Page-01",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-01",
       "label": "compaction pending bytes",
-      "details": "compaction pending bytes",
+      "details": "compaction pending bytes<br>TiKV-Details->RocksDB KV/RocksDB raft<br>等待进行Compaction的量的大小，<br>L1～Ln层待Compaction的SST文件大小过大，并且达到了阈值时，此指标会上涨",
       "originalSize": 20.0,
       "originalDegree": 0.0,
       "source": "Page-01",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-01",
@@ -88,7 +96,8 @@
       "originalDegree": 0.0,
       "source": "Page-01",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-02",
@@ -98,7 +107,8 @@
       "originalDegree": 0.0,
       "source": "Page-01",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-02",
@@ -108,7 +118,8 @@
       "originalDegree": 0.0,
       "source": "Page-00",
       "target": "Page-03",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-02",
@@ -118,7 +129,8 @@
       "originalDegree": 0.0,
       "source": "Page-02",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-03",
@@ -128,7 +140,8 @@
       "originalDegree": 0.0,
       "source": "Page-02",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-04",
@@ -138,7 +151,8 @@
       "originalDegree": 0.0,
       "source": "Page-02",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-05",
@@ -148,7 +162,8 @@
       "originalDegree": 0.0,
       "source": "Page-02",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-06",
@@ -158,7 +173,8 @@
       "originalDegree": 0.0,
       "source": "Page-02",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-07",
@@ -168,7 +184,8 @@
       "originalDegree": 0.0,
       "source": "Page-02",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-43",
@@ -178,7 +195,8 @@
       "originalDegree": 0.0,
       "source": "Index-07",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-44",
@@ -188,7 +206,8 @@
       "originalDegree": 0.0,
       "source": "Page-15",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-08",
@@ -198,7 +217,8 @@
       "originalDegree": 0.0,
       "source": "Page-02",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-03",
@@ -208,17 +228,19 @@
       "originalDegree": 0.0,
       "source": "Page-00",
       "target": "Index-07,Index-08,Page-06",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-03",
       "label": "region-schedule-limit",
-      "details": "手工修复TiKV之前，设置次参数，不让pd发起调度",
+      "details": "同时进行 Region 调度的任务个数<br>默认值：2048<br><br>手工修复TiKV之前，设置次参数，不让pd发起调度<br>region merge速度慢的情况下，如果判断调度速度过慢，可以考虑调大此参数。",
       "originalSize": 20.0,
       "originalDegree": 0.0,
       "source": "Page-03",
       "target": "",
-      "link": ""
+      "link": "https://docs.pingcap.com/zh/tidb/stable/pd-configuration-file/#region-schedule-limit",
+      "picture": ""
     },
     {
       "id": "Config-04",
@@ -228,7 +250,8 @@
       "originalDegree": 0.0,
       "source": "Page-03",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-05",
@@ -238,17 +261,19 @@
       "originalDegree": 0.0,
       "source": "Page-03",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-06",
       "label": "merge-schedule-limit",
-      "details": "手工修复TiKV之前，设置次参数，不让pd发起调度",
+      "details": "默认值：8<br>同时进行的 Region Merge 调度的任务，设置为 0 则关闭 Region Merge。<br><br>手工修复TiKV之前，设置次参数，不让pd发起调度<br><br>region merge速度慢的情况下，如果判断调度速度过慢，可以考虑调大此参数。",
       "originalSize": 20.0,
       "originalDegree": 0.0,
       "source": "Page-03",
       "target": "",
-      "link": ""
+      "link": "https://docs.pingcap.com/zh/tidb/stable/pd-configuration-file/#merge-schedule-limit",
+      "picture": ""
     },
     {
       "id": "Error-01",
@@ -258,7 +283,8 @@
       "originalDegree": 0.0,
       "source": "Page-03",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-04",
@@ -268,7 +294,8 @@
       "originalDegree": 0.0,
       "source": "Page-03",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Error-02",
@@ -278,7 +305,8 @@
       "originalDegree": 0.0,
       "source": "Page-04",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-05",
@@ -288,7 +316,8 @@
       "originalDegree": 0.0,
       "source": "Page-03",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Error-03",
@@ -298,7 +327,8 @@
       "originalDegree": 0.0,
       "source": "Page-05",
       "target": "",
-      "link": "https://docs.pingcap.com/zh/tidb/stable/tikv-control/?_gl=1*1sh7tol*_gcl_au*MTYwMzk2MTYyOS4xNzYyOTMzNjQ2*_ga*MTYwNjU5NTgzNC4xNzYyOTMzNjQ2*_ga_3JVXJ41175*czE3NjQxMzY5ODMkbzEwJGcwJHQxNzY0MTM2OTk0JGo0OSRsMCRoMTc4NDU4Mzc4OQ..*_ga_ZEL0RNV6R2*czE3NjM5NzA2MTUkbzckZzEkdDE3NjM5NzA2NDEkajM0JGwwJGgw*_ga_CPG2VW1Y41*czE3NjQxMzY5ODMkbzEwJGcwJHQxNzY0MTM2OTgzJGo2MCRsMCRoMA..#%E8%AE%BE%E7%BD%AE%E4%B8%80%E4%B8%AA-region-%E5%89%AF%E6%9C%AC%E4%B8%BA-tombstone-%E7%8A%B6%E6%80%81"
+      "link": "https://docs.pingcap.com/zh/tidb/stable/tikv-control/?_gl=1*1sh7tol*_gcl_au*MTYwMzk2MTYyOS4xNzYyOTMzNjQ2*_ga*MTYwNjU5NTgzNC4xNzYyOTMzNjQ2*_ga_3JVXJ41175*czE3NjQxMzY5ODMkbzEwJGcwJHQxNzY0MTM2OTk0JGo0OSRsMCRoMTc4NDU4Mzc4OQ..*_ga_ZEL0RNV6R2*czE3NjM5NzA2MTUkbzckZzEkdDE3NjM5NzA2NDEkajM0JGwwJGgw*_ga_CPG2VW1Y41*czE3NjQxMzY5ODMkbzEwJGcwJHQxNzY0MTM2OTgzJGo2MCRsMCRoMA..#%E8%AE%BE%E7%BD%AE%E4%B8%80%E4%B8%AA-region-%E5%89%AF%E6%9C%AC%E4%B8%BA-tombstone-%E7%8A%B6%E6%80%81",
+      "picture": ""
     },
     {
       "id": "Error-04",
@@ -308,7 +338,8 @@
       "originalDegree": 0.0,
       "source": "Page-05",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-06",
@@ -318,7 +349,8 @@
       "originalDegree": 0.0,
       "source": "Page-00",
       "target": "Config-03,Config-04,Config-05,Config-06,Page-07",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Note-02",
@@ -328,7 +360,8 @@
       "originalDegree": 0.0,
       "source": "Page-06",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Note-03",
@@ -338,7 +371,8 @@
       "originalDegree": 0.0,
       "source": "Page-06",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-07",
@@ -348,7 +382,8 @@
       "originalDegree": 0.0,
       "source": "Note-02",
       "target": "Page-08",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Note-04",
@@ -358,7 +393,8 @@
       "originalDegree": 0.0,
       "source": "Page-07",
       "target": "Note-05",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Note-05",
@@ -368,7 +404,8 @@
       "originalDegree": 0.0,
       "source": "Page-07",
       "target": "Note-06",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Note-06",
@@ -378,7 +415,8 @@
       "originalDegree": 0.0,
       "source": "Page-07",
       "target": "Note-07",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Note-07",
@@ -388,7 +426,8 @@
       "originalDegree": 0.0,
       "source": "Page-07",
       "target": "Config-03,Config-04,Config-05,Config-06,Note-08",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Note-08",
@@ -398,7 +437,8 @@
       "originalDegree": 0.0,
       "source": "Page-07",
       "target": "Note-09,Note-11",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Note-09",
@@ -408,7 +448,8 @@
       "originalDegree": 0.0,
       "source": "Page-07",
       "target": "Note-10",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Note-10",
@@ -418,7 +459,8 @@
       "originalDegree": 0.0,
       "source": "Page-07",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-08",
@@ -428,7 +470,8 @@
       "originalDegree": 0.0,
       "source": "Note-03",
       "target": "Note-04,Note-05,Note-06",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Note-11",
@@ -438,7 +481,8 @@
       "originalDegree": 0.0,
       "source": "Page-08",
       "target": "Note-12",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Note-12",
@@ -448,7 +492,8 @@
       "originalDegree": 0.0,
       "source": "Page-08",
       "target": "Note-15",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Note-13",
@@ -458,7 +503,8 @@
       "originalDegree": 0.0,
       "source": "Page-08",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Note-14",
@@ -468,7 +514,8 @@
       "originalDegree": 0.0,
       "source": "Page-08",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Note-15",
@@ -478,7 +525,8 @@
       "originalDegree": 0.0,
       "source": "Page-08",
       "target": "Note-07",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Note-16",
@@ -488,7 +536,8 @@
       "originalDegree": 0.0,
       "source": "Page-08",
       "target": "Index-03,Index-04,Index-05",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-09",
@@ -498,7 +547,8 @@
       "originalDegree": 0.0,
       "source": "Page-00",
       "target": "Page-10",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Note-17",
@@ -508,7 +558,8 @@
       "originalDegree": 0.0,
       "source": "Page-09",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Note-18",
@@ -518,7 +569,8 @@
       "originalDegree": 0.0,
       "source": "Page-09",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-10",
@@ -528,7 +580,8 @@
       "originalDegree": 0.0,
       "source": "Page-00",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Error-5",
@@ -538,7 +591,8 @@
       "originalDegree": 0.0,
       "source": "Page-10",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-09",
@@ -548,7 +602,8 @@
       "originalDegree": 0.0,
       "source": "Page-10",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Event-01",
@@ -558,7 +613,8 @@
       "originalDegree": 0.0,
       "source": "Page-10",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Event-02",
@@ -568,7 +624,8 @@
       "originalDegree": 0.0,
       "source": "Page-10",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Theory-01",
@@ -578,7 +635,8 @@
       "originalDegree": 0.0,
       "source": "Event-01",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Event-03",
@@ -588,7 +646,8 @@
       "originalDegree": 0.0,
       "source": "Event-01",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-10",
@@ -598,7 +657,8 @@
       "originalDegree": 0.0,
       "source": "Event-03",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-11",
@@ -608,7 +668,8 @@
       "originalDegree": 0.0,
       "source": "Event-03",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Log-01",
@@ -618,7 +679,8 @@
       "originalDegree": 0.0,
       "source": "Event-03",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-06",
@@ -628,7 +690,8 @@
       "originalDegree": 0.0,
       "source": "Event-03",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-07",
@@ -638,7 +701,8 @@
       "originalDegree": 0.0,
       "source": "Event-03",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-08",
@@ -648,7 +712,8 @@
       "originalDegree": 0.0,
       "source": "Event-03",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Event-04",
@@ -658,7 +723,8 @@
       "originalDegree": 0.0,
       "source": "Event-01",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-12",
@@ -668,7 +734,8 @@
       "originalDegree": 0.0,
       "source": "Event-04",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-13",
@@ -678,7 +745,8 @@
       "originalDegree": 0.0,
       "source": "Event-04",
       "target": "Log-01",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-09",
@@ -688,7 +756,8 @@
       "originalDegree": 0.0,
       "source": "Event-04",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-10",
@@ -698,7 +767,8 @@
       "originalDegree": 0.0,
       "source": "Event-04",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-11",
@@ -708,7 +778,8 @@
       "originalDegree": 0.0,
       "source": "Event-04",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-12",
@@ -718,7 +789,8 @@
       "originalDegree": 0.0,
       "source": "Event-04",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Event-05",
@@ -727,8 +799,9 @@
       "originalSize": 20.0,
       "originalDegree": 0.0,
       "source": "Event-01",
-      "target": "",
-      "link": ""
+      "target": "Index-01",
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-14",
@@ -738,7 +811,8 @@
       "originalDegree": 0.0,
       "source": "Event-05",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-15",
@@ -748,17 +822,8 @@
       "originalDegree": 0.0,
       "source": "Event-05",
       "target": "",
-      "link": ""
-    },
-    {
-      "id": "Index-16",
-      "label": "Compaction pending bytes",
-      "details": "TiKV-Details->RocksDB KV/RocksDB raft<br>等待进行Compaction的量的大小，会上涨",
-      "originalSize": 20.0,
-      "originalDegree": 0.0,
-      "source": "Event-05",
-      "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-17",
@@ -768,7 +833,8 @@
       "originalDegree": 0.0,
       "source": "Event-05",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-18",
@@ -778,7 +844,8 @@
       "originalDegree": 0.0,
       "source": "Event-05",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-19",
@@ -788,7 +855,8 @@
       "originalDegree": 20.0,
       "source": "Event-05",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Event-06",
@@ -798,7 +866,8 @@
       "originalDegree": 0.0,
       "source": "Event-02",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Event-10",
@@ -808,7 +877,8 @@
       "originalDegree": 0.0,
       "source": "Event-06",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-20",
@@ -818,7 +888,8 @@
       "originalDegree": 0.0,
       "source": "Event-10",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-18",
@@ -828,7 +899,8 @@
       "originalDegree": 0.0,
       "source": "Event-10",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-19",
@@ -838,7 +910,8 @@
       "originalDegree": 0.0,
       "source": "Event-10",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-20",
@@ -848,7 +921,8 @@
       "originalDegree": 0.0,
       "source": "Event-10",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-21",
@@ -858,7 +932,8 @@
       "originalDegree": 0.0,
       "source": "Event-10",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-22",
@@ -868,7 +943,8 @@
       "originalDegree": 0.0,
       "source": "Event-10",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-23",
@@ -878,7 +954,8 @@
       "originalDegree": 0.0,
       "source": "Event-10",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-24",
@@ -888,7 +965,8 @@
       "originalDegree": 0.0,
       "source": "Event-10",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Log-02",
@@ -898,7 +976,8 @@
       "originalDegree": 0.0,
       "source": "Event-10",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Event-07",
@@ -908,7 +987,8 @@
       "originalDegree": 0.0,
       "source": "Event-06",
       "target": "Page-24",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Event-08",
@@ -918,7 +998,8 @@
       "originalDegree": 0.0,
       "source": "Event-06",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-25",
@@ -928,7 +1009,8 @@
       "originalDegree": 0.0,
       "source": "Event-08",
       "target": "Log-03",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Log-03",
@@ -938,7 +1020,8 @@
       "originalDegree": 0.0,
       "source": "Event-08",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-11",
@@ -948,7 +1031,8 @@
       "originalDegree": 0.0,
       "source": "Page-00",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-26",
@@ -958,7 +1042,8 @@
       "originalDegree": 0.0,
       "source": "Page-11",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-27",
@@ -968,7 +1053,8 @@
       "originalDegree": 0.0,
       "source": "Page-11",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-28",
@@ -978,7 +1064,8 @@
       "originalDegree": 0.0,
       "source": "Page-11",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-29",
@@ -988,7 +1075,8 @@
       "originalDegree": 0.0,
       "source": "Page-11",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Event-09",
@@ -998,7 +1086,8 @@
       "originalDegree": 0.0,
       "source": "Page-11",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Event-15",
@@ -1008,7 +1097,8 @@
       "originalDegree": 0.0,
       "source": "Page-11",
       "target": "Index-07",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-30",
@@ -1018,7 +1108,8 @@
       "originalDegree": 0.0,
       "source": "Page-11",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Event-14",
@@ -1028,7 +1119,8 @@
       "originalDegree": 0.0,
       "source": "Event-09",
       "target": "Event-07,Event-08",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Event-12",
@@ -1038,7 +1130,8 @@
       "originalDegree": 0.0,
       "source": "Event-14",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-31",
@@ -1048,7 +1141,8 @@
       "originalDegree": 0.0,
       "source": "Event-12",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Event-11",
@@ -1058,7 +1152,8 @@
       "originalDegree": 0.0,
       "source": "Event-12",
       "target": "Config-25",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-21",
@@ -1068,7 +1163,8 @@
       "originalDegree": 0.0,
       "source": "Event-12",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Event-13",
@@ -1078,7 +1174,8 @@
       "originalDegree": 0.0,
       "source": "Event-14",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-32",
@@ -1088,7 +1185,8 @@
       "originalDegree": 0.0,
       "source": "Event-13",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-33",
@@ -1098,7 +1196,8 @@
       "originalDegree": 0.0,
       "source": "Event-08",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-57",
@@ -1108,7 +1207,8 @@
       "originalDegree": 0.0,
       "source": "Event-08",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Event-16",
@@ -1118,7 +1218,8 @@
       "originalDegree": 0.0,
       "source": "Event-14",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-34",
@@ -1128,7 +1229,8 @@
       "originalDegree": 0.0,
       "source": "Event-16",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-35",
@@ -1138,7 +1240,8 @@
       "originalDegree": 0.0,
       "source": "Event-15",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-36",
@@ -1148,7 +1251,8 @@
       "originalDegree": 0.0,
       "source": "Event-15",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-37",
@@ -1158,7 +1262,8 @@
       "originalDegree": 0.0,
       "source": "Event-15",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-12",
@@ -1168,7 +1273,8 @@
       "originalDegree": 0.0,
       "source": "Page-00",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-13",
@@ -1178,7 +1284,8 @@
       "originalDegree": 0.0,
       "source": "Page-12",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-14",
@@ -1188,7 +1295,8 @@
       "originalDegree": 0.0,
       "source": "Page-12",
       "target": "Index-07",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-46",
@@ -1198,7 +1306,8 @@
       "originalDegree": 0.0,
       "source": "Page-14",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-47",
@@ -1208,7 +1317,8 @@
       "originalDegree": 0.0,
       "source": "Page-14",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-48",
@@ -1218,7 +1328,8 @@
       "originalDegree": 0.0,
       "source": "Page-14",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-49",
@@ -1228,7 +1339,8 @@
       "originalDegree": 0.0,
       "source": "Page-14",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-50",
@@ -1238,7 +1350,8 @@
       "originalDegree": 0.0,
       "source": "Page-14",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-26",
@@ -1248,7 +1361,8 @@
       "originalDegree": 0.0,
       "source": "Page-14",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-25",
@@ -1258,7 +1372,8 @@
       "originalDegree": 0.0,
       "source": "Page-14",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-15",
@@ -1268,7 +1383,8 @@
       "originalDegree": 0.0,
       "source": "Page-12",
       "target": "Index-27,Index-07,Index-06",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-16",
@@ -1278,7 +1394,8 @@
       "originalDegree": 0.0,
       "source": "Page-12",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-51",
@@ -1288,7 +1405,8 @@
       "originalDegree": 0.0,
       "source": "Page-16",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-38",
@@ -1298,7 +1416,8 @@
       "originalDegree": 0.0,
       "source": "Page-13",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-39",
@@ -1308,7 +1427,8 @@
       "originalDegree": 0.0,
       "source": "Page-13",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-40",
@@ -1318,7 +1438,8 @@
       "originalDegree": 0.0,
       "source": "Page-13",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-17",
@@ -1328,7 +1449,8 @@
       "originalDegree": 0.0,
       "source": "Page-13",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-41",
@@ -1338,7 +1460,8 @@
       "originalDegree": 0.0,
       "source": "Page-15",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-42",
@@ -1348,7 +1471,8 @@
       "originalDegree": 0.0,
       "source": "Page-15",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-45",
@@ -1358,7 +1482,8 @@
       "originalDegree": 0.0,
       "source": "Page-15",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-22",
@@ -1368,7 +1493,8 @@
       "originalDegree": 0.0,
       "source": "Page-15",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-23",
@@ -1378,7 +1504,8 @@
       "originalDegree": 0.0,
       "source": "Page-15",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-24",
@@ -1388,7 +1515,8 @@
       "originalDegree": 0.0,
       "source": "Page-15",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-18",
@@ -1398,7 +1526,8 @@
       "originalDegree": 0.0,
       "source": "Page-00",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Log-04",
@@ -1408,7 +1537,8 @@
       "originalDegree": 0.0,
       "source": "Page-18",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Note-19",
@@ -1418,7 +1548,8 @@
       "originalDegree": 0.0,
       "source": "Page-18",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-52",
@@ -1428,7 +1559,8 @@
       "originalDegree": 0.0,
       "source": "Page-18",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-53",
@@ -1438,7 +1570,8 @@
       "originalDegree": 0.0,
       "source": "Page-18",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-54",
@@ -1448,7 +1581,8 @@
       "originalDegree": 0.0,
       "source": "Page-18",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-55",
@@ -1458,7 +1592,8 @@
       "originalDegree": 0.0,
       "source": "Page-18",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-56",
@@ -1468,7 +1603,8 @@
       "originalDegree": 0.0,
       "source": "Page-18",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-19",
@@ -1478,7 +1614,8 @@
       "originalDegree": 0.0,
       "source": "Page-00",
       "target": "Event-08",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-58",
@@ -1488,7 +1625,8 @@
       "originalDegree": 0.0,
       "source": "Page-19",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-59",
@@ -1498,7 +1636,8 @@
       "originalDegree": 0.0,
       "source": "Page-19",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Event-17",
@@ -1508,7 +1647,8 @@
       "originalDegree": 0.0,
       "source": "Page-19",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-20",
@@ -1518,7 +1658,8 @@
       "originalDegree": 0.0,
       "source": "Page-00",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-59",
@@ -1528,7 +1669,8 @@
       "originalDegree": 0.0,
       "source": "Page-20",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-21",
@@ -1538,7 +1680,8 @@
       "originalDegree": 0.0,
       "source": "Page-00",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-60",
@@ -1548,7 +1691,8 @@
       "originalDegree": 0.0,
       "source": "Page-21",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-22",
@@ -1558,7 +1702,8 @@
       "originalDegree": 0.0,
       "source": "",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-23",
@@ -1568,7 +1713,8 @@
       "originalDegree": 0.0,
       "source": "Page-22",
       "target": "Index-52,Index-53,Index-54,Index-55,Index-56",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-24",
@@ -1578,7 +1724,8 @@
       "originalDegree": 0.0,
       "source": "Page-22",
       "target": "Index-19,Index-31",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-60",
@@ -1588,7 +1735,8 @@
       "originalDegree": 0.0,
       "source": "Page-24",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Note-20",
@@ -1598,7 +1746,8 @@
       "originalDegree": 0.0,
       "source": "Page-24",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-61",
@@ -1608,7 +1757,8 @@
       "originalDegree": 0.0,
       "source": "Page-24",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-62",
@@ -1618,7 +1768,8 @@
       "originalDegree": 0.0,
       "source": "Page-24",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-63",
@@ -1628,7 +1779,8 @@
       "originalDegree": 0.0,
       "source": "Page-24",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-64",
@@ -1638,7 +1790,8 @@
       "originalDegree": 0.0,
       "source": "Page-24",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-65",
@@ -1648,7 +1801,8 @@
       "originalDegree": 0.0,
       "source": "Page-24",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-66",
@@ -1658,7 +1812,8 @@
       "originalDegree": 0.0,
       "source": "Page-24",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-67",
@@ -1668,7 +1823,8 @@
       "originalDegree": 0.0,
       "source": "Page-24",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-25",
@@ -1678,7 +1834,8 @@
       "originalDegree": 0.0,
       "source": "Page-22",
       "target": "Index-38,Index-44",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-27",
@@ -1688,7 +1845,8 @@
       "originalDegree": 0.0,
       "source": "Page-25",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Config-28",
@@ -1698,7 +1856,8 @@
       "originalDegree": 0.0,
       "source": "Page-25",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Index-69",
@@ -1708,37 +1867,41 @@
       "originalDegree": 0.0,
       "source": "Page-25",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-26",
       "label": "UnifyRead Pool原理",
       "details": "TiDB 4.0 新 Feature 原理及实践：统一读线程池",
-      "originalSize": "",
-      "originalDegree": "",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "",
       "target": "",
-      "link": "https://tidb.net/blog/56f2a0cd"
+      "link": "https://tidb.net/blog/56f2a0cd",
+      "picture": ""
     },
     {
-      "id": "",
+      "id": "Config-37",
       "label": "use-unified-pool",
-      "details": "",
-      "originalSize": "",
-      "originalDegree": "",
+      "details": "是否使用统一的读取线程池（在 readpool.unified 中配置）处理存储请求。该选项值为 false 时，使用单独的存储线程池。通过本节 (readpool.storage) 中的其余配置项配置单独的线程池。<br>默认值：如果本节 (readpool.storage) 中没有其他配置，默认为 true。否则，为了升级兼容性，默认为 false，请根据需要更改 readpool.unified 中的配置后再启用该选项。",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-26",
       "target": "",
-      "link": ""
+      "link": "https://docs.pingcap.com/zh/tidb/stable/tikv-configuration-file/#use-unified-pool",
+      "picture": ""
     },
     {
-      "id": "",
+      "id": "Config-38",
       "label": "auto-adjust-pool-size",
-      "details": "",
-      "originalSize": "",
-      "originalDegree": "",
+      "details": "是否开启自动调整线程池的大小。开启此配置可以基于当前的 CPU 使用情况，自动调整统一处理读请求的线程池 (UnifyReadPool) 的大小，优化 TiKV 的读性能。目前线程池自动调整的范围为：[max-thread-count, MAX(4, CPU)](上限与 max-thread-count 可设置的最大值相同)。",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
       "source": "Page-26",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Page-27",
@@ -1748,7 +1911,8 @@
       "originalDegree": 0.0,
       "source": "",
       "target": "",
-      "link": ""
+      "link": "",
+      "picture": ""
     },
     {
       "id": "Doc-01",
@@ -1758,7 +1922,8 @@
       "originalDegree": 20.0,
       "source": "",
       "target": "",
-      "link": "https://pingcap-cn.feishu.cn/wiki/Y6Mzw7PVqiydiAkXGOOcpCsPnxc"
+      "link": "https://pingcap-cn.feishu.cn/wiki/Y6Mzw7PVqiydiAkXGOOcpCsPnxc",
+      "picture": ""
     },
     {
       "id": "Doc-02",
@@ -1768,7 +1933,8 @@
       "originalDegree": 0.0,
       "source": "Doc-01",
       "target": "",
-      "link": "https://pingcap-cn.feishu.cn/wiki/TusEwJBCDibl7wknBzFcV8pOnOY"
+      "link": "https://pingcap-cn.feishu.cn/wiki/TusEwJBCDibl7wknBzFcV8pOnOY",
+      "picture": ""
     },
     {
       "id": "Doc-03",
@@ -1778,7 +1944,349 @@
       "originalDegree": 0.0,
       "source": "Doc-02",
       "target": "",
-      "link": "https://pingcap-cn.feishu.cn/sheets/HSvwszXtFhZCSJtave7cozehnNf?sheet=SwcSZv"
+      "link": "https://pingcap-cn.feishu.cn/sheets/HSvwszXtFhZCSJtave7cozehnNf?sheet=SwcSZv",
+      "picture": ""
+    },
+    {
+      "id": "Page-28",
+      "label": "统计信息管理",
+      "details": "统计信息管理<br>直方图：等深直方图，Count-min Sekatch<br>影响统计信息收集的参数：<br>统计信息收集方法<br>analyze table $table <br><br>自动更新统计信息：<br>更新周期：20*stats lease，每60s更新一次统计信息<br>tidb_auto_analyze_ratio：当前修改行数/总行数<br>tidb_auto_analyze_start_time 默认1天都可以自动收集统计信息<br>tidb_auto_analyze_end_time<br><br>查看统计信息：<br>show analyze status;--统计信息收集状态<br>show stats_meta where db_name = '' and table_name = '';--表修改行数<br>show stats_healthy where db_name = '' and table_name = '';--健康度<br>健康度：表中未被修改的行数/总行数<br>show stats_histograms where db_name = '' and table_name = '';--列的元信息<br>show stats_buckets where db_name = '' and table_name = '';--直方图信息<br><br>导入导出统计信息方法<br>http://ip:status-port/stats/dump/db/table--导出统计信息<br>http://ip:status-port/stats/dump/db/table/yyyy-mm-dd hh24:mi:ss--导出某一时间的统计信息<br>load stats aaa.json;--导入统计信息<br>drop stats db.table;--删除统计信息<br>",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
+      "source": "",
+      "target": "",
+      "link": "",
+      "picture": ""
+    },
+    {
+      "id": "Config-29",
+      "label": "tidb_build_stats_concurrency",
+      "details": "微众银行，使用默认值2",
+      "originalSize": 30.0,
+      "originalDegree": 8.0,
+      "source": "Page-28",
+      "target": "",
+      "link": "https://docs.pingcap.com/zh/tidb/stable/system-variable-reference/#tidb_build_stats_concurrency",
+      "picture": ""
+    },
+    {
+      "id": "Config-30",
+      "label": "tidb_distsql_scan_concurrency",
+      "details": "可以用于控制一次读取的Region数量",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
+      "source": "Page-28",
+      "target": "",
+      "link": "https://docs.pingcap.com/zh/tidb/stable/system-variable-reference/#tidb_distsql_scan_concurrency",
+      "picture": ""
+    },
+    {
+      "id": "Config-31",
+      "label": "tidb_index_serial_scan_concurrency",
+      "details": "可以用于控制一次读取的Region数量",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
+      "source": "Page-28",
+      "target": "",
+      "link": "",
+      "picture": ""
+    },
+    {
+      "id": "Config-32",
+      "label": "stats-lease",
+      "details": "TiDB 重载统计信息，更新表行数，检查是否需要自动 analyze，利用 feedback 更新统计信息以及加载列的统计信息的时间间隔。<br>默认值：3s<br>每隔 stats-lease 时间，TiDB 会检查统计信息是否有更新，如果有会将其更新到内存中<br>每隔 20 * stats-lease 时间，TiDB 会将 DML 产生的总行数以及修改的行数变化更新到系统表中<br>每隔 stats-lease 时间，TiDB 会检查是否有表或者索引需要自动 analyze<br>每隔 stats-lease 时间，TiDB 会检查是否有列的统计信息需要被加载到内存中<br>每隔 200 * stats-lease 时间，TiDB 会将内存中缓存的 feedback 写入系统表中<br>每隔 5 * stats-lease 时间，TiDB 会读取系统表中的 feedback，更新内存中缓存的统计信息<br>当 stats-lease 为 0s 时，TiDB 会以 3s 的时间间隔周期性的读取系统表中的统计信息并更新内存中缓存的统计信息。但不会自动修改统计信息相关系统表，具体来说，TiDB 不再自动修改这些表：<br>mysql.stats_meta：TiDB 不再自动记录事务中对某张表的修改行数，也不会更新到这个系统表中<br>mysql.stats_histograms/mysql.stats_buckets 和 mysql.stats_top_n：TiDB 不再自动 analyze 和主动更新统计信息<br>mysql.stats_feedback：TiDB 不再根据被查询的数据反馈的部分统计信息更新表和索引的统计信息",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
+      "source": "Page-28",
+      "target": "",
+      "link": "https://docs.pingcap.com/zh/tidb/stable/tidb-configuration-file/#stats-lease",
+      "picture": ""
+    },
+    {
+      "id": "Page-29",
+      "label": "基于索引的SQL优化",
+      "details": "索引管理方法<br>- online ddl <br>admin show ddl jobs;<br>增加索引的原理：<br>创建元数据<br><br>回填数据<br><br><br>增加索引对线上业务的影响<br><br>索引扫描的方式<br>唯一索引或者主键的情况下，最优的选择<br>Point Get<br>Batch Point Get<br>Index Full Scan<br>Index Range Scan<br><br>索引选择的规则<br>索引选择的维度：<br>索引列涵盖了多少访问条件<br>索引是否需要回表：indexReader不需要回表，IndexLookupReader是需要会表<br>索引是否满足一定顺序<br><br>基于代价的选择：<br>索引的每行数据在存储层的平均长度<br>索引生成的查询范围的行数<br>索引的回表代价<br>索引查询时的范围数量<br><br>",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
+      "source": "",
+      "target": "",
+      "link": "",
+      "picture": ""
+    },
+    {
+      "id": "Config-33",
+      "label": "tidb_ddl_reorg_worker_cnt",
+      "details": "可以动态修改：",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
+      "source": "Page-29",
+      "target": "",
+      "link": "",
+      "picture": ""
+    },
+    {
+      "id": "Config-34",
+      "label": "tidb_ddl_reorg_batch_size",
+      "details": "",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
+      "source": "Page-29",
+      "target": "",
+      "link": "",
+      "picture": ""
+    },
+    {
+      "id": "",
+      "label": "SQL优化实战",
+      "details": "快速定位到有问题的SQL<br>高频语句是优化的重点<br><br>DML语句如何优化 <br><br>基于执行计划的优化",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
+      "source": "",
+      "target": "",
+      "link": "",
+      "picture": ""
+    },
+    {
+      "id": "Page-33",
+      "label": "TiDB server关键性能参数与优化",
+      "details": "操作系统参数<br>CPU:<br>Dynamic frequency scaling :<br>定义：CPU动态节能技术用于降低服务器功耗，通过选择系统空闲状态不同的电源管理策略，可以实现不同程度降低服务器功耗，更低的功耗策略意味着CPU唤醒更慢对性能影响更大。<br>需要调整为：performance<br><br>Numa Binding:<br>定义：内存直接绑定在CPU上，CPU只有访问自身管理的内存物理地址时，才会有较短的响应时间。<br>NUMA架构的服务器，图弄过绑定NUMA节点，尽可能的避免跨NUMA访问内存，提升tidb-server的性能。<br><br>内存：<br>THP关掉。<br>VM parameters<br>dirty_retio,dirty_background_ratio:通常不需要调整，对于高性能SSD，降低其值有利于提高内存回收时的效率。<br><br>系统参数 <br><br>集群参数",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
+      "source": "",
+      "target": "",
+      "link": "",
+      "picture": ""
+    },
+    {
+      "id": "",
+      "label": "tidb_mem_quota_query",
+      "details": "默认值：",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
+      "source": "",
+      "target": "",
+      "link": "",
+      "picture": ""
+    },
+    {
+      "id": "Page-30",
+      "label": "分页查询",
+      "details": "分页查询最佳实践",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
+      "source": "",
+      "target": "",
+      "link": "https://docs.pingcap.com/zh/tidb/stable/dev-guide-paginate-results/#%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2",
+      "picture": ""
+    },
+    {
+      "id": "Page-31",
+      "label": "TiDB OOM 故障排查",
+      "details": "TiDB OOM 故障排查",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
+      "source": "",
+      "target": "",
+      "link": "https://docs.pingcap.com/zh/tidb/stable/troubleshoot-tidb-oom/#tidb-oom-%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5",
+      "picture": ""
+    },
+    {
+      "id": "Config-35",
+      "label": "Connection Idle Duration",
+      "details": "TPS压不上去，可以观察这个指标，如果太长，可能是应用端的问题",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
+      "source": "",
+      "target": "",
+      "link": "https://docs.pingcap.com/zh/tidb/stable/dashboard-monitoring/#connection-idle-duration",
+      "picture": ""
+    },
+    {
+      "id": "",
+      "label": "transaction_isolation",
+      "details": "",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
+      "source": "",
+      "target": "",
+      "link": "",
+      "picture": ""
+    },
+    {
+      "id": "Config-36",
+      "label": "max-proc",
+      "details": "默认值0，表示使用机器上所有的CPU<br>如果是混合部署，要相应设置这个参数<br>另外云主机扩容CPU之后，要重启tidb server才能使这个参数生效。<br><br>设置的比实际cpu数量高会引起生成执行计划慢等性能问题<br>https://pingcap-cn.feishu.cn/wiki/L1xYww5pmiS2PekbGAMctahEnih?from=space_search<br>",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
+      "source": "",
+      "target": "",
+      "link": "",
+      "picture": ""
+    },
+    {
+      "id": "Event-18",
+      "label": "backoff",
+      "details": "常见的backoff类型<br>pdRPC<br>regionMiss<br>serverBusy<br>tikvRPC<br>txnLock<br>txnLockFast<br>updateLeader",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
+      "source": "",
+      "target": "Index-24,",
+      "link": "",
+      "picture": ""
+    },
+    {
+      "id": "Page-32",
+      "label": "region merge 速度慢",
+      "details": "",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
+      "source": "",
+      "target": "Config-15,Config-16",
+      "link": "",
+      "picture": "=DISPIMG(\"ID_5D74875A8A264D3C9FB68F722C1160C3\",1)"
+    },
+    {
+      "id": "Page-34",
+      "label": "读取瓶颈分析",
+      "details": "",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
+      "source": "",
+      "target": "",
+      "link": "",
+      "picture": "=DISPIMG(\"ID_8D7D703E95EE46468F10B78A33C0E777\",1)"
+    },
+    {
+      "id": "Page-35",
+      "label": "TiKV 相关监控",
+      "details": "",
+      "originalSize": 20.0,
+      "originalDegree": 0.0,
+      "source": "",
+      "target": "",
+      "link": "",
+      "picture": "=DISPIMG(\"ID_03C3734BF091406A86826B77A5C657AB\",1)"
+    },
+    {
+      "id": "Page-36",
+      "label": "新特性解析丨TiDB 资源管控的设计思路与场景解析",
+      "details": "",
+      "originalSize": "",
+      "originalDegree": "",
+      "source": "",
+      "target": "",
+      "link": "https://tidb.net/blog/67d82266",
+      "picture": ""
+    },
+    {
+      "id": "Config-39",
+      "label": "tidb_enable_resource_control",
+      "details": "since:6.6.0<br>detail:从 v7.0.0 开始，tidb_enable_resource_control 和 resource-control.enabled 开关都被默认打开。<br>",
+      "originalSize": "",
+      "originalDegree": "",
+      "source": "Page-36",
+      "target": "",
+      "link": "https://pingkai.cn/docs/tidb/stable/system-variable-reference/#tidb_enable_resource_control",
+      "picture": ""
+    },
+    {
+      "id": "Page-37",
+      "label": "OOM-相关参数",
+      "details": "oom-action参数已经被另一个参数替代<br><br>tidb_mem_oom_action<br>触发条件：<br>1、mem-quota-query达到<br>2、没有临时磁盘使用<br>（1）、oom-use-tmp-storage #设置为了true<br>（2）、tmp-storage-path #使用磁盘的位置<br>（3）、tmp-storage-quota #临时磁盘使用量，单位byte<br><br>",
+      "originalSize": "",
+      "originalDegree": "",
+      "source": "",
+      "target": "",
+      "link": "",
+      "picture": ""
+    },
+    {
+      "id": "Config-40",
+      "label": "tidb_mem_oom_action",
+      "details": "",
+      "originalSize": "",
+      "originalDegree": "",
+      "source": "Page-37",
+      "target": "",
+      "link": "",
+      "picture": ""
+    },
+    {
+      "id": "Config-41",
+      "label": "mem-quota-query",
+      "details": "",
+      "originalSize": "",
+      "originalDegree": "",
+      "source": "Page-37",
+      "target": "",
+      "link": "",
+      "picture": ""
+    },
+    {
+      "id": "Config-42",
+      "label": "oom-use-tmp-storage",
+      "details": "",
+      "originalSize": "",
+      "originalDegree": "",
+      "source": "Page-37",
+      "target": "",
+      "link": "",
+      "picture": ""
+    },
+    {
+      "id": "Config-43",
+      "label": "tmp-storage-path",
+      "details": "",
+      "originalSize": "",
+      "originalDegree": "",
+      "source": "Page-37",
+      "target": "",
+      "link": "",
+      "picture": ""
+    },
+    {
+      "id": "Config-44",
+      "label": "tmp-storage-quota",
+      "details": "",
+      "originalSize": "",
+      "originalDegree": "",
+      "source": "Page-37",
+      "target": "",
+      "link": "",
+      "picture": ""
+    },
+    {
+      "id": "Page-38",
+      "label": "统计信息加载",
+      "details": "默认情况下，列的统计信息占用空间大小不同，TiDB 对统计信息的加载方式也会不同：<br><br>对于 count、distinctCount、nullCount 等占用空间较小的统计信息，只要有数据更新，TiDB 就会自动将对应的统计信息加载进内存供 SQL 优化阶段使用。<br>对于直方图、TopN、CMSketch 等占用空间较大的统计信息，为了确保 SQL 执行的性能，TiDB 会按需进行异步加载。例如，对于直方图，只有当某条 SQL 语句的优化阶段使用到了某列的直方图统计信息时，TiDB 才会将该列的直方图信息加载到内存。按需异步加载的优势是统计信息加载不会影响到 SQL 执行的性能，但在 SQL 优化时有可能使用不完整的统计信息。<br>从 v5.4.0 开始，TiDB 引入了统计信息同步加载的特性，支持执行当前 SQL 语句时将直方图、TopN、CMSketch 等占用空间较大的统计信息同步加载到内存，提高该 SQL 语句优化时统计信息的完整性。",
+      "originalSize": "",
+      "originalDegree": "",
+      "source": "Page-28",
+      "target": "",
+      "link": "https://pingkai.cn/docs/tidb/stable/statistics/#%E5%8A%A0%E8%BD%BD%E7%BB%9F%E8%AE%A1%E4%BF%A1%E6%81%AF",
+      "picture": ""
+    },
+    {
+      "id": "Config-45",
+      "label": "tidb_stats_load_sync_wait",
+      "details": "",
+      "originalSize": "",
+      "originalDegree": "",
+      "source": "Page-38",
+      "target": "",
+      "link": "",
+      "picture": ""
+    },
+    {
+      "id": "",
+      "label": "lite-init-stats",
+      "details": "从 v7.1.0 开始，TiDB 引入了配置参数 lite-init-stats，用于控制是否开启轻量级的统计信息初始化。<br><br>当 lite-init-stats 设置为 true 时，统计信息初始化时列和索引的直方图、TopN、Count-Min Sketch 均不会加载到内存中。<br>当 lite-init-stats 设置为 false 时，统计信息初始化时索引和主键的直方图、TopN、Count-Min Sketch 会被加载到内存中，非主键列的直方图、TopN、Count-Min Sketch 不会加载到内存中。当优化器需要某一索引或者列的直方图、TopN、Count-Min Sketch 时，这些统计信息会被同步或异步加载到内存中。<br>lite-init-stats 的默认值为 true，即开启轻量级的统计信息初始化。将 lite-init-stats 设置为 true 可以加速统计信息初始化，避免加载不必要的统计信息，从而减少 TiDB 的内存使用。",
+      "originalSize": "",
+      "originalDegree": "",
+      "source": "",
+      "target": "",
+      "link": "",
+      "picture": ""
     }
   ],
   "edges": [
@@ -2208,15 +2716,15 @@
     },
     {
       "source": "Event-05",
+      "target": "Index-01"
+    },
+    {
+      "source": "Event-05",
       "target": "Index-14"
     },
     {
       "source": "Event-05",
       "target": "Index-15"
-    },
-    {
-      "source": "Event-05",
-      "target": "Index-16"
     },
     {
       "source": "Event-05",
@@ -2676,7 +3184,11 @@
     },
     {
       "source": "Page-26",
-      "target": ""
+      "target": "Config-37"
+    },
+    {
+      "source": "Page-26",
+      "target": "Config-38"
     },
     {
       "source": "Doc-01",
@@ -2685,6 +3197,74 @@
     {
       "source": "Doc-02",
       "target": "Doc-03"
+    },
+    {
+      "source": "Page-28",
+      "target": "Config-29"
+    },
+    {
+      "source": "Page-28",
+      "target": "Config-30"
+    },
+    {
+      "source": "Page-28",
+      "target": "Config-31"
+    },
+    {
+      "source": "Page-28",
+      "target": "Config-32"
+    },
+    {
+      "source": "Page-29",
+      "target": "Config-33"
+    },
+    {
+      "source": "Page-29",
+      "target": "Config-34"
+    },
+    {
+      "source": "Event-18",
+      "target": "Index-24"
+    },
+    {
+      "source": "Page-32",
+      "target": "Config-15"
+    },
+    {
+      "source": "Page-32",
+      "target": "Config-16"
+    },
+    {
+      "source": "Page-36",
+      "target": "Config-39"
+    },
+    {
+      "source": "Page-37",
+      "target": "Config-40"
+    },
+    {
+      "source": "Page-37",
+      "target": "Config-41"
+    },
+    {
+      "source": "Page-37",
+      "target": "Config-42"
+    },
+    {
+      "source": "Page-37",
+      "target": "Config-43"
+    },
+    {
+      "source": "Page-37",
+      "target": "Config-44"
+    },
+    {
+      "source": "Page-28",
+      "target": "Page-38"
+    },
+    {
+      "source": "Page-38",
+      "target": "Config-45"
     }
   ]
 }

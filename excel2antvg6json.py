@@ -150,6 +150,7 @@ def run_convert(file_path):
     #     pyperclip.copy(json.dumps(data, indent=4, ensure_ascii=False))
     time.sleep(1)
     transfer_file_scp('/Users/junzhang/Downloads/expanded_graph_data2.json', '/data/tidb-dev/xueyubingsen.github.io/new_source.json', '47.121.187.81', 6502, 'zhangjun', 'Tidb@2026')
+    transfer_file_scp('/Users/junzhang/Downloads/参数、指标、页面、报错、笔记.xlsx', '/data/tidb-dev/xueyubingsen.github.io/参数、指标、页面、报错、笔记.xlsx', '47.121.187.81', 6502, 'zhangjun', 'Tidb@2026')
 
 
 class FileSaveHandler(FileSystemEventHandler):
