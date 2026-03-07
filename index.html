@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TiDB 知识图谱工作台</title>
-  <script src="https://unpkg.com/@antv/g6@4.8.0/dist/g6.min.js"></script>
+  <script src="https://unpkg.com/force-graph@1.48.0/dist/force-graph.min.js"></script>
   <script src="https://unpkg.com/three@0.159.0/build/three.min.js"></script>
   <script src="https://unpkg.com/3d-force-graph@1.78.3/dist/3d-force-graph.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.min.js"></script>
@@ -273,7 +273,7 @@
     <section class="panel graph-panel">
       <div class="toolbar">
         <select id="engine-select" style="max-width: 150px">
-          <option value="2d">2D (G6)</option>
+          <option value="2d">2D (ForceGraph)</option>
           <option value="3d">3D (ForceGraph)</option>
         </select>
         <input id="search-node" placeholder="输入节点 ID 搜索并高亮" style="max-width: 260px" />
@@ -475,7 +475,9 @@
     }
 
     function destroyGraphIfNeeded() {
-      if (graph && !graph.destroyed) graph.destroy();
+      if (graph) {
+        graph._destructor?.();
+      }
       graph = null;
       if (graph3D) {
         document.getElementById('graph-container').innerHTML = '';
@@ -488,58 +490,52 @@
       destroyGraphIfNeeded();
       container.innerHTML = '';
 
-      graph = new G6.Graph({
-        container: 'graph-container',
-        width: container.clientWidth,
-        height: container.clientHeight,
-        layout: {
-          type: 'force',
-          preventOverlap: true,
-          linkDistance: 140,
-          nodeStrength: -120,
-          edgeStrength: 0.25,
-          alphaDecay: 0.03,
-          collideStrength: 0.8
-        },
-        modes: {
-          default: ['drag-canvas', 'zoom-canvas', 'drag-node', { type: 'activate-relations', trigger: 'click' }]
-        },
-        defaultNode: {
-          style: { lineWidth: 1.5, cursor: 'pointer' },
-          labelCfg: { style: { fill: '#16202d', fontSize: 10, fontWeight: 'bold' }, position: 'center' }
-        },
-        defaultEdge: {
-          style: {
-            stroke: '#98a2b3',
-            lineWidth: 1.2,
-            opacity: 0.6,
-            endArrow: { path: G6.Arrow.triangle(8, 10, 0), d: 0 }
-          }
-        },
-        plugins: [
-          new G6.Tooltip({
-            itemTypes: ['node'],
-            getContent: e => {
-              const n = e.item.getModel();
-              const el = document.createElement('div');
-              el.innerHTML = `<div><strong>${n.label}</strong></div>
-              <div>ID: ${n.id}</div>
-              <div>基础权重: ${n.originalDegree}</div>
-              <div>实时连接数: ${n.realTimeDegree}</div>
-              <div>最终权重: ${n.degree}</div>
-              <div>${n.details || ''}</div>`;
-              return el;
-            }
-          })
-        ],
-        nodeStateStyles: {
-          focus: { stroke: '#2157d6', lineWidth: 3, shadowColor: 'rgba(33,87,214,0.4)', shadowBlur: 12 }
-        }
-      });
+      const nodes = data.nodes.map(node => ({
+        ...node,
+        color: node.style?.fill || '#8ec5ff',
+        borderColor: node.style?.stroke || '#4f8de8',
+        val: Math.max(node.size / 7, 3)
+      }));
+      const links = data.edges.map(edge => ({ source: edge.source, target: edge.target, label: edge.label || '' }));
 
-      graph.data(data);
-      graph.render();
-      graph.layout();
+      graph = ForceGraph()(container)
+        .backgroundColor('#f5f9ff')
+        .graphData({ nodes, links })
+        .nodeId('id')
+        .nodeLabel(node => `${node.label}<br/>ID: ${node.id}<br/>基础权重: ${node.originalDegree}<br/>实时连接数: ${node.realTimeDegree}<br/>最终权重: ${node.degree}<br/>${node.details || ''}`)
+        .nodeVal(node => node.val)
+        .nodeCanvasObject((node, ctx, globalScale) => {
+          const label = node.label || node.id;
+          const fontSize = Math.max(10 / globalScale, 3);
+          const radius = Math.max(6, node.val || 6);
+
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, radius, 0, 2 * Math.PI, false);
+          ctx.fillStyle = node.color;
+          ctx.fill();
+          ctx.lineWidth = Math.max(1.2 / globalScale, 0.5);
+          ctx.strokeStyle = node.borderColor;
+          ctx.stroke();
+
+          ctx.font = `${fontSize}px Sans-Serif`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillStyle = '#16202d';
+          ctx.fillText(label, node.x, node.y);
+        })
+        .linkColor(() => '#98a2b3')
+        .linkWidth(1.1)
+        .linkDirectionalArrowLength(5)
+        .linkDirectionalArrowRelPos(1)
+        .linkOpacity(0.58)
+        .d3VelocityDecay(0.23)
+        .onNodeDragEnd(node => {
+          node.fx = node.x;
+          node.fy = node.y;
+        });
+
+      graph.d3Force('charge').strength(-220);
+      graph.d3Force('link').distance(130);
     }
 
     function renderGraph3D(data) {
@@ -737,8 +733,7 @@
           return;
         }
         if (!graph) return;
-        graph.fitCenter();
-        graph.zoomTo(1);
+        graph.zoomToFit(800, 40);
       });
 
       document.getElementById('btn-focus').addEventListener('click', () => {
@@ -751,11 +746,10 @@
           graph3D.cameraPosition({ x: (node.x || 0) + 90, y: (node.y || 0) + 90, z: (node.z || 0) + 120 }, node, 1000);
         } else {
           if (!graph) return;
-          const item = graph.findById(id);
-          graph.getNodes().forEach(n => graph.clearItemStates(n, ['focus']));
-          if (!item) return setStatus(`未找到节点: ${id}`, true);
-          graph.setItemState(item, 'focus', true);
-          graph.focusItem(item, true, { easing: 'easeCubic', duration: 500 });
+          const node = graph.graphData().nodes.find(n => n.id === id);
+          if (!node) return setStatus(`未找到节点: ${id}`, true);
+          graph.centerAt(node.x || 0, node.y || 0, 700);
+          graph.zoom(4, 600);
         }
         setStatus(`已定位节点 ${id}`);
       });
@@ -765,15 +759,16 @@
         if (currentEngine === '3d' && graph3D) {
           graph3D.width(container.clientWidth);
           graph3D.height(container.clientHeight);
-        } else if (graph && !graph.destroyed) {
-          graph.changeSize(container.clientWidth, container.clientHeight);
+        } else if (graph) {
+          graph.width(container.clientWidth);
+          graph.height(container.clientHeight);
         }
       });
     }
 
     async function boot() {
       try {
-        if (typeof G6 === 'undefined') throw new Error('G6 未加载成功。');
+        if (typeof ForceGraph === 'undefined') throw new Error('2D 力导向库加载失败。');
         SQL = await initSqlJs({ locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/${file}` });
         db = new SQL.Database();
         initDb();
