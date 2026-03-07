@@ -564,6 +564,16 @@
         .linkDirectionalParticles(1)
         .linkDirectionalParticleWidth(1.5)
         .linkDirectionalParticleSpeed(0.004)
+        .cooldownTicks(Infinity)
+        .d3AlphaDecay(0.02)
+        .d3VelocityDecay(0.25)
+        .onNodeDrag(() => graph3D.d3ReheatSimulation())
+        .onNodeDragEnd(node => {
+          node.fx = undefined;
+          node.fy = undefined;
+          node.fz = undefined;
+          graph3D.d3ReheatSimulation();
+        })
         .onNodeClick(node => {
           const distance = 180;
           const distRatio = 1 + distance / Math.hypot(node.x || 1, node.y || 1, node.z || 1);
