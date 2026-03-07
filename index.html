@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TiDB 知识图谱工作台</title>
   <script src="https://unpkg.com/@antv/g6@4.8.0/dist/g6.min.js"></script>
+  <script src="https://unpkg.com/three@0.159.0/build/three.min.js"></script>
+  <script src="https://unpkg.com/3d-force-graph@1.78.3/dist/3d-force-graph.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.min.js"></script>
   <style>
     :root {
@@ -270,6 +272,10 @@
 
     <section class="panel graph-panel">
       <div class="toolbar">
+        <select id="engine-select" style="max-width: 150px">
+          <option value="2d">2D (G6)</option>
+          <option value="3d">3D (ForceGraph)</option>
+        </select>
         <input id="search-node" placeholder="输入节点 ID 搜索并高亮" style="max-width: 260px" />
         <button id="btn-focus">定位节点</button>
         <button id="btn-refresh" class="secondary">刷新图谱</button>
@@ -283,6 +289,9 @@
     let SQL;
     let db;
     let graph;
+    let graph3D;
+    let currentEngine = '2d';
+    let graphDataCache = { nodes: [], edges: [] };
 
     const statusEl = document.getElementById('status');
     const nodeCountEl = document.getElementById('node-count');
@@ -467,16 +476,22 @@
 
     function destroyGraphIfNeeded() {
       if (graph && !graph.destroyed) graph.destroy();
+      graph = null;
+      if (graph3D) {
+        document.getElementById('graph-container').innerHTML = '';
+        graph3D = null;
+      }
     }
 
-    function renderGraph() {
-      const data = loadGraphDataFromDb();
+    function renderGraph2D(data) {
+      const container = document.getElementById('graph-container');
       destroyGraphIfNeeded();
+      container.innerHTML = '';
 
       graph = new G6.Graph({
         container: 'graph-container',
-        width: document.getElementById('graph-container').clientWidth,
-        height: document.getElementById('graph-container').clientHeight,
+        width: container.clientWidth,
+        height: container.clientHeight,
         layout: {
           type: 'force',
           preventOverlap: true,
@@ -525,6 +540,48 @@
       graph.data(data);
       graph.render();
       graph.layout();
+    }
+
+    function renderGraph3D(data) {
+      const container = document.getElementById('graph-container');
+      destroyGraphIfNeeded();
+      container.innerHTML = '';
+
+      const nodes = data.nodes.map(node => ({
+        ...node,
+        val: Math.max(node.size / 6, 2),
+        color: node.style?.fill || '#8ec5ff'
+      }));
+      const links = data.edges.map(edge => ({ source: edge.source, target: edge.target, label: edge.label || '' }));
+
+      graph3D = ForceGraph3D()(container)
+        .backgroundColor('#f5f9ff')
+        .graphData({ nodes, links })
+        .nodeLabel(node => `${node.label}<br/>ID: ${node.id}<br/>权重: ${node.degree}<br/>${node.details || ''}`)
+        .nodeColor(node => node.color)
+        .linkWidth(0.8)
+        .linkOpacity(0.35)
+        .linkDirectionalParticles(1)
+        .linkDirectionalParticleWidth(1.5)
+        .linkDirectionalParticleSpeed(0.004)
+        .onNodeClick(node => {
+          const distance = 180;
+          const distRatio = 1 + distance / Math.hypot(node.x || 1, node.y || 1, node.z || 1);
+          graph3D.cameraPosition(
+            { x: (node.x || 0) * distRatio, y: (node.y || 0) * distRatio, z: (node.z || 0) * distRatio },
+            node,
+            900
+          );
+        });
+    }
+
+    function renderGraph() {
+      graphDataCache = loadGraphDataFromDb();
+      if (currentEngine === '3d') {
+        renderGraph3D(graphDataCache);
+      } else {
+        renderGraph2D(graphDataCache);
+      }
     }
 
     function refreshAll(showMsg = true) {
@@ -657,29 +714,49 @@
 
       document.getElementById('btn-refresh').addEventListener('click', () => refreshAll());
 
+      document.getElementById('engine-select').addEventListener('change', e => {
+        currentEngine = e.target.value;
+        renderGraph();
+        setStatus(`已切换到 ${currentEngine.toUpperCase()} 视图。`);
+      });
+
       document.getElementById('btn-reset-view').addEventListener('click', () => {
+        if (currentEngine === '3d') {
+          if (!graph3D) return;
+          graph3D.zoomToFit(800);
+          return;
+        }
         if (!graph) return;
         graph.fitCenter();
         graph.zoomTo(1);
       });
 
       document.getElementById('btn-focus').addEventListener('click', () => {
-        if (!graph) return;
         const id = document.getElementById('search-node').value.trim();
-        const item = graph.findById(id);
-        graph.getNodes().forEach(n => graph.clearItemStates(n, ['focus']));
-        if (!item) return setStatus(`未找到节点: ${id}`, true);
-        graph.setItemState(item, 'focus', true);
-        graph.focusItem(item, true, { easing: 'easeCubic', duration: 500 });
+        if (!id) return setStatus('请输入节点 ID。', true);
+        if (currentEngine === '3d') {
+          if (!graph3D) return;
+          const node = graph3D.graphData().nodes.find(n => n.id === id);
+          if (!node) return setStatus(`未找到节点: ${id}`, true);
+          graph3D.cameraPosition({ x: (node.x || 0) + 90, y: (node.y || 0) + 90, z: (node.z || 0) + 120 }, node, 1000);
+        } else {
+          if (!graph) return;
+          const item = graph.findById(id);
+          graph.getNodes().forEach(n => graph.clearItemStates(n, ['focus']));
+          if (!item) return setStatus(`未找到节点: ${id}`, true);
+          graph.setItemState(item, 'focus', true);
+          graph.focusItem(item, true, { easing: 'easeCubic', duration: 500 });
+        }
         setStatus(`已定位节点 ${id}`);
       });
 
       window.addEventListener('resize', () => {
-        if (graph && !graph.destroyed) {
-          graph.changeSize(
-            document.getElementById('graph-container').clientWidth,
-            document.getElementById('graph-container').clientHeight
-          );
+        const container = document.getElementById('graph-container');
+        if (currentEngine === '3d' && graph3D) {
+          graph3D.width(container.clientWidth);
+          graph3D.height(container.clientHeight);
+        } else if (graph && !graph.destroyed) {
+          graph.changeSize(container.clientWidth, container.clientHeight);
         }
       });
     }
