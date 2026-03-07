@@ -523,11 +523,10 @@
           ctx.fillStyle = '#16202d';
           ctx.fillText(label, node.x, node.y);
         })
-        .linkColor(() => '#98a2b3')
+        .linkColor(() => 'rgba(152, 162, 179, 0.58)')
         .linkWidth(1.1)
         .linkDirectionalArrowLength(5)
         .linkDirectionalArrowRelPos(1)
-        .linkOpacity(0.58)
         .d3VelocityDecay(0.23)
         .onNodeDragEnd(node => {
           node.fx = node.x;
