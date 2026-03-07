@@ -223,6 +223,14 @@
           <button id="btn-export-json">导出 JSON</button>
           <button id="btn-export-db" class="secondary">导出 SQLite</button>
         </div>
+        <div class="field" style="margin-top: 12px;">
+          <label>对象存储预签名上传 URL（PUT）</label>
+          <input id="oss-presigned-url" placeholder="https://xxx/your-object?signature=..." />
+        </div>
+        <div class="actions">
+          <button id="btn-upload-json" class="secondary">上传 JSON 到对象存储</button>
+          <button id="btn-upload-db" class="secondary">上传 SQLite 到对象存储</button>
+        </div>
         <div class="status" id="status"></div>
       </section>
 
@@ -605,8 +613,7 @@
     }
 
     function exportJson() {
-      const data = loadGraphDataFromDb();
-      const blob = new Blob([JSON.stringify({ nodes: data.nodes, edges: data.edges }, null, 2)], { type: 'application/json' });
+      const blob = makeJsonBlob();
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
       a.download = 'tidb-graph-export.json';
@@ -616,14 +623,42 @@
     }
 
     function exportSqlite() {
-      const binary = db.export();
-      const blob = new Blob([binary], { type: 'application/x-sqlite3' });
+      const blob = makeSqliteBlob();
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
       a.download = 'tidb-notes.db';
       a.click();
       URL.revokeObjectURL(a.href);
       setStatus('SQLite 导出完成。');
+    }
+
+    function makeJsonBlob() {
+      const data = loadGraphDataFromDb();
+      return new Blob([JSON.stringify({ nodes: data.nodes, edges: data.edges }, null, 2)], { type: 'application/json' });
+    }
+
+    function makeSqliteBlob() {
+      const binary = db.export();
+      return new Blob([binary], { type: 'application/x-sqlite3' });
+    }
+
+    async function uploadBlobToObjectStorage(blob, defaultFileName) {
+      const url = document.getElementById('oss-presigned-url').value.trim();
+      if (!url) throw new Error('请先填写对象存储预签名上传 URL。');
+
+      const res = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': blob.type || 'application/octet-stream',
+          'Content-Disposition': `attachment; filename="${defaultFileName}"`
+        },
+        body: blob
+      });
+
+      if (!res.ok) {
+        const detail = await res.text().catch(() => '');
+        throw new Error(`上传失败（HTTP ${res.status}）${detail ? `: ${detail.slice(0, 200)}` : ''}`);
+      }
     }
 
     function bindEvents() {
@@ -648,6 +683,24 @@
 
       document.getElementById('btn-export-json').addEventListener('click', exportJson);
       document.getElementById('btn-export-db').addEventListener('click', exportSqlite);
+      document.getElementById('btn-upload-json').addEventListener('click', async () => {
+        try {
+          const blob = makeJsonBlob();
+          await uploadBlobToObjectStorage(blob, 'tidb-graph-export.json');
+          setStatus('JSON 已上传到对象存储。');
+        } catch (e) {
+          setStatus(`上传 JSON 失败: ${e.message}`, true);
+        }
+      });
+      document.getElementById('btn-upload-db').addEventListener('click', async () => {
+        try {
+          const blob = makeSqliteBlob();
+          await uploadBlobToObjectStorage(blob, 'tidb-notes.db');
+          setStatus('SQLite 已上传到对象存储。');
+        } catch (e) {
+          setStatus(`上传 SQLite 失败: ${e.message}`, true);
+        }
+      });
 
       document.getElementById('btn-save-node').addEventListener('click', () => {
         try {
