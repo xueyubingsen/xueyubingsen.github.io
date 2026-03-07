@@ -236,6 +236,7 @@
 
       <section class="panel">
         <h2>2) 节点编辑</h2>
+        <p class="muted" id="selected-node-hint">当前未选中节点（可在图中点击节点自动填充）</p>
         <div class="field"><label>节点 ID（唯一）</label><input id="node-id" /></div>
         <div class="field"><label>显示名称</label><input id="node-label" /></div>
         <div class="field"><label>详情</label><textarea id="node-details"></textarea></div>
@@ -250,6 +251,7 @@
 
       <section class="panel">
         <h2>3) 连线编辑</h2>
+        <p class="muted" id="selected-edge-hint">未选中节点，source 可手动填写。</p>
         <div class="field"><label>源节点 source</label><input id="edge-source" /></div>
         <div class="field"><label>目标节点 target</label><input id="edge-target" /></div>
         <div class="field"><label>关系描述 label（可选）</label><input id="edge-label" /></div>
@@ -299,11 +301,15 @@
     let graph;
     let graph3D;
     let currentEngine = '2d';
+    let selectedNodeId = '';
+    let nodeAutoSaveTimer;
     let graphDataCache = { nodes: [], edges: [] };
 
     const statusEl = document.getElementById('status');
     const nodeCountEl = document.getElementById('node-count');
     const edgeCountEl = document.getElementById('edge-count');
+    const selectedNodeHintEl = document.getElementById('selected-node-hint');
+    const selectedEdgeHintEl = document.getElementById('selected-edge-hint');
 
     function setStatus(message, error = false) {
       statusEl.style.color = error ? '#c03434' : '#1e7a2f';
@@ -482,6 +488,56 @@
       document.getElementById('node-size').value = Number(node.original_size || 20);
     }
 
+    function applySelectedNode(nodeId) {
+      if (!nodeId) return;
+      fillNodeForm(nodeId);
+      selectedNodeId = nodeId;
+      document.getElementById('edge-source').value = nodeId;
+      selectedNodeHintEl.textContent = `当前选中节点：${nodeId}（修改字段将自动实时更新）`;
+      selectedEdgeHintEl.textContent = `当前选中节点：${nodeId}（已自动填充 source）`;
+    }
+
+    function saveNodeFormToDb(showMessage = false) {
+      const id = document.getElementById('node-id').value.trim();
+      const label = document.getElementById('node-label').value.trim();
+      if (!id || !label) return;
+      db.run(`
+        INSERT INTO nodes(id, label, details, link, original_degree, original_size, updated_at)
+        VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+        ON CONFLICT(id) DO UPDATE SET
+          label = excluded.label,
+          details = excluded.details,
+          link = excluded.link,
+          original_degree = excluded.original_degree,
+          original_size = excluded.original_size,
+          updated_at = CURRENT_TIMESTAMP;
+      `, [
+        id,
+        label,
+        document.getElementById('node-details').value.trim(),
+        document.getElementById('node-link').value.trim(),
+        Number(document.getElementById('node-degree').value || 0),
+        Number(document.getElementById('node-size').value || 20)
+      ]);
+      selectedNodeId = id;
+      refreshAll(false);
+      if (showMessage) setStatus(`节点 ${id} 已保存并刷新。`);
+    }
+
+    function scheduleSelectedNodeAutoSave() {
+      const currentId = document.getElementById('node-id').value.trim();
+      if (!selectedNodeId || currentId !== selectedNodeId) return;
+      clearTimeout(nodeAutoSaveTimer);
+      nodeAutoSaveTimer = setTimeout(() => {
+        try {
+          saveNodeFormToDb(false);
+          setStatus(`节点 ${selectedNodeId} 已实时更新。`);
+        } catch (e) {
+          setStatus(`节点实时更新失败: ${e.message}`, true);
+        }
+      }, 250);
+    }
+
     function destroyGraphIfNeeded() {
       if (graph) {
         graph._destructor?.();
@@ -539,6 +595,10 @@
         .onNodeDragEnd(node => {
           node.fx = node.x;
           node.fy = node.y;
+        })
+        .onNodeClick(node => {
+          applySelectedNode(node.id);
+          setStatus(`已选中节点 ${node.id}`);
         });
 
       graph.d3Force('charge').strength(-220);
@@ -578,6 +638,7 @@
           graph3D.d3ReheatSimulation();
         })
         .onNodeClick(node => {
+          applySelectedNode(node.id);
           const distance = 180;
           const distRatio = 1 + distance / Math.hypot(node.x || 1, node.y || 1, node.z || 1);
           graph3D.cameraPosition(
@@ -585,6 +646,7 @@
             node,
             900
           );
+          setStatus(`已选中节点 ${node.id}`);
         });
     }
 
@@ -707,25 +769,7 @@
           const id = document.getElementById('node-id').value.trim();
           const label = document.getElementById('node-label').value.trim();
           if (!id || !label) throw new Error('节点 ID 和显示名称不能为空。');
-          db.run(`
-            INSERT INTO nodes(id, label, details, link, original_degree, original_size, updated_at)
-            VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
-            ON CONFLICT(id) DO UPDATE SET
-              label = excluded.label,
-              details = excluded.details,
-              link = excluded.link,
-              original_degree = excluded.original_degree,
-              original_size = excluded.original_size,
-              updated_at = CURRENT_TIMESTAMP;
-          `, [
-            id,
-            label,
-            document.getElementById('node-details').value.trim(),
-            document.getElementById('node-link').value.trim(),
-            Number(document.getElementById('node-degree').value || 0),
-            Number(document.getElementById('node-size').value || 20)
-          ]);
-          refreshAll();
+          saveNodeFormToDb(true);
         } catch (e) {
           setStatus(`保存节点失败: ${e.message}`, true);
         }
@@ -736,6 +780,11 @@
         if (!id) return setStatus('请先填写要删除的节点 ID。', true);
         db.run('DELETE FROM edges WHERE source = ? OR target = ?;', [id, id]);
         db.run('DELETE FROM nodes WHERE id = ?;', [id]);
+        if (selectedNodeId === id) {
+          selectedNodeId = '';
+          selectedNodeHintEl.textContent = '当前未选中节点（可在图中点击节点自动填充）';
+          selectedEdgeHintEl.textContent = '未选中节点，source 可手动填写。';
+        }
         refreshAll();
       });
 
@@ -771,6 +820,10 @@
       });
 
       document.getElementById('btn-refresh').addEventListener('click', () => refreshAll());
+
+      ['node-label', 'node-details', 'node-link', 'node-degree', 'node-size'].forEach(id => {
+        document.getElementById(id).addEventListener('input', scheduleSelectedNodeAutoSave);
+      });
 
       document.getElementById('engine-select').addEventListener('change', e => {
         currentEngine = e.target.value;
