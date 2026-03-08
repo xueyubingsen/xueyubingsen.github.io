@@ -302,6 +302,8 @@
     let graph3D;
     let currentEngine = '2d';
     let selectedNodeId = '';
+    let highlightedNodeIds = new Set();
+    let highlightedLinkKeys = new Set();
     let nodeAutoSaveTimer;
     let graphDataCache = { nodes: [], edges: [] };
 
@@ -495,6 +497,50 @@
       document.getElementById('edge-source').value = nodeId;
       selectedNodeHintEl.textContent = `当前选中节点：${nodeId}（修改字段将自动实时更新）`;
       selectedEdgeHintEl.textContent = `当前选中节点：${nodeId}（已自动填充 source）`;
+      rebuildHighlightState(nodeId);
+      refreshGraphHighlight();
+    }
+
+    function clearSelectedNode() {
+      selectedNodeId = '';
+      selectedNodeHintEl.textContent = '当前未选中节点（可在图中点击节点自动填充）';
+      selectedEdgeHintEl.textContent = '未选中节点，source 可手动填写。';
+      rebuildHighlightState('');
+      refreshGraphHighlight();
+    }
+
+    function getEndpointId(endpoint) {
+      return typeof endpoint === 'object' ? endpoint.id : endpoint;
+    }
+
+    function getLinkKey(source, target) {
+      return `${source}__${target}`;
+    }
+
+    function rebuildHighlightState(centerNodeId) {
+      highlightedNodeIds = new Set();
+      highlightedLinkKeys = new Set();
+      if (!centerNodeId) return;
+
+      highlightedNodeIds.add(centerNodeId);
+      graphDataCache.edges.forEach(edge => {
+        if (edge.source === centerNodeId || edge.target === centerNodeId) {
+          highlightedNodeIds.add(edge.source);
+          highlightedNodeIds.add(edge.target);
+          highlightedLinkKeys.add(getLinkKey(edge.source, edge.target));
+        }
+      });
+    }
+
+    function isHighlightedLink(link) {
+      const source = getEndpointId(link.source);
+      const target = getEndpointId(link.target);
+      return highlightedLinkKeys.has(getLinkKey(source, target));
+    }
+
+    function refreshGraphHighlight() {
+      if (graph) graph.refresh();
+      if (graph3D) graph3D.refresh();
     }
 
     function saveNodeFormToDb(showMessage = false) {
@@ -556,8 +602,8 @@
 
       const nodes = data.nodes.map(node => ({
         ...node,
-        color: node.style?.fill || '#8ec5ff',
-        borderColor: node.style?.stroke || '#4f8de8',
+        baseColor: node.style?.fill || '#8ec5ff',
+        baseBorderColor: node.style?.stroke || '#4f8de8',
         val: Math.max(node.size / 7, 3)
       }));
       const links = data.edges.map(edge => ({ source: edge.source, target: edge.target, label: edge.label || '' }));
@@ -572,13 +618,17 @@
           const label = node.label || node.id;
           const fontSize = Math.max(10 / globalScale, 3);
           const radius = Math.max(6, node.val || 6);
+          const isSelected = node.id === selectedNodeId;
+          const isRelated = highlightedNodeIds.has(node.id);
+          const nodeColor = !selectedNodeId ? node.baseColor : (isRelated ? (isSelected ? '#ff9f43' : node.baseColor) : '#e5e7eb');
+          const borderColor = !selectedNodeId ? node.baseBorderColor : (isRelated ? (isSelected ? '#f97316' : node.baseBorderColor) : '#cbd5e1');
 
           ctx.beginPath();
           ctx.arc(node.x, node.y, radius, 0, 2 * Math.PI, false);
-          ctx.fillStyle = node.color;
+          ctx.fillStyle = nodeColor;
           ctx.fill();
           ctx.lineWidth = Math.max(1.2 / globalScale, 0.5);
-          ctx.strokeStyle = node.borderColor;
+          ctx.strokeStyle = borderColor;
           ctx.stroke();
 
           ctx.font = `${fontSize}px Sans-Serif`;
@@ -587,8 +637,8 @@
           ctx.fillStyle = '#16202d';
           ctx.fillText(label, node.x, node.y);
         })
-        .linkColor(() => 'rgba(152, 162, 179, 0.58)')
-        .linkWidth(1.1)
+        .linkColor(link => (!selectedNodeId || isHighlightedLink(link)) ? 'rgba(74, 115, 255, 0.8)' : 'rgba(203, 213, 225, 0.28)')
+        .linkWidth(link => (!selectedNodeId || isHighlightedLink(link)) ? 2 : 0.8)
         .linkDirectionalArrowLength(5)
         .linkDirectionalArrowRelPos(1)
         .d3VelocityDecay(0.23)
@@ -599,6 +649,10 @@
         .onNodeClick(node => {
           applySelectedNode(node.id);
           setStatus(`已选中节点 ${node.id}`);
+        })
+        .onBackgroundClick(() => {
+          clearSelectedNode();
+          setStatus('已取消节点选中。');
         });
 
       graph.d3Force('charge').strength(-220);
@@ -613,7 +667,7 @@
       const nodes = data.nodes.map(node => ({
         ...node,
         val: Math.max(node.size / 6, 2),
-        color: node.style?.fill || '#8ec5ff'
+        baseColor: node.style?.fill || '#8ec5ff'
       }));
       const links = data.edges.map(edge => ({ source: edge.source, target: edge.target, label: edge.label || '' }));
 
@@ -621,11 +675,15 @@
         .backgroundColor('#f5f9ff')
         .graphData({ nodes, links })
         .nodeLabel(node => `${node.label}<br/>ID: ${node.id}<br/>权重: ${node.degree}<br/>${node.details || ''}`)
-        .nodeColor(node => node.color)
-        .linkWidth(0.8)
-        .linkOpacity(0.35)
-        .linkDirectionalParticles(1)
-        .linkDirectionalParticleWidth(1.5)
+        .nodeColor(node => {
+          if (!selectedNodeId) return node.baseColor;
+          if (node.id === selectedNodeId) return '#ff9f43';
+          return highlightedNodeIds.has(node.id) ? node.baseColor : '#d1d5db';
+        })
+        .linkWidth(link => (!selectedNodeId || isHighlightedLink(link)) ? 2 : 0.4)
+        .linkOpacity(link => (!selectedNodeId || isHighlightedLink(link)) ? 0.8 : 0.12)
+        .linkDirectionalParticles(link => (!selectedNodeId || isHighlightedLink(link)) ? 2 : 0)
+        .linkDirectionalParticleWidth(link => (!selectedNodeId || isHighlightedLink(link)) ? 2 : 0)
         .linkDirectionalParticleSpeed(0.004)
         .cooldownTicks(Infinity)
         .d3AlphaDecay(0.02)
@@ -647,11 +705,16 @@
             900
           );
           setStatus(`已选中节点 ${node.id}`);
+        })
+        .onBackgroundClick(() => {
+          clearSelectedNode();
+          setStatus('已取消节点选中。');
         });
     }
 
     function renderGraph() {
       graphDataCache = loadGraphDataFromDb();
+      rebuildHighlightState(selectedNodeId);
       if (currentEngine === '3d') {
         renderGraph3D(graphDataCache);
       } else {
@@ -781,9 +844,7 @@
         db.run('DELETE FROM edges WHERE source = ? OR target = ?;', [id, id]);
         db.run('DELETE FROM nodes WHERE id = ?;', [id]);
         if (selectedNodeId === id) {
-          selectedNodeId = '';
-          selectedNodeHintEl.textContent = '当前未选中节点（可在图中点击节点自动填充）';
-          selectedEdgeHintEl.textContent = '未选中节点，source 可手动填写。';
+          clearSelectedNode();
         }
         refreshAll();
       });
@@ -848,11 +909,13 @@
           if (!graph3D) return;
           const node = graph3D.graphData().nodes.find(n => n.id === id);
           if (!node) return setStatus(`未找到节点: ${id}`, true);
+          applySelectedNode(id);
           graph3D.cameraPosition({ x: (node.x || 0) + 90, y: (node.y || 0) + 90, z: (node.z || 0) + 120 }, node, 1000);
         } else {
           if (!graph) return;
           const node = graph.graphData().nodes.find(n => n.id === id);
           if (!node) return setStatus(`未找到节点: ${id}`, true);
+          applySelectedNode(id);
           graph.centerAt(node.x || 0, node.y || 0, 700);
           graph.zoom(4, 600);
         }
